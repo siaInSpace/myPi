@@ -1,23 +1,13 @@
-/**
- * @author OlivierLD
- * copy form https://github.com/OlivierLD/raspberry-pi4j-samples/blob/master/I2C.SPI/src/i2c/sensor/BMP180.java
- * changes by sia20
- */
 package sia20.myPi;
 
 import com.pi4j.io.i2c.I2CBus;
 import com.pi4j.io.i2c.I2CDevice;
 import com.pi4j.io.i2c.I2CFactory;
 
-import com.pi4j.system.SystemInfo;
-import i2c.sensor.utils.EndianReaders;
+import sia20.myPi.EndianReaders;
 
 import java.io.IOException;
-
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-
-import static utils.TimeUtil.delay;
+import java.util.concurrent.TimeUnit;
 
 /*
  * Altitude, Pressure, Temperature
@@ -25,12 +15,16 @@ import static utils.TimeUtil.delay;
 public class BMP180 {
     private final static EndianReaders.Endianness BMP180_ENDIANNESS = EndianReaders.Endianness.BIG_ENDIAN;
     /*
-     * Prompt> sudo i2cdetect -y 1 0 1 2 3 4 5 6 7 8 9 a b c d e f 00: -- -- -- --
-     * -- -- -- -- -- -- -- -- -- 10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-     * -- 20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 30: -- -- -- -- -- --
-     * -- -- -- -- -- -- -- -- -- -- 40: -- -- -- -- -- -- -- -- -- -- -- -- -- --
-     * -- -- 50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 60: -- -- -- -- --
-     * -- -- -- -- -- -- -- -- -- -- -- 70: -- -- -- -- -- -- -- 77
+    Prompt> sudo i2cdetect -y 1
+             0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+    00:          -- -- -- -- -- -- -- -- -- -- -- -- --
+    10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+    20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+    30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+    40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+    50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+    60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+    70: -- -- -- -- -- -- -- 77
      */
     // This next addresses is returned by "sudo i2cdetect -y 1", see above.
     public final static int BMP180_ADDRESS = 0x77;
@@ -41,17 +35,17 @@ public class BMP180 {
     public final static int BMP180_ULTRAHIGHRES = 3;
 
     // BMP180 Registers
-    public final static int BMP180_CAL_AC1 = 0xAA; // R Calibration data (16 bits)
-    public final static int BMP180_CAL_AC2 = 0xAC; // R Calibration data (16 bits)
-    public final static int BMP180_CAL_AC3 = 0xAE; // R Calibration data (16 bits)
-    public final static int BMP180_CAL_AC4 = 0xB0; // R Calibration data (16 bits)
-    public final static int BMP180_CAL_AC5 = 0xB2; // R Calibration data (16 bits)
-    public final static int BMP180_CAL_AC6 = 0xB4; // R Calibration data (16 bits)
-    public final static int BMP180_CAL_B1 = 0xB6; // R Calibration data (16 bits)
-    public final static int BMP180_CAL_B2 = 0xB8; // R Calibration data (16 bits)
-    public final static int BMP180_CAL_MB = 0xBA; // R Calibration data (16 bits)
-    public final static int BMP180_CAL_MC = 0xBC; // R Calibration data (16 bits)
-    public final static int BMP180_CAL_MD = 0xBE; // R Calibration data (16 bits)
+    public final static int BMP180_CAL_AC1 = 0xAA;  // R   Calibration data (16 bits)
+    public final static int BMP180_CAL_AC2 = 0xAC;  // R   Calibration data (16 bits)
+    public final static int BMP180_CAL_AC3 = 0xAE;  // R   Calibration data (16 bits)
+    public final static int BMP180_CAL_AC4 = 0xB0;  // R   Calibration data (16 bits)
+    public final static int BMP180_CAL_AC5 = 0xB2;  // R   Calibration data (16 bits)
+    public final static int BMP180_CAL_AC6 = 0xB4;  // R   Calibration data (16 bits)
+    public final static int BMP180_CAL_B1 = 0xB6;  // R   Calibration data (16 bits)
+    public final static int BMP180_CAL_B2 = 0xB8;  // R   Calibration data (16 bits)
+    public final static int BMP180_CAL_MB = 0xBA;  // R   Calibration data (16 bits)
+    public final static int BMP180_CAL_MC = 0xBC;  // R   Calibration data (16 bits)
+    public final static int BMP180_CAL_MD = 0xBE;  // R   Calibration data (16 bits)
 
     public final static int BMP180_CONTROL = 0xF4;
     public final static int BMP180_TEMPDATA = 0xF6;
@@ -77,11 +71,11 @@ public class BMP180 {
     private I2CDevice bmp180;
     private int mode = BMP180_STANDARD;
 
-    public BMP180() throws I2CFactory.UnsupportedBusNumberException {
+    public BMP180() {//throws I2CFactory.UnsupportedBusNumberException {
         this(BMP180_ADDRESS);
     }
 
-    public BMP180(int address) throws I2CFactory.UnsupportedBusNumberException {
+    public BMP180(int address){// throws I2CFactory.UnsupportedBusNumberException {
         try {
             // Get i2c bus
             bus = I2CFactory.getInstance(I2CBus.BUS_1); // Depends on the RasPI version
@@ -113,17 +107,17 @@ public class BMP180 {
 
     public void readCalibrationData() throws Exception {
         // Reads the calibration data from the IC
-        cal_AC1 = readS16(BMP180_CAL_AC1); // INT16
-        cal_AC2 = readS16(BMP180_CAL_AC2); // INT16
-        cal_AC3 = readS16(BMP180_CAL_AC3); // INT16
-        cal_AC4 = readU16(BMP180_CAL_AC4); // UINT16
-        cal_AC5 = readU16(BMP180_CAL_AC5); // UINT16
-        cal_AC6 = readU16(BMP180_CAL_AC6); // UINT16
-        cal_B1 = readS16(BMP180_CAL_B1); // INT16
-        cal_B2 = readS16(BMP180_CAL_B2); // INT16
-        cal_MB = readS16(BMP180_CAL_MB); // INT16
-        cal_MC = readS16(BMP180_CAL_MC); // INT16
-        cal_MD = readS16(BMP180_CAL_MD); // INT16
+        cal_AC1 = readS16(BMP180_CAL_AC1);   // INT16
+        cal_AC2 = readS16(BMP180_CAL_AC2);   // INT16
+        cal_AC3 = readS16(BMP180_CAL_AC3);   // INT16
+        cal_AC4 = readU16(BMP180_CAL_AC4);   // UINT16
+        cal_AC5 = readU16(BMP180_CAL_AC5);   // UINT16
+        cal_AC6 = readU16(BMP180_CAL_AC6);   // UINT16
+        cal_B1 = readS16(BMP180_CAL_B1);    // INT16
+        cal_B2 = readS16(BMP180_CAL_B2);    // INT16
+        cal_MB = readS16(BMP180_CAL_MB);    // INT16
+        cal_MC = readS16(BMP180_CAL_MC);    // INT16
+        cal_MD = readS16(BMP180_CAL_MD);    // INT16
         if (verbose)
             showCalibrationData();
     }
@@ -146,7 +140,7 @@ public class BMP180 {
     public int readRawTemp() throws Exception {
         // Reads the raw (uncompensated) temperature from the sensor
         bmp180.write(BMP180_CONTROL, (byte) BMP180_READTEMPCMD);
-        delay(5L); // Wait 5ms
+        TimeUnit.MILLISECONDS.wait(5);  // Wait 5ms
         int raw = readU16(BMP180_TEMPDATA);
         if (verbose) {
             System.out.println("DBG: Raw Temp: " + (raw & 0xFFFF) + ", " + raw);
@@ -158,13 +152,13 @@ public class BMP180 {
         // Reads the raw (uncompensated) pressure level from the sensor
         bmp180.write(BMP180_CONTROL, (byte) (BMP180_READPRESSURECMD + (this.mode << 6)));
         if (this.mode == BMP180_ULTRALOWPOWER) {
-            delay(5);
+            TimeUnit.MILLISECONDS.wait(5);
         } else if (this.mode == BMP180_HIGHRES) {
-            delay(14);
+            TimeUnit.MILLISECONDS.wait(14);
         } else if (this.mode == BMP180_ULTRAHIGHRES) {
-            delay(26);
+            TimeUnit.MILLISECONDS.wait(26);
         } else {
-            delay(8);
+            TimeUnit.MILLISECONDS.wait(8);
         }
         int msb = bmp180.read(BMP180_PRESSUREDATA);
         int lsb = bmp180.read(BMP180_PRESSUREDATA + 1);
@@ -308,46 +302,5 @@ public class BMP180 {
         if (verbose)
             System.out.println("DBG: Altitude = " + altitude);
         return altitude;
-    }
-
-    public static void main(String... args) throws I2CFactory.UnsupportedBusNumberException {
-        final NumberFormat NF = new DecimalFormat("##00.00");
-        BMP180 sensor = new BMP180();
-        float press = 0;
-        float temp = 0;
-        double alt = 0;
-
-        try {
-            press = sensor.readPressure();
-        } catch (Exception ex) {
-            System.err.println(ex.getMessage());
-            ex.printStackTrace();
-        }
-        sensor.setStandardSeaLevelPressure((int) press); // As we ARE at the sea level (in San Francisco).
-        try {
-            alt = sensor.readAltitude();
-        } catch (Exception ex) {
-            System.err.println(ex.getMessage());
-            ex.printStackTrace();
-        }
-        try {
-            temp = sensor.readTemperature();
-        } catch (Exception ex) {
-            System.err.println(ex.getMessage());
-            ex.printStackTrace();
-        }
-
-        System.out.println("Temperature: " + NF.format(temp) + " C");
-        System.out.println("Pressure   : " + NF.format(press / 100) + " hPa");
-        System.out.println("Altitude   : " + NF.format(alt) + " m");
-        // Bonus : CPU Temperature
-        try {
-            System.out.println("CPU Temperature   :  " + SystemInfo.getCpuTemperature());
-            System.out.println("CPU Core Voltage  :  " + SystemInfo.getCpuVoltage());
-        } catch (InterruptedException ie) {
-            ie.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }
