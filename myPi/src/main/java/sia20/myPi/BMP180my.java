@@ -50,42 +50,49 @@ public class BMP180my {
     }
 
     public long readTemp()throws IOException{
-        byte signal = 0x2E;
+        Word bytesToInts = new Word(this.device);byte signal = 0x2E;
         device.write(writeAddress, signal);
         try {
-            TimeUnit.MICROSECONDS.wait(4500);
+            TimeUnit.MILLISECONDS.wait(5);
         }catch (InterruptedException e){
             System.out.println("Could not wait 4.5ms, idk why");
             e.printStackTrace();
         }
-        return readWord(0xF6);
+        int[] bytes = bytesToInts.readBytes(0xF6, 2);
+        int temp = bytesToInts.combineBytes(bytes);
+        return temp;
     }
 
-    public long readPressure() throws IOException{
+    public int readPressure() throws IOException{
+        Word bytesToInts = new Word(this.device);
         byte signal = (byte)(0x34 + oss.getVal()<<6);
         device.write(writeAddress, signal);
         try {
-            TimeUnit.MICROSECONDS.wait(4500);
+            TimeUnit.MILLISECONDS.wait(oss.getTime());
         }catch (InterruptedException e){
-            System.out.println("Could not wait 4.5ms, idk why");
+            System.out.println("Could not wait Xms, idk why");
             e.printStackTrace();
         }
-        int msb = device.read(0xF6);
-        int lsb = device.read(0xF7);
-        int xlsb = device.read(0x78);
-        return (msb<<16+lsb<<8+xlsb)>>(8-oss.getVal());
+        int[] bytes = bytesToInts.readBytes(0xF6, 3);
+        int press = bytesToInts.combineBytes(bytes, oss.getVal());
+        return press;
     }
 
     public enum Oss{
-        LOW_POWER(0), STANDARD(1), HIGHRES(2), ULTRAHIGHRES(3);
+        LOW_POWER(0, 5), STANDARD(1, 8), HIGHRES(2, 14), ULTRAHIGHRES(3, 26);
 
         private int id;
-
-        Oss(int val) {
+        private int waitTime;
+        Oss(int val, int time) {
             this.id = val;
+            this.waitTime = time;
         }
         public int getVal(){
             return id;
+        }
+
+        public int getTime() {
+            return waitTime;
         }
     }
 }
