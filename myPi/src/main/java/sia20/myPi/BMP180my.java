@@ -5,7 +5,6 @@ import com.pi4j.io.i2c.I2CDevice;
 import com.pi4j.io.i2c.I2CFactory;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 
@@ -14,9 +13,6 @@ public class BMP180my {
     private I2CDevice device;
     int writeAddress = 0xF4;
     Oss oss;
-
-    //Calibration values
-
 
     public BMP180my(Oss oss)throws IOException{
         final int bmp180_i2cAddr = 0x77;
@@ -32,7 +28,6 @@ public class BMP180my {
         //170 171   172 173    174 175     176 177     178 179     180 181     182 183     184 185     186 187     188 189     190 191
         long[] vals = new long[11];
         int start = 0xAA;
-        ArrayList<Word> words = new ArrayList<>();
         for (int i = 0; i < vals.length*2 ; i+=2) {
             vals[i] = readWord(start+i);
         }
