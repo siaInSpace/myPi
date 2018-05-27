@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import com.pi4j.io.i2c.*;
 //import com.pi4j.io.i2c.I2CFactory.UnsupportedBusNumberException;
+import com.pi4j.io.i2c.I2CFactory.UnsupportedBusNumberException;
 
 /**
  * Hello world!
@@ -49,18 +50,35 @@ public class App {
         }
     }
 
-    private void readFirstCalVal() {
-        BMP180my bmp = null;
+    private void readFirstCalVal() throws UnsupportedBusNumberException{
+        I2CBus bus = null;
         try {
-            bmp = new BMP180my(BMP180my.Oss.STANDARD);
+            bus = I2CFactory.getInstance(I2CBus.BUS_1);
         } catch (IOException e) {
-            System.out.println("Cannot create new object of class BMP180my");
             System.out.println(e.getLocalizedMessage());
         }
-        try {
-            System.out.println(bmp.getReadDevice().read(0xAA));
-        } catch (IOException e) {
-            System.out.println(e.getLocalizedMessage());
+        for (int i = 0; i < 0xFF; i++) {
+            I2CDevice dev = null;
+            try {
+                dev = bus.getDevice(i);
+            } catch (IOException e) {
+                System.out.println("Could not get device on adress: " + Integer.toString(i));
+            }
+            for (int j = 0; j < 0xFF; i++) {
+                boolean s = true;
+                int res = 0;
+                try {
+                   res = dev.read(j);
+                } catch (IOException e) {
+                    s = false;
+                }
+                if (s){
+                    System.out.println("Found valid result on");
+                    System.out.println("devAddr: " + Integer.toString(i));
+                    System.out.println("regAddr: " + Integer.toString(j));
+                    System.out.println("Result was: " + Integer.toString(res));
+                }
+            }
         }
 
     }
