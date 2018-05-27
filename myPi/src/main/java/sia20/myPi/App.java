@@ -36,8 +36,9 @@ public class App {
         }
         
         Word word = new Word(bmp.getDevice());
+        byte[][] calValsBMP = null;
         try {
-            byte[][] calValsBMP = bmp.readCalibarationValuesRaw()
+             calValsBMP = bmp.readCalibarationValuesRaw();
         } catch (IOException e) {
             System.out.println("Cannot get calibration values!");
             System.out.println(e.getLocalizedMessage());    
