@@ -59,19 +59,20 @@ public class App {
         }catch (UnsupportedBusNumberException e){
             System.out.println(e.getLocalizedMessage());
         }
-        for (int i = 0; i < 0xFF; i++) {
+        for (int i = 0; i <= 0xFF; i++) {
             I2CDevice dev = null;
             try {
                 dev = bus.getDevice(i);
             } catch (IOException e) {
                 System.out.println("Could not get device on adress: " + Integer.toString(i));
             }
-            for (int j = 0; j < 0xFF; i++) {
+            for (int j = 0; j <= 0xFF; j++) {
                 boolean s = true;
                 int res = 0;
                 try {
                    res = dev.read(j);
                 } catch (IOException e) {
+                    System.out.println("Not read!");
                     s = false;
                 }
                 if (s){
