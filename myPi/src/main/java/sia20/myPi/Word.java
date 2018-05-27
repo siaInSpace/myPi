@@ -1,7 +1,6 @@
 package sia20.myPi;
 
 import com.pi4j.io.i2c.I2CDevice;
-import com.pi4j.jni.I2C;
 
 import java.io.IOException;
 
@@ -11,11 +10,11 @@ public class Word {
         device = dev;
     }
 
-    public int[] readBytes(int regAddr, int nrAddr){
-        int[] bytes = new int[nrAddr];
+    public byte[] readBytes(int regAddr, int nrAddr){
+        byte[] bytes = new byte[nrAddr];
         try {
             for (int i = 0; i < nrAddr; i++) {
-                bytes[i] = device.read(regAddr+i);
+                bytes[i] = (byte)(device.read(regAddr+i) & 0xff);
             }
         }catch (IOException e){
             System.out.println(e.getStackTrace());
@@ -23,28 +22,38 @@ public class Word {
         return bytes;
     }
 
-    public int combineBytes(int[] bytes){
-        int res;
-        if (bytes.length == 2){
-            bytes[0] = bytes[0] & 0xff;
-            bytes[0] = bytes[0] <<8;
-            bytes[1] = bytes[1] & 0xff;
-            res = bytes[0] + bytes[1];
-        }else{
-            System.out.println("Unexpected number of bytes: " + Integer.toString(bytes.length));
-            res = -999999999;
-        }
+    public short combToShort(byte msb, byte lsb){
+        msb = (byte)(msb & 0xff);
+        lsb = (byte)(lsb & 0xff);
+        short res = (short)(msb << 8);
+        res = (short)(res | lsb);
         return res;
     }
 
-    public int combineBytes(int[] bytes, int oss) {
-        int res;
-        if (bytes.length == 0) {
-            res = (bytes[0] << 16 + bytes[1] << 8 + bytes[2]) >> (8 - oss);
-        }else{
-            System.out.println("Unexpected number of bytes: " + Integer.toString(bytes.length));
-            res = -999999999;
-        }
+    public int combToInt(byte msb, byte lsb){
+        msb = (byte)(msb & 0xff); 
+        lsb = (byte)(lsb & 0xff);
+        int res = (int)(msb << 8);
+        res = (int)(res | lsb);
+        return res;
+    }
+
+    public long combToLong(byte msb, byte lsb){
+        msb = (byte)(msb & 0xff); 
+        lsb = (byte)(lsb & 0xff);
+        long res = (long)(msb << 8);
+        res = (long)(res | lsb);
+        return res; 
+    }
+
+    public long combToLong(byte msb, byte lsb, byte xlsb, int oss){
+        msb = (byte)(msb & 0xff); 
+        lsb = (byte)(lsb & 0xff);
+        xlsb = (byte)(xlsb & 0xff);
+        long res = (msb << 16);
+        res = (res | (lsb << 8));
+        res = (res | xlsb);
+        res = (res >> (8-oss));
         return res;
     }
 }
