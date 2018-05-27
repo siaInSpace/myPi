@@ -39,7 +39,7 @@ public class BMP180my {
         return device;
     }
 
-    public byte[][] readCalibarationValuesRaw() throws IOException {
+    public byte[][] readCalibarationValuesRaw(){
         Word word = new Word(this.device);
         int start = 0xAA;
         byte[][] calValues = new byte[11][2];

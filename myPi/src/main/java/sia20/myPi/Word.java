@@ -17,6 +17,7 @@ public class Word {
                 bytes[i] = (byte)(device.read(regAddr+i) & 0xff);
             }
         }catch (IOException e){
+            System.out.println("Cannot read bytes in regestry!");
             System.out.println(e.getStackTrace());
         }
         return bytes;

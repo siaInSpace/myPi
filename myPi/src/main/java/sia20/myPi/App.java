@@ -34,15 +34,8 @@ public class App {
             System.out.println("Cannot create new object of class BMP180my");
             System.out.println(e.getLocalizedMessage());
         }
-        
         Word word = new Word(bmp.getDevice());
-        byte[][] calValsBMP = null;
-        try {
-             calValsBMP = bmp.readCalibarationValuesRaw();
-        } catch (IOException e) {
-            System.out.println("Cannot get calibration values!");
-            System.out.println(e.getLocalizedMessage());    
-        }
+        byte[][] calValsBMP  = bmp.readCalibarationValuesRaw();
         for (int i = 0; i < 11; i++) {
             System.out.print(calValsBMP[i][0]);
             System.out.println(" | ");
