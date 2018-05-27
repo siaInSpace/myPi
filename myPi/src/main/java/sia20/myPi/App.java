@@ -26,10 +26,22 @@ public class App {
         }
     }
 
-    private void calValsBMP180() throws IOException {
-        BMP180my bmp = new BMP180my(BMP180my.Oss.STANDARD);
+    private void calValsBMP180() {
+        BMP180my bmp = null;
+        try {
+            bmp = new BMP180my(BMP180my.Oss.STANDARD);
+        } catch (IOException e) {
+            System.out.println("Cannot create new object of class BMP180my");
+            System.out.println(e.getLocalizedMessage());
+        }
+        
         Word word = new Word(bmp.getDevice());
-        byte[][] calValsBMP = bmp.readCalibarationValuesRaw();
+        try {
+            byte[][] calValsBMP = bmp.readCalibarationValuesRaw()
+        } catch (IOException e) {
+            System.out.println("Cannot get calibration values!");
+            System.out.println(e.getLocalizedMessage());    
+        }
         for (int i = 0; i < 11; i++) {
             System.out.print(calValsBMP[i][0]);
             System.out.println(" | ");
@@ -56,13 +68,7 @@ public class App {
                 busses();
                 break;
             case "2":
-                try {
-                    calValsBMP180();
-                } catch (IOException e) {
-                    for (StackTraceElement stack : e.getStackTrace()) {
-                        System.out.println(stack);
-                    }
-                }
+                calValsBMP180();
             case "3":
                 in.close();
                 System.out.println("Quitting!");
