@@ -31,8 +31,8 @@ public class App {
         Word word = new Word(bmp.getDevice());
         byte[][] calValsBMP = bmp.readCalibarationValuesRaw();
         for (int i = 0; i < 11; i++) {
-            System.out.print(calValsBMP[i][0]);
-            System.out.println(" | ");
+            System.out.println(calValsBMP[i][0]);
+            System.out.print(" | ");
             System.out.println(calValsBMP[i][1]);
             System.out.println(word.combToLong(calValsBMP[i][0], calValsBMP[i][1]));
         }
@@ -59,7 +59,7 @@ public class App {
                 try {
                     calValsBMP180();
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    System.out.println(e.getLocalizedMessage());
                 }
             case "3":
                 in.close();
