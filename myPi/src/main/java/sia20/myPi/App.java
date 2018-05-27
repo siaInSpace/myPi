@@ -36,11 +36,11 @@ public class App {
         }
         Word word = new Word(bmp.getDevice());
 
-        byte[][] v =  bmp.readCalibarationValuesRaw();
-        //printCalVals(v, word);
+        byte[][] v = bmp.readCalibarationValuesRaw();
+        // printCalVals(v, word);
     }
 
-    private void printCalVals(byte[][] vals, Word word){
+    private void printCalVals(byte[][] vals, Word word) {
         for (int i = 0; i < 11; i++) {
             System.out.print(vals[i][0]);
             System.out.println(" | ");
@@ -49,11 +49,28 @@ public class App {
         }
     }
 
+    private void readFirstCalVal() {
+        BMP180my bmp = null;
+        try {
+            bmp = new BMP180my(BMP180my.Oss.STANDARD);
+        } catch (IOException e) {
+            System.out.println("Cannot create new object of class BMP180my");
+            System.out.println(e.getLocalizedMessage());
+        }
+        try {
+            System.out.println(bmp.getDevice().read(0xAA));
+        } catch (IOException e) {
+            System.out.println(e.getLocalizedMessage());
+        }
+
+    }
+
     private void menu() {
         System.out.println("What would you like to do?");
         System.out.println("1: get busses");
         System.out.println("2: get caliration values for BMP180");
-        System.out.println("3: quit");
+        System.out.println("3: get first calibration values from BMP180");
+        System.out.println("q: quit");
     }
 
     private void run() {
@@ -61,14 +78,18 @@ public class App {
         String choice;
         do {
             menu();
-            choice = in.nextLine();
+            choice = in.nextLine().toUpperCase();
             switch (choice) {
             case "1":
                 busses();
                 break;
             case "2":
                 calValsBMP180();
+                break;
             case "3":
+                readFirstCalVal();
+                break;
+            case "Q":
                 in.close();
                 System.out.println("Quitting!");
                 break;
@@ -77,7 +98,7 @@ public class App {
                 break;
             }
 
-        } while (!choice.equals("3"));
+        } while (!choice.equals("Q"));
     }
 
     public static void main(String[] args) {
