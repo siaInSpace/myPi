@@ -59,7 +59,7 @@ public class App {
                 try {
                     calValsBMP180();
                 } catch (IOException e) {
-                    System.out.println(e.getStackTrace());
+                    e.printStackTrace();
                 }
             case "3":
                 in.close();
