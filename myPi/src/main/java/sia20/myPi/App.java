@@ -18,11 +18,11 @@ public class App {
             try {
                 @SuppressWarnings("unused")
                 I2CBus bus = I2CFactory.getInstance(number);
-                System.out.println("Supported I2C bus " + number + " found");
+                System.out.println("Supported I2C bus: " + number);
             } catch (IOException exception) {
-                System.out.println("I/O error on I2C bus " + number + " occurred");
-            } catch (UnsupportedBusNumberException exception) {
-                System.out.println("Unsupported I2C bus " + number + " required");
+                System.out.println("I/O error on I2C bus: " + number);
+            } catch (Exception exception) {
+                System.out.println("Unsupported I2C bus: " + number);
             }
         }
     }
