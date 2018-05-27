@@ -98,10 +98,9 @@ public class App {
 
     private void run() {
         Scanner in = new Scanner(System.in);
-        String choice;
+        String choice = "3";
         do {
-            menu();
-            choice = in.nextLine().toUpperCase();
+
             switch (choice) {
             case "1":
                 busses();
@@ -120,6 +119,8 @@ public class App {
             default:
                 break;
             }
+            menu();
+            choice = in.nextLine().toUpperCase();
 
         } while (!choice.equals("Q"));
     }
