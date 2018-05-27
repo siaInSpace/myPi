@@ -81,6 +81,7 @@ public class App {
                     System.out.println("Result was: " + Integer.toString(res));
                 }
             }
+            System.out.println("Done: " + Integer.toString(i));
         }
 
     }
