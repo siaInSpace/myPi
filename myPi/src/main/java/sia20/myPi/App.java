@@ -50,11 +50,13 @@ public class App {
         }
     }
 
-    private void readFirstCalVal() throws UnsupportedBusNumberException{
+    private void readFirstCalVal(){
         I2CBus bus = null;
         try {
             bus = I2CFactory.getInstance(I2CBus.BUS_1);
         } catch (IOException e) {
+            System.out.println(e.getLocalizedMessage());
+        }catch (UnsupportedBusNumberException e){
             System.out.println(e.getLocalizedMessage());
         }
         for (int i = 0; i < 0xFF; i++) {
