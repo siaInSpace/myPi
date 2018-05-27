@@ -26,7 +26,7 @@ public class BMP180my {
         try {
             bus = I2CFactory.getInstance(I2CBus.BUS_1);
         } catch (UnsupportedBusNumberException e) {
-            System.out.println(e.getStackTrace());
+            System.out.println(e.getLocalizedMessage());
         }
         device = bus.getDevice(bmp180_i2cAddr);
         this.oss = oss;
