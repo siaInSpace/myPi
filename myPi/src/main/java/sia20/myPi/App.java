@@ -80,6 +80,7 @@ public class App {
                     System.out.println("regAddr: " + Integer.toString(j));
                     System.out.println("Result was: " + Integer.toString(res));
                 }
+                System.out.println("Done: " + Integer.toString(i) + "." + Integer.toString(j));
             }
             System.out.println("Done: " + Integer.toString(i));
         }
