@@ -87,7 +87,7 @@ public class I2CTest {
         // (This is a utility class to abstract some of the boilerplate code)
 
         // print program title/header
-        System.out.println("<-- The Pi4J Project -->", "I2C Example");
+        System.out.println("<-- The Pi4J Project I2C Example-->");
         // fetch all available busses
         try {
             int[] ids = I2CFactory.getBusIds();
