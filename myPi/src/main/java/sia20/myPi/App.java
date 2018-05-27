@@ -26,7 +26,7 @@ public class App {
         }
     }
 
-    private void calValsBMP180() {
+    private byte[][] calValsBMP180() {
         BMP180my bmp = null;
         try {
             bmp = new BMP180my(BMP180my.Oss.STANDARD);
@@ -35,12 +35,17 @@ public class App {
             System.out.println(e.getLocalizedMessage());
         }
         Word word = new Word(bmp.getDevice());
-        byte[][] calValsBMP  = bmp.readCalibarationValuesRaw();
+
+        byte[][] v =  bmp.readCalibarationValuesRaw();
+        //printCalVals(v, word);
+    }
+
+    private void printCalVals(byte[][] vals, Word word){
         for (int i = 0; i < 11; i++) {
-            System.out.print(calValsBMP[i][0]);
+            System.out.print(vals[i][0]);
             System.out.println(" | ");
-            System.out.println(calValsBMP[i][1]);
-            System.out.println(word.combToLong(calValsBMP[i][0], calValsBMP[i][1]));
+            System.out.println(vals[i][1]);
+            System.out.println(word.combToLong(vals[i][0], vals[i][1]));
         }
     }
 

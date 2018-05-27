@@ -18,7 +18,7 @@ public class Word {
             }
         }catch (IOException e){
             System.out.println("Cannot read bytes in regestry!");
-            System.out.println(e.getStackTrace());
+            System.out.println(e.getLocalizedMessage());
         }
         return bytes;
     }
