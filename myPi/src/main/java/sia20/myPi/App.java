@@ -58,7 +58,7 @@ public class App {
             System.out.println(e.getLocalizedMessage());
         }
         try {
-            System.out.println(bmp.getDevice().read(0xAA));
+            System.out.println(bmp.getReadDevice().read(0xAA));
         } catch (IOException e) {
             System.out.println(e.getLocalizedMessage());
         }

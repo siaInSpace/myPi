@@ -16,31 +16,41 @@ public class BMP180my {
     // MD}
     // private int[] calibrationUnsignedValues; //{AC4, AC5, AC6}
 
-    private I2CDevice device;
+    private I2CDevice readDevice;
+    private I2CDevice writeDevice;
     int writeAddress = 0xF4;
     Oss oss;
 
     public BMP180my(Oss oss) throws IOException {
-        final int bmp180_i2cAddr = 0x77;
+        final int bmp180_i2cReadAddr = 0xEF; 
+        final int bmp180_i2cWriteAddr = 0xEE;
         I2CBus bus = null;
         try {
             bus = I2CFactory.getInstance(I2CBus.BUS_1);
         } catch (UnsupportedBusNumberException e) {
             System.out.println(e.getLocalizedMessage());
         }
-        device = bus.getDevice(bmp180_i2cAddr);
+        readDevice = bus.getDevice(bmp180_i2cReadAddr);
+        writeDevice = bus.getDevice(bmp180_i2cWriteAddr);
         this.oss = oss;
     }
 
     /**
      * @return the device
      */
-    public I2CDevice getDevice() {
-        return device;
+    public I2CDevice getReadDevice() {
+        return readDevice;
+    }
+
+    /**
+     * @return the writeAddress
+     */
+    public int getWriteAddress() {
+        return writeAddress;
     }
 
     public byte[][] readCalibarationValuesRaw(){
-        Word word = new Word(this.device);
+        Word word = new Word(this.readDevice);
         int start = 0xAA;
         byte[][] calValues = new byte[11][2];
         for (int i = 0; i < 22; i += 2) {
@@ -50,9 +60,9 @@ public class BMP180my {
     }
 
     public byte[] readTempRaw() throws IOException {
-        Word bytesToInts = new Word(this.device);
+        Word bytesToInts = new Word(this.readDevice);
         byte signal = 0x2E;
-        device.write(writeAddress, signal);
+        readDevice.write(writeAddress, signal);
         try {
             TimeUnit.MILLISECONDS.wait(5);
         } catch (InterruptedException e) {
@@ -63,9 +73,9 @@ public class BMP180my {
     }
 
     public byte[] readPressureRaw() throws IOException {
-        Word bytesToInts = new Word(this.device);
+        Word bytesToInts = new Word(this.readDevice);
         byte signal = (byte) (0x34 + oss.getVal() << 6);
-        device.write(writeAddress, signal);
+        readDevice.write(writeAddress, signal);
         try {
             TimeUnit.MILLISECONDS.wait(oss.getTime());
         } catch (InterruptedException e) {
