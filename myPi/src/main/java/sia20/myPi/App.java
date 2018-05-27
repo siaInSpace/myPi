@@ -26,7 +26,7 @@ public class App {
         }
     }
 
-    private byte[][] calValsBMP180() {
+    private void calValsBMP180() {
         BMP180my bmp = null;
         try {
             bmp = new BMP180my(BMP180my.Oss.STANDARD);
