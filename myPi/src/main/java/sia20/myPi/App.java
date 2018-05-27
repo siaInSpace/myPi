@@ -72,7 +72,7 @@ public class App {
                 try {
                    res = dev.read(j);
                 } catch (IOException e) {
-                    System.out.println("Not read!");
+                    //System.out.println("Not read!");
                     s = false;
                 }
                 if (s){
