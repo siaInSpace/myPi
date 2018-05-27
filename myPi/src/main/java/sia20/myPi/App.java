@@ -1,11 +1,10 @@
 package sia20.myPi;
 
-import java.awt.Menu;
 import java.io.IOException;
 import java.util.Scanner;
 
 import com.pi4j.io.i2c.*;
-import com.pi4j.io.i2c.I2CFactory.UnsupportedBusNumberException;
+//import com.pi4j.io.i2c.I2CFactory.UnsupportedBusNumberException;
 
 /**
  * Hello world!

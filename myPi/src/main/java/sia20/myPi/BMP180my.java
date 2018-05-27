@@ -14,8 +14,8 @@ import java.util.concurrent.TimeUnit;
 
 public class BMP180my {
 
-    private short[] calibrationSignedValues; //{AC1, AC2, AC3, B1, B2, MB, MC, MD}
-    private int[] calibrationUnsignedValues; //{AC4, AC5, AC6}
+    //private short[] calibrationSignedValues; //{AC1, AC2, AC3, B1, B2, MB, MC, MD}
+    //private int[] calibrationUnsignedValues; //{AC4, AC5, AC6}
 
     private I2CDevice device;
     int writeAddress = 0xF4;
