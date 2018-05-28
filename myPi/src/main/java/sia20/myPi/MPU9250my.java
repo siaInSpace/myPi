@@ -63,17 +63,18 @@ public class MPU9250my {
     }
 
     public void whoAmI() {
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            System.out.println("Sleep intrerupted!");
-            System.out.println(e.getLocalizedMessage());
-        }
+
 
         int res = 0;
         int counter = 0;
         boolean done = false;
         while (!done) {
+            try {
+                Thread.sleep(30000);
+            } catch (InterruptedException e) {
+                System.out.println("Sleep intrerupted!");
+                System.out.println(e.getLocalizedMessage());
+            }
             try {
                 res = device.read(whoAmIAddr);
                 done = true;
