@@ -27,12 +27,12 @@ public class MPU9250my {
             bus = I2CFactory.getInstance(I2CBus.BUS_1);
         } catch (I2CFactory.UnsupportedBusNumberException e) {
             System.out.println(e.getLocalizedMessage());
-        }catch(IOException e){
+        } catch (IOException e) {
             System.out.println(e.getLocalizedMessage());
         }
-        try{
+        try {
             device = bus.getDevice(sensAddr);
-        }catch(IOException e){
+        } catch (IOException e) {
             System.out.println(e.getLocalizedMessage());
         }
     }
@@ -62,11 +62,18 @@ public class MPU9250my {
         return res;
     }
 
-    public void whoAmI(){
+    public void whoAmI() {
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            System.out.println("Sleep intrerupted!");
+            System.out.println(e.getLocalizedMessage());
+        }
+
         int res = 0;
         int counter = 0;
         boolean done = false;
-        while(!done){
+        while (!done) {
             try {
                 res = device.read(whoAmIAddr);
                 done = true;
@@ -79,13 +86,14 @@ public class MPU9250my {
             System.out.print(counter);
             if (done) {
                 System.out.println(" successful!");
-            }else{
+            } else {
                 System.out.println(" not successful!");
             }
+            counter++;
         }
-        if (res==whoAmIValueDefualt){
+        if (res == whoAmIValueDefualt) {
             System.out.println("I'm mpu9250");
-        }else{
+        } else {
             System.out.println("Who am I? i don't know");
             System.out.print("I got this number, but thats not really me: ");
             System.out.println(res);
