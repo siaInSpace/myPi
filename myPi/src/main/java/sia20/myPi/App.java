@@ -50,13 +50,13 @@ public class App {
         }
     }
 
-    private void readFirstCalVal(){
+    private void readFirstCalVal() {
         I2CBus bus = null;
         try {
             bus = I2CFactory.getInstance(I2CBus.BUS_1);
         } catch (IOException e) {
             System.out.println(e.getLocalizedMessage());
-        }catch (UnsupportedBusNumberException e){
+        } catch (UnsupportedBusNumberException e) {
             System.out.println(e.getLocalizedMessage());
         }
         for (int i = 0; i <= 0xFFFF; i++) {
@@ -70,18 +70,19 @@ public class App {
                 boolean s = true;
                 int res = 0;
                 try {
-                   res = dev.read(j);
+                    res = dev.read(j);
                 } catch (IOException e) {
-                    //System.out.println("Not read!");
+                    // System.out.println("Not read!");
                     s = false;
                 }
-                if (s){
+                if (s) {
                     System.out.println("Found valid result on");
                     System.out.println("devAddr: " + Integer.toString(i));
                     System.out.println("regAddr: " + Integer.toString(j));
                     System.out.println("Result was: " + Integer.toString(res));
                 }
-                //System.out.println("Done: " + Integer.toString(i) + "." + Integer.toString(j));
+                // System.out.println("Done: " + Integer.toString(i) + "." +
+                // Integer.toString(j));
             }
             System.out.println("Done: " + Integer.toString(i));
         }
@@ -93,14 +94,21 @@ public class App {
         System.out.println("1: get busses");
         System.out.println("2: get caliration values for BMP180");
         System.out.println("3: get first calibration values from BMP180");
+        System.out.println("4: get who am I value from MPU9250");
         System.out.println("q: quit");
+    }
+
+    private void whoAmIMPU9250() {
+        MPU9250my mpu = new MPU9250my();
+        mpu.whoAmI();
     }
 
     private void run() {
         Scanner in = new Scanner(System.in);
-        String choice = "3";
+        String choice;
         do {
-
+            menu();
+            choice = in.nextLine().toUpperCase();
             switch (choice) {
             case "1":
                 busses();
@@ -111,17 +119,16 @@ public class App {
             case "3":
                 readFirstCalVal();
                 break;
+            case "4":
+                whoAmIMPU9250();
+                break;
             case "Q":
                 in.close();
                 System.out.println("Quitting!");
                 break;
-
             default:
                 break;
             }
-            menu();
-            choice = in.nextLine().toUpperCase();
-
         } while (!choice.equals("Q"));
     }
 
