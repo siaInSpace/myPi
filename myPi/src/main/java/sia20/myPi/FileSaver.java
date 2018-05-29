@@ -2,39 +2,46 @@ package sia20.myPi;
 
 import sia20.myPi.BMP180my;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 /**
  * FileSaver
  */
-public class FileSaver implements Runnable{
+public class FileSaver implements Runnable {
     private String path;
-    private String[] data;
-    private PrintWriter pw;
+    private FileWriter fw;
     private BMP180my bmp;
 
-    public FileSaver(String pathName, String command, BMP180my bmp){
+    public FileSaver(String pathName, String command, BMP180my bmp) {
         path = pathName;
         this.bmp = bmp;
-        if (command.equals("bmp180saveCalVals")){
+        if (command.equals("bmp180saveCalVals")) {
             this.start();
         }
+    }
+
+    private String pad(byte val) {
+        String padded = Integer.toBinaryString(val);
+        for (int i = padded.length(); i < 8; i++) {
+            padded = "0" + padded;
+        }
+        return padded + "\n";
     }
 
     @Override
     public void run() {
         try {
-            pw = new PrintWriter(new File(path));    
+            fw = new FileWriter(new File(path));
+            byte[][] dat = bmp.readCalibarationValuesRaw();
+            for (byte[] calVal : dat) {
+                fw.write(pad(calVal[0]));
+                fw.write(pad(calVal[1]));
+            }
+            fw.close();
         } catch (IOException e) {
             System.out.println(e.getLocalizedMessage());
         }
-        byte[][] dat = bmp.readCalibarationValuesRaw();
-        for (byte[] calVal : dat) {
-            pw.println(calVal[0]);
-            pw.println(calVal[1]);
-        }
-        pw.close();
         try {
             Thread.currentThread().join(5000);
         } catch (InterruptedException e) {
@@ -42,9 +49,9 @@ public class FileSaver implements Runnable{
         }
     }
 
-    public void start(){
+    public void start() {
         Runnable task = () -> run();
         Thread t = new Thread(task, "saveToFile");
-        t.start();       
+        t.start();
     }
 }
