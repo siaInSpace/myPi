@@ -2,12 +2,6 @@ package sia20.myPi;
 
 import java.io.IOException;
 import java.util.Scanner;
-import java.util.logging.Handler;
-
-/**
- * Hello world!
- *
- */
 public class App {
     private void calValsBMP180() {
         BMP180my bmp = null;
@@ -24,10 +18,10 @@ public class App {
     private void printCalVals(byte[][] vals, Word word) {
 
         for (int i = 0; i < 11; i++) {
-            System.out.print(String.format("%08s", vals[i][0]));
+            System.out.print(String.format("%08s", Integer.toBinaryString(vals[i][0]) ));
             System.out.print("");
-            System.out.println(String.format("%08s",vals[i][1]));
-            System.out.println(String.format("%016s",word.combToLong(vals[i][0], vals[i][1])));
+            System.out.println(String.format("%08s", Integer.toBinaryString(vals[i][1])));
+            System.out.println(String.format("%016s", Long.toBinaryString(word.combToLong(vals[i][0], vals[i][1]))));
             System.out.println();
         }
     }
