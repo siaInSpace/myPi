@@ -29,7 +29,8 @@ public class Word {
         short res = (short)(msb << 8);
         res = (short)(res | lsb);
         */
-        return (short)((((msb & 0xFF) << 8) | (lsb & 0xFF))& 0xFF);
+        Integer v = ((((msb & 0xff)<<8) | (lsb & 0xff)) & 0xff);
+        return v.shortValue();
         //return res;
     }
 
