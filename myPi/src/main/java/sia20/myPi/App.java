@@ -12,21 +12,6 @@ import com.pi4j.io.i2c.I2CFactory.UnsupportedBusNumberException;
  *
  */
 public class App {
-    private void busses() {
-        // find available busses
-        for (int number = I2CBus.BUS_0; number <= I2CBus.BUS_17; ++number) {
-            try {
-                @SuppressWarnings("unused")
-                I2CBus bus = I2CFactory.getInstance(number);
-                System.out.println("Supported I2C bus: " + number);
-            } catch (IOException exception) {
-                System.out.println("I/O error on I2C bus: " + number);
-            } catch (Exception exception) {
-                System.out.println("Unsupported I2C bus: " + number);
-            }
-        }
-    }
-
     private void calValsBMP180() {
         BMP180my bmp = null;
         try {
@@ -48,53 +33,12 @@ public class App {
             System.out.println(vals[i][1]);
             System.out.println(word.combToLong(vals[i][0], vals[i][1]));
         }
-    }
 
-    private void readFirstCalVal() {
-        I2CBus bus = null;
-        try {
-            bus = I2CFactory.getInstance(I2CBus.BUS_1);
-        } catch (IOException e) {
-            System.out.println(e.getLocalizedMessage());
-        } catch (UnsupportedBusNumberException e) {
-            System.out.println(e.getLocalizedMessage());
-        }
-        for (int i = 0; i <= 0xFFFF; i++) {
-            I2CDevice dev = null;
-            try {
-                dev = bus.getDevice(i);
-            } catch (IOException e) {
-                System.out.println("Could not get device on adress: " + Integer.toString(i));
-            }
-            for (int j = 0; j <= 0xFFFF; j++) {
-                boolean s = true;
-                int res = 0;
-                try {
-                    res = dev.read(j);
-                } catch (IOException e) {
-                    // System.out.println("Not read!");
-                    s = false;
-                }
-                if (s) {
-                    System.out.println("Found valid result on");
-                    System.out.println("devAddr: " + Integer.toString(i));
-                    System.out.println("regAddr: " + Integer.toString(j));
-                    System.out.println("Result was: " + Integer.toString(res));
-                }
-                // System.out.println("Done: " + Integer.toString(i) + "." +
-                // Integer.toString(j));
-            }
-            System.out.println("Done: " + Integer.toString(i));
-        }
-
-    }
 
     private void menu() {
         System.out.println("What would you like to do?");
-        System.out.println("1: get busses");
-        System.out.println("2: get caliration values for BMP180");
-        System.out.println("3: get first calibration values from BMP180");
-        System.out.println("4: get who am I value from MPU9250");
+        System.out.println("1: get caliration values for BMP180");
+        System.out.println("2: get who am I value from MPU9250");
         System.out.println("q: quit");
     }
 
@@ -111,15 +55,9 @@ public class App {
             choice = in.nextLine().toUpperCase();
             switch (choice) {
             case "1":
-                busses();
-                break;
-            case "2":
                 calValsBMP180();
                 break;
-            case "3":
-                readFirstCalVal();
-                break;
-            case "4":
+            case "2":
                 whoAmIMPU9250();
                 break;
             case "Q":
