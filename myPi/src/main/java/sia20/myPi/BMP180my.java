@@ -15,7 +15,7 @@ public class BMP180my {
     // private short[] calibrationSignedValues; //{AC1, AC2, AC3, B1, B2, MB, MC,
     // MD}
     // private int[] calibrationUnsignedValues; //{AC4, AC5, AC6}
-    private final int I2Caddr = 77;
+    private final int I2Caddr = 0x77;
     private final int I2cSignalAddr = 0xF4;
     private I2CDevice device;
     private Oss oss;
