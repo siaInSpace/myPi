@@ -23,12 +23,11 @@ public class App {
     private void printCalVals(byte[][] vals, Word word) {
         for (int i = 0; i < 11; i++) {
             System.out.print(vals[i][0]);
-            System.out.println(" | ");
+            System.out.print(" | ");
             System.out.println(vals[i][1]);
             System.out.println(word.combToLong(vals[i][0], vals[i][1]));
         }
     }
-
 
     private void menu() {
         System.out.println("What would you like to do?");
