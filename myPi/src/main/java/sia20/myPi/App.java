@@ -3,10 +3,6 @@ package sia20.myPi;
 import java.io.IOException;
 import java.util.Scanner;
 
-import com.pi4j.io.i2c.*;
-//import com.pi4j.io.i2c.I2CFactory.UnsupportedBusNumberException;
-import com.pi4j.io.i2c.I2CFactory.UnsupportedBusNumberException;
-
 /**
  * Hello world!
  *
@@ -20,10 +16,8 @@ public class App {
             System.out.println("Cannot create new object of class BMP180my");
             System.out.println(e.getLocalizedMessage());
         }
-        Word word = new Word(bmp.getDevice());
-
         byte[][] v = bmp.readCalibarationValuesRaw();
-        // printCalVals(v, word);
+        printCalVals(v, new Word(bmp.getDevice()));
     }
 
     private void printCalVals(byte[][] vals, Word word) {
@@ -33,6 +27,7 @@ public class App {
             System.out.println(vals[i][1]);
             System.out.println(word.combToLong(vals[i][0], vals[i][1]));
         }
+    }
 
 
     private void menu() {

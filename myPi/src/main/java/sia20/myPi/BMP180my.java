@@ -15,42 +15,31 @@ public class BMP180my {
     // private short[] calibrationSignedValues; //{AC1, AC2, AC3, B1, B2, MB, MC,
     // MD}
     // private int[] calibrationUnsignedValues; //{AC4, AC5, AC6}
+    private final int I2Caddr = 77;
+    private final int I2cSignalAddr = 0xF4;
+    private I2CDevice device;
+    private Oss oss;
 
-    private I2CDevice readDevice;
-    private I2CDevice writeDevice;
-    int writeAddress = 77;
-    Oss oss;
-
-    public BMP180my(Oss oss) throws IOException {
-        final int bmp180_i2cReadAddr = 0xEF; 
-        final int bmp180_i2cWriteAddr = 0xEE;
+    public BMP180my(Oss oss) throws IOException { 
         I2CBus bus = null;
         try {
             bus = I2CFactory.getInstance(I2CBus.BUS_1);
         } catch (UnsupportedBusNumberException e) {
             System.out.println(e.getLocalizedMessage());
         }
-        readDevice = bus.getDevice(bmp180_i2cReadAddr);
-        writeDevice = bus.getDevice(bmp180_i2cWriteAddr);
+        device = bus.getDevice(I2Caddr);
         this.oss = oss;
     }
 
     /**
      * @return the device
      */
-    public I2CDevice getReadDevice() {
-        return readDevice;
-    }
-
-    /**
-     * @return the writeAddress
-     */
-    public int getWriteAddress() {
-        return writeAddress;
+    public I2CDevice getDevice() {
+        return device;
     }
 
     public byte[][] readCalibarationValuesRaw(){
-        Word word = new Word(this.readDevice);
+        Word word = new Word(this.device);
         int start = 0xAA;
         byte[][] calValues = new byte[11][2];
         for (int i = 0; i < 22; i += 2) {
@@ -60,9 +49,9 @@ public class BMP180my {
     }
 
     public byte[] readTempRaw() throws IOException {
-        Word bytesToInts = new Word(this.readDevice);
+        Word bytesToInts = new Word(this.device);
         byte signal = 0x2E;
-        readDevice.write(writeAddress, signal);
+        device.write(I2cSignalAddr, signal);
         try {
             TimeUnit.MILLISECONDS.wait(5);
         } catch (InterruptedException e) {
@@ -73,9 +62,9 @@ public class BMP180my {
     }
 
     public byte[] readPressureRaw() throws IOException {
-        Word bytesToInts = new Word(this.readDevice);
+        Word bytesToInts = new Word(this.device);
         byte signal = (byte) (0x34 + oss.getVal() << 6);
-        readDevice.write(writeAddress, signal);
+        device.write(I2cSignalAddr, signal);
         try {
             TimeUnit.MILLISECONDS.wait(oss.getTime());
         } catch (InterruptedException e) {
