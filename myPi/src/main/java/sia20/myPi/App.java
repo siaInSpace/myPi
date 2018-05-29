@@ -16,13 +16,31 @@ public class App {
         printCalVals(v, new Word(bmp.getDevice()));
     }
 
+    private String padByte(byte byt){
+        String res = Integer.toBinaryString(byt);
+        for (int i = res.length(); i < 8; i++) {
+            res = "0" + res;
+        }
+        return res;
+    }
+
+    private String padByte(long byt){
+        String res = Long.toBinaryString(byt);
+        for (int i = res.length(); i < 16; i++) {
+            res = "0" + res;
+        }
+        return res;
+    }
+
+
+
     private void printCalVals(byte[][] vals, Word word) {
 
         for (int i = 0; i < 11; i++) {
-            System.out.print(String.format("%08d",  new BigInteger(Integer.toBinaryString(vals[i][0]) )));
+            System.out.print(padByte(vals[i][0]));
             System.out.print("");
-            System.out.println(String.format("%08d", new BigInteger(Integer.toBinaryString(vals[i][1]))));
-            System.out.println(String.format("%016d", new BigInteger(Long.toBinaryString(word.combToLong(vals[i][0], vals[i][1])))));
+            System.out.println(padByte(vals[i][1]));
+            System.out.println(padByte(word.combToLong(vals[i][0], vals[i][1])));
             System.out.println();
         }
     }
