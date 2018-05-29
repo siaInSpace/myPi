@@ -11,14 +11,27 @@ import java.io.PrintWriter;
 import java.util.concurrent.TimeUnit;
 
 public class BMP180my {
+    //calibration values
+    private short AC1;
+    private short AC2;
+    private short AC3;
+    private int AC4;
+    private int AC5;
+    private int AC6;
+    private short B1;
+    private short B2;
+    private short MB;
+    private short MC;
+    private short MD;
 
-    // private short[] calibrationSignedValues; //{AC1, AC2, AC3, B1, B2, MB, MC,
-    // MD}
-    // private int[] calibrationUnsignedValues; //{AC4, AC5, AC6}
+    //usefull adresses
     private final int I2Caddr = 0x77;
     private final int I2cSignalAddr = 0xF4;
+    
+    //commonly used objects
     private I2CDevice device;
     private Oss oss;
+    private Word word;
 
     public BMP180my(Oss oss) throws IOException { 
         I2CBus bus = null;
@@ -27,7 +40,9 @@ public class BMP180my {
         } catch (UnsupportedBusNumberException e) {
             System.out.println(e.getLocalizedMessage());
         }
+        
         device = bus.getDevice(I2Caddr);
+        word = new Word(device);
         this.oss = oss;
     }
 
@@ -39,7 +54,6 @@ public class BMP180my {
     }
 
     public byte[][] readCalibarationValuesRaw(){
-        Word word = new Word(this.device);
         int start = 0xAA;
         byte[][] calValues = new byte[11][2];
         for (int i = 0; i < 22; i += 2) {
@@ -48,8 +62,23 @@ public class BMP180my {
         return calValues;
     }
 
+    public void readCalibarationValues(){
+        byte[][] vals = this.readCalibarationValuesRaw();
+        short AC2 = word.combToShort(vals[0][0], vals[0][1]);
+        short AC1 = word.combToShort(vals[1][0], vals[1][1]);
+        short AC3 = word.combToShort(vals[2][0], vals[2][1]);
+        int AC4 = word.combToInt(vals[3][0], vals[3][1]);
+        int AC5 = word.combToInt(vals[4][0], vals[4][1]);
+        int AC6 = word.combToInt(vals[5][0], vals[5][1]);
+        short B1 = word.combToShort(vals[6][0], vals[6][1]);
+        short B2 = word.combToShort(vals[7][0], vals[7][1]);
+        short MB = word.combToShort(vals[8][0], vals[8][1]);
+        short MC = word.combToShort(vals[9][0], vals[9][1]);
+        short MD = word.combToShort(vals[10][0], vals[10][1]);
+    }
+
+    
     public byte[] readTempRaw() throws IOException {
-        Word bytesToInts = new Word(this.device);
         byte signal = 0x2E;
         device.write(I2cSignalAddr, signal);
         try {
@@ -58,11 +87,10 @@ public class BMP180my {
             System.out.println("Could not wait 5ms, idk why");
             e.printStackTrace();
         }
-        return bytesToInts.readBytes(0xF6, 2);
+        return word.readBytes(0xF6, 2);
     }
 
     public byte[] readPressureRaw() throws IOException {
-        Word bytesToInts = new Word(this.device);
         byte signal = (byte) (0x34 + oss.getVal() << 6);
         device.write(I2cSignalAddr, signal);
         try {
@@ -71,7 +99,7 @@ public class BMP180my {
             System.out.println("Could not wait Xms, idk why");
             e.printStackTrace();
         }
-        return bytesToInts.readBytes(0xF6, 3);
+        return word.readBytes(0xF6, 3);
     }
 
     public enum Oss {
