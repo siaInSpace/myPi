@@ -65,13 +65,13 @@ public class App {
                 // signed short
                 System.out.print(padByte(v[i][0]));
                 System.out.print(":");
-                System.out.println(padByte(v[i][i]));
+                System.out.println(padByte(v[i][1]));
                 System.out.println(w.combToShort(v[i][0], v[i][1]));
             } else {
                 // unsigned short -> int
                 System.out.print(padByte(v[i][0]));
                 System.out.print(":");
-                System.out.println(padByte(v[i][i]));
+                System.out.println(padByte(v[i][1));
                 System.out.println(w.combToInt(v[i][0], v[i][1]));
             }
             System.out.println();
