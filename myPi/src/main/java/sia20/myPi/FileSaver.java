@@ -22,7 +22,7 @@ public class FileSaver implements Runnable {
     }
 
     private String pad(byte val) {
-        String padded = Integer.toBinaryString(val | 0xff);
+        String padded = Integer.toBinaryString(val & 0xff);
         for (int i = padded.length(); i < 8; i++) {
             padded = "0" + padded;
         }

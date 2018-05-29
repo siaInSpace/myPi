@@ -169,27 +169,27 @@ public class BMP180my {
     }
     public void printCalValsBinary() {
         System.out.print("AC1:\t");
-        System.out.println(Integer.toBinaryString(AC1));
+        System.out.println(Integer.toBinaryString(AC1 & 0xFF));
         System.out.print("AC2:\t");
-        System.out.println(Integer.toBinaryString(AC2));
+        System.out.println(Integer.toBinaryString(AC2 & 0xFF));
         System.out.print("AC3:\t");
-        System.out.println(Integer.toBinaryString(AC3));
+        System.out.println(Integer.toBinaryString(AC3 & 0xFF));
         System.out.print("AC4:\t");
-        System.out.println(Integer.toBinaryString(AC4));
+        System.out.println(Integer.toBinaryString(AC4 & 0xFF));
         System.out.print("AC5:\t");
-        System.out.println(Integer.toBinaryString(AC5));
+        System.out.println(Integer.toBinaryString(AC5 & 0xFF));
         System.out.print("AC6:\t");
-        System.out.println(Integer.toBinaryString(AC6));
+        System.out.println(Integer.toBinaryString(AC6 & 0xFF));
         System.out.print("B1:\t");
-        System.out.println(Integer.toBinaryString(B1));
+        System.out.println(Integer.toBinaryString(B1 & 0xFF));
         System.out.print("B2:\t");
-        System.out.println(Integer.toBinaryString(B2));
+        System.out.println(Integer.toBinaryString(B2 & 0xFF));
         System.out.print("MB:\t");
-        System.out.println(Integer.toBinaryString(MB));
+        System.out.println(Integer.toBinaryString(MB & 0xFF));
         System.out.print("MC:\t");
-        System.out.println(Integer.toBinaryString(MC));
+        System.out.println(Integer.toBinaryString(MC & 0xFF));
         System.out.print("MD:\t");
-        System.out.println(Integer.toBinaryString(MD));
+        System.out.println(Integer.toBinaryString(MD & 0xFF));
     }
 
     // calibration values getters
