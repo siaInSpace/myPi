@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 import java.util.concurrent.TimeUnit;
 
 public class BMP180my {
-    //calibration values
+    // calibration values
     private short AC1;
     private short AC2;
     private short AC3;
@@ -24,23 +24,23 @@ public class BMP180my {
     private short MC;
     private short MD;
 
-    //usefull adresses
+    // usefull adresses
     private final int I2Caddr = 0x77;
     private final int I2cSignalAddr = 0xF4;
-    
-    //commonly used objects
+
+    // commonly used objects
     private I2CDevice device;
     private Oss oss;
     private Word word;
 
-    public BMP180my(Oss oss) throws IOException { 
+    public BMP180my(Oss oss) throws IOException {
         I2CBus bus = null;
         try {
             bus = I2CFactory.getInstance(I2CBus.BUS_1);
         } catch (UnsupportedBusNumberException e) {
             System.out.println(e.getLocalizedMessage());
         }
-        
+
         device = bus.getDevice(I2Caddr);
         word = new Word(device);
         this.oss = oss;
@@ -53,7 +53,7 @@ public class BMP180my {
         return device;
     }
 
-    public byte[][] readCalibarationValuesRaw(){
+    public byte[][] readCalibarationValuesRaw() {
         int start = 0xAA;
         byte[][] calValues = new byte[11][2];
         for (int i = 0; i < 22; i += 2) {
@@ -62,8 +62,7 @@ public class BMP180my {
         return calValues;
     }
 
-    public void readCalibarationValues(){
-        byte[][] vals = this.readCalibarationValuesRaw();
+    public void combineCalibrationValues(byte[][] vals) {
         short AC2 = word.combToShort(vals[0][0], vals[0][1]);
         short AC1 = word.combToShort(vals[1][0], vals[1][1]);
         short AC3 = word.combToShort(vals[2][0], vals[2][1]);
@@ -77,7 +76,6 @@ public class BMP180my {
         short MD = word.combToShort(vals[10][0], vals[10][1]);
     }
 
-    
     public byte[] readTempRaw() throws IOException {
         byte signal = 0x2E;
         device.write(I2cSignalAddr, signal);
