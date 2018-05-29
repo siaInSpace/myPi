@@ -54,30 +54,12 @@ public class App {
 
     private void printCalVals(byte[][] vals, Word w) {
         for (int i = 0; i < 11; i++) {
-            System.out.println(padByte(w.combToLong(vals[i][0], vals[i][1])));
+            long res = w.combToLong(vals[i][0], vals[i][1]);
+            System.out.println(padByte(res));
+            System.out.println(res);
         }
         System.out.println();
     }
-
-    private void prntCalVal(byte[][] v, Word w) {
-        for (int i = 0; i < 11; i++) {
-            if (i != 3 || i != 4 || i != 5) {
-                // signed short
-                System.out.print(padByte(v[i][0]));
-                System.out.print(":");
-                System.out.println(padByte(v[i][1]));
-                System.out.println(w.combToShort(v[i][0], v[i][1]));
-            } else {
-                // unsigned short -> int
-                System.out.print(padByte(v[i][0]));
-                System.out.print(":");
-                System.out.println(padByte(v[i][1]));
-                System.out.println(w.combToLong(v[i][0], v[i][1]));
-            }
-            System.out.println();
-        }
-    }
-
     private void menu() {
         System.out.println("What would you like to do?");
         System.out.println("1: get caliration values for BMP180");
