@@ -12,7 +12,7 @@ public class MPU9250my {
     private final int startAddr = 0x3B;
     private final int startAddrMag = 0x03;
     private final int whoAmIAddr = 0x75;
-    private final int whoAmIValueDefualt = 0x71;
+    private final int whoAmIValueDefualt = 0x73;// usually 0x71, i don't know why this is 0x73 instead
     // register addresses for 9250 first address is 0x3B all others is pos(in data)
     // + this address(0x3B)//
     public final String[] data = { "accXH", "accXL", "accYH", "accYL", "accZH", "accZL", "tempH", "tempL", "gyrXH",

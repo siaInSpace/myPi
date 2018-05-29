@@ -71,7 +71,7 @@ public class App {
                 // unsigned short -> int
                 System.out.print(padByte(v[i][0]));
                 System.out.print(":");
-                System.out.println(padByte(v[i][1));
+                System.out.println(padByte(v[i][1]));
                 System.out.println(w.combToInt(v[i][0], v[i][1]));
             }
             System.out.println();
