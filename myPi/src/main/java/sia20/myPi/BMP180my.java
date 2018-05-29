@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.concurrent.TimeUnit;
 
+import sia20.myPi.FileSaver;
+
 public class BMP180my {
     // calibration values
     private short AC1;
@@ -47,6 +49,10 @@ public class BMP180my {
         this.oss = oss;
     }
 
+    public BMP180my(Oss oss, String calValsPath){
+        this(oss);
+        new FileSaver(calValsPath, "bmp180saveCalVals", this);
+    }
     /**
      * @return the device
      */
