@@ -15,7 +15,7 @@ public class App {
         }
         byte[][] v = bmp.readCalibarationValuesRaw();
         printCalVals(v, new Word(bmp.getDevice()));
-        prntCalVal(v, new Word(bmp.getDevice()));
+        //prntCalVal(v, new Word(bmp.getDevice()));
 
     }
 
