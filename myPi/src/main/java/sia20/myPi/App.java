@@ -2,6 +2,7 @@ package sia20.myPi;
 
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.logging.Handler;
 
 /**
  * Hello world!
@@ -20,27 +21,45 @@ public class App {
         printCalVals(v, new Word(bmp.getDevice()));
     }
 
-    private String pad8(byte byt){
-        String padded = String.format("%08d", byt & 0xFF);
-        int paddedInt = Integer.parseInt(padded);
-        String binary = Integer.toBinaryString(paddedInt);
-        return binary;
+    private String padZeros(byte byt){
+        byte hadler = byt;
+        int padCounter = 0;
+        while(hadler%2 != 0){
+            padCounter++;
+            hadler/=2;
+        }
+        String res = "";
+        for (int i = 0; i < padCounter; i++) {
+            res += "0";
+        }
+        res += Integer.toBinaryString(byt & 0xFF);
+        return res;
     }
 
-    private String pad16(Long byt){
-        String padded = String.format("%016d", byt & 0xFFFF);
-        Long paddedInt = Long.parseLong(padded);
-        String binary = Long.toBinaryString(paddedInt);
-        return binary;
+    private String padZeros(Long byt){
+        Long hadler = byt;
+        int padCounter = 0;
+        while(hadler%2 != 0){
+            padCounter++;
+            hadler/=2;
+        }
+        String res = "";
+        for (int i = 0; i < padCounter; i++) {
+            res += "0";
+        }
+        res += Long.toBinaryString(byt & 0xFFFF);
+        return res;
     }
+    
 
     private void printCalVals(byte[][] vals, Word word) {
 
         for (int i = 0; i < 11; i++) {
-            System.out.print(pad8(vals[i][0]));
+            System.out.print(padZeros(vals[i][0]));
             System.out.print("");
-            System.out.println(pad8(vals[i][1]));
-            System.out.println(pad16(word.combToLong(vals[i][0], vals[i][1])));
+            System.out.println(padZeros(vals[i][1]));
+            System.out.println(padZeros(word.combToLong(vals[i][0], vals[i][1])));
+            System.out.println();
         }
     }
 
