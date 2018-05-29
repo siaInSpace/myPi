@@ -17,7 +17,7 @@ public class App {
     }
 
     private String padByte(byte byt){
-        String res = Integer.toBinaryString(byt);
+        String res = Integer.toBinaryString(byt & 0xFF);
         for (int i = res.length(); i < 8; i++) {
             res = "0" + res;
         }
@@ -25,7 +25,7 @@ public class App {
     }
 
     private String padByte(long byt){
-        String res = Long.toBinaryString(byt);
+        String res = Long.toBinaryString(byt & 0xFFFF);
         for (int i = res.length(); i < 16; i++) {
             res = "0" + res;
         }
