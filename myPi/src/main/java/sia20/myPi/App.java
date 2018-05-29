@@ -22,10 +22,10 @@ public class App {
 
     private void printCalVals(byte[][] vals, Word word) {
         for (int i = 0; i < 11; i++) {
-            System.out.print(String.format("%08d", Integer.toBinaryString(vals[i][0]&0xff)));
+            System.out.print(String.format("%08d", vals[i][0]&0xff));
             System.out.print("");
-            System.out.println(String.format("%08d", Integer.toBinaryString(vals[i][1]&0xff)));
-            System.out.println(String.format("%016L", Long.toBinaryString(word.combToLong(vals[i][0], vals[i][1]))));
+            System.out.println(String.format("%08d", vals[i][1]&0xff));
+            System.out.println(String.format("%016L", word.combToLong(vals[i][0], vals[i][1)));
         }
     }
 
