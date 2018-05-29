@@ -139,6 +139,30 @@ public class BMP180my {
     }
 
 
+    public void printCalVals(){
+        System.out.print("AC1:\t");
+        System.out.println(AC1);
+        System.out.print("AC2:\t");
+        System.out.println(AC2);
+        System.out.print("AC3:\t");
+        System.out.println(AC3);
+        System.out.print("AC4:\t");
+        System.out.println(AC4);
+        System.out.print("AC5:\t");
+        System.out.println(AC5);
+        System.out.print("AC6:\t");
+        System.out.println(AC6);
+        System.out.print("B1:\t");
+        System.out.println(B1);
+        System.out.print("B2:\t");
+        System.out.println(B2);
+        System.out.print("MB:\t");
+        System.out.println(MB);
+        System.out.print("MC:\t");
+        System.out.println(MC);
+        System.out.print("MD:\t");
+        System.out.println(MD);
+    }
 
 
     //calibration values getters
