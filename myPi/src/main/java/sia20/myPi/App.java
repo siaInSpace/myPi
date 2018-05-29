@@ -22,9 +22,9 @@ public class App {
 
     private void printCalVals(byte[][] vals, Word word) {
         for (int i = 0; i < 11; i++) {
-            System.out.print(Integer.toBinaryString(vals[i][0]));
-            System.out.print(".");
-            System.out.println(Integer.toBinaryString(vals[i][1]));
+            System.out.print(Integer.toBinaryString(vals[i][0]&0xff));
+            System.out.print("");
+            System.out.println(Integer.toBinaryString(vals[i][1]&0xff));
             System.out.println(Long.toBinaryString(word.combToLong(vals[i][0], vals[i][1])));
         }
     }
