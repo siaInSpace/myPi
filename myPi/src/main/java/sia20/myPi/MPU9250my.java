@@ -66,7 +66,7 @@ public class MPU9250my {
         int res = 0;
         try {
             res = device.read(whoAmIAddr);
-        catch (IOException e) {
+        }catch (IOException e) {
             System.out.println("Cannot read whoAmI MPU9250");
             System.out.println(e.getLocalizedMessage());
         }
