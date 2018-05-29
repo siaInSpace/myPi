@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.util.Scanner;
 public class App {
-    private void calValsBMP180() {
+    private void getCalValsBMP180() {
+
         BMP180my bmp = null;
         try {
             bmp = new BMP180my(BMP180my.Oss.STANDARD);
@@ -13,12 +14,30 @@ public class App {
             System.out.println(e.getLocalizedMessage());
         }
         byte[][] v = bmp.readCalibarationValuesRaw();
-        printCalVals(v, new Word(bmp.getDevice()));
+        prntCalVal(v, new Word(bmp.getDevice()));
+
     }
 
     private String padByte(byte byt){
+
         String res = Integer.toBinaryString(byt & 0xFF);
         for (int i = res.length(); i < 8; i++) {
+            res = "0" + res;
+        }
+        return res;
+    }
+
+    private String padByte(int byt){
+        String res = Integer.toBinaryString(byt & 0xFFFF);
+        for (int i = res.length(); i < 16; i++) {
+            res = "0" + res;
+        }
+        return res;
+    } 
+
+    private String padByte(short byt){
+        String res = Integer.toBinaryString(byt & 0xFFFF);
+        for (int i = res.length(); i < 16; i++) {
             res = "0" + res;
         }
         return res;
@@ -35,13 +54,26 @@ public class App {
 
 
     private void printCalVals(byte[][] vals, Word word) {
-
         for (int i = 0; i < 11; i++) {
             System.out.print(padByte(vals[i][0]));
             System.out.print("");
             System.out.println(padByte(vals[i][1]));
             System.out.println(padByte(word.combToLong(vals[i][0], vals[i][1])));
             System.out.println();
+        }
+    }
+
+    private void prntCalVal(byte[][] v, Word w){
+        for (int i = 0; i < 11; i++) {
+            if (i!= 3 || i != 4 || i!= 5){
+                //signed short
+                short val = w.combToShort(v[i][0], v[i][1]);
+                System.out.println(padByte(val));
+            }else{
+                //unsigned short -> int
+                int val = w.combToInt(v[i][0], v[i][1]);
+                System.out.println(padByte(val));
+            }
         }
     }
 
@@ -65,7 +97,7 @@ public class App {
             choice = in.nextLine().toUpperCase();
             switch (choice) {
             case "1":
-                calValsBMP180();
+                getCalValsBMP180();
                 break;
             case "2":
                 whoAmIMPU9250();

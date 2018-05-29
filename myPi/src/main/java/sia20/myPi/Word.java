@@ -24,11 +24,13 @@ public class Word {
     }
 
     public short combToShort(byte msb, byte lsb){
-        msb = (byte)(msb & 0xff);
+        /*msb = (byte)(msb & 0xff);
         lsb = (byte)(lsb & 0xff);
         short res = (short)(msb << 8);
         res = (short)(res | lsb);
-        return res;
+        */
+        return (short)((((msb & 0xFF) << 8) | (lsb & 0xFF))& 0xFF);
+        //return res;
     }
 
     public int combToInt(byte msb, byte lsb){
@@ -36,7 +38,7 @@ public class Word {
         lsb = (byte)(lsb & 0xff);
         int res = (int)(msb << 8);
         res = (int)(res | lsb);
-        return res;
+        return ((((msb & 0xFF) << 8) | (lsb & 0xFF)) & 0xFF);
     }
 
     public long combToLong(byte msb, byte lsb){
