@@ -13,6 +13,7 @@ public class App {
             System.out.println(e.getLocalizedMessage());
         }
         byte[][] v = bmp.readCalibarationValuesRaw();
+        printCalVals(v, new Word(bmp.getDevice()));
         prntCalVal(v, new Word(bmp.getDevice()));
 
     }
@@ -50,13 +51,8 @@ public class App {
         return res;
     }
 
-
-
     private void printCalVals(byte[][] vals, Word word) {
         for (int i = 0; i < 11; i++) {
-            System.out.print(padByte(vals[i][0]));
-            System.out.print("");
-            System.out.println(padByte(vals[i][1]));
             System.out.println(padByte(word.combToLong(vals[i][0], vals[i][1])));
             System.out.println();
         }
@@ -66,12 +62,10 @@ public class App {
         for (int i = 0; i < 11; i++) {
             if (i!= 3 || i != 4 || i!= 5){
                 //signed short
-                short val = w.combToShort(v[i][0], v[i][1]);
-                System.out.println(val);
+                System.out.println(w.combToShort(v[i][0], v[i][1]));
             }else{
                 //unsigned short -> int
-                int val = w.combToInt(v[i][0], v[i][1]);
-                System.out.println(val);
+                System.out.println(w.combToInt(v[i][0], v[i][1]));
             }
         }
     }
