@@ -73,7 +73,7 @@ public class MPU9250my {
         } else {
             System.out.println("Who am I? i don't know");
             System.out.print("I got this number, but thats not really me: ");
-            System.out.println(String.format("0x%03X", res));
+            System.out.println(String.format("0x%02X", res));
         }
     }
 }
