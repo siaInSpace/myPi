@@ -7,11 +7,12 @@ import sia20.myPi.BMP180my.Oss;
 public class App {
     private BMP180my bmp;
     private MPU9250my mpu;
-    
-    public App(){
+
+    public App() {
         bmp = new BMP180my(Oss.STANDARD, "./test.txt");
         mpu = new MPU9250my();
     }
+
     private void menu() {
         System.out.println("What would you like to do?");
         System.out.println("1: get caliration values for BMP180");
@@ -19,10 +20,16 @@ public class App {
         System.out.println("q: quit");
     }
 
-    private void bmpCalVals(){
+    private void bmpCalVals() {
         byte[][] data = bmp.readCalibarationValuesRaw();
         bmp.combineCalibrationValues(data);
         bmp.printCalVals();
+    }
+
+    private void bmpCalValsBin() {
+        byte[][] data = bmp.readCalibarationValuesRaw();
+        bmp.combineCalibrationValues(data);
+        bmp.printCalValsBinary();
     }
 
     private void whoAmIMPU9250() {
@@ -42,6 +49,9 @@ public class App {
                 break;
             case "2":
                 whoAmIMPU9250();
+                break;
+            case "3":
+                bmpCalValsBin();
                 break;
             case "Q":
                 in.close();

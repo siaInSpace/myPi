@@ -167,6 +167,30 @@ public class BMP180my {
         System.out.print("MD:\t");
         System.out.println(MD);
     }
+    public void printCalValsBinary() {
+        System.out.print("AC1:\t");
+        System.out.println(Integer.toBinaryString(AC1));
+        System.out.print("AC2:\t");
+        System.out.println(Integer.toBinaryString(AC2));
+        System.out.print("AC3:\t");
+        System.out.println(Integer.toBinaryString(AC3));
+        System.out.print("AC4:\t");
+        System.out.println(Integer.toBinaryString(AC4));
+        System.out.print("AC5:\t");
+        System.out.println(Integer.toBinaryString(AC5));
+        System.out.print("AC6:\t");
+        System.out.println(Integer.toBinaryString(AC6));
+        System.out.print("B1:\t");
+        System.out.println(Integer.toBinaryString(B1));
+        System.out.print("B2:\t");
+        System.out.println(Integer.toBinaryString(B2));
+        System.out.print("MB:\t");
+        System.out.println(Integer.toBinaryString(MB));
+        System.out.print("MC:\t");
+        System.out.println(Integer.toBinaryString(MC));
+        System.out.print("MD:\t");
+        System.out.println(Integer.toBinaryString(MD));
+    }
 
     // calibration values getters
     /**
