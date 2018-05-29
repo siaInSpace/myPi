@@ -52,9 +52,9 @@ public class App {
         return res;
     }
 
-    private void printCalVals(byte[][] vals, Word word) {
+    private void printCalVals(byte[][] vals, Word w) {
         for (int i = 0; i < 11; i++) {
-            System.out.println(padByte(word.combToLong(vals[i][0], vals[i][1])));
+            System.out.println(padByte(w.combToLong(vals[i][0], vals[i][1])));
         }
         System.out.println();
     }
@@ -63,11 +63,18 @@ public class App {
         for (int i = 0; i < 11; i++) {
             if (i != 3 || i != 4 || i != 5) {
                 // signed short
+                System.out.print(padByte(v[i][0]));
+                System.out.print(":");
+                System.out.println(padByte(v[i][i]));
                 System.out.println(w.combToShort(v[i][0], v[i][1]));
             } else {
                 // unsigned short -> int
+                System.out.print(padByte(v[i][0]));
+                System.out.print(":");
+                System.out.println(padByte(v[i][i]));
                 System.out.println(w.combToInt(v[i][0], v[i][1]));
             }
+            System.out.println();
         }
     }
 
