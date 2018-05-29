@@ -1,6 +1,7 @@
 package sia20.myPi;
 
 import java.io.IOException;
+import java.math.BigInteger;
 import java.util.Scanner;
 public class App {
     private void calValsBMP180() {
@@ -18,10 +19,10 @@ public class App {
     private void printCalVals(byte[][] vals, Word word) {
 
         for (int i = 0; i < 11; i++) {
-            System.out.print(String.format("%08s", Integer.toBinaryString(vals[i][0]) ));
+            System.out.print(String.format("%08d",  new BigInteger(Integer.toBinaryString(vals[i][0]) )));
             System.out.print("");
-            System.out.println(String.format("%08s", Integer.toBinaryString(vals[i][1])));
-            System.out.println(String.format("%016s", Long.toBinaryString(word.combToLong(vals[i][0], vals[i][1]))));
+            System.out.println(String.format("%08d", new BigInteger(Integer.toBinaryString(vals[i][1]))));
+            System.out.println(String.format("%016d", new BigInteger(Long.toBinaryString(word.combToLong(vals[i][0], vals[i][1])))));
             System.out.println();
         }
     }
