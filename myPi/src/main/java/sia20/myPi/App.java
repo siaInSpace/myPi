@@ -20,12 +20,27 @@ public class App {
         printCalVals(v, new Word(bmp.getDevice()));
     }
 
+    private String pad8(byte byt){
+        String padded = String.format("%08d", byt & 0xFF);
+        int paddedInt = Integer.parseInt(padded);
+        String binary = Integer.toBinaryString(paddedInt);
+        return binary;
+    }
+
+    private String pad16(Long byt){
+        String padded = String.format("%016d", byt & 0xFFFF);
+        Long paddedInt = Long.parseLong(padded);
+        String binary = Long.toBinaryString(paddedInt);
+        return binary;
+    }
+
     private void printCalVals(byte[][] vals, Word word) {
+
         for (int i = 0; i < 11; i++) {
-            System.out.print(String.format("%08b", vals[i][0] & 0xff));
+            System.out.print(pad8(vals[i][0]));
             System.out.print("");
-            System.out.println(String.format("%08b", vals[i][1] & 0xff));
-            System.out.println(String.format("%016b", word.combToLong(vals[i][0], vals[i][1])));
+            System.out.println(pad8(vals[i][1]));
+            System.out.println(pad16(word.combToLong(vals[i][0], vals[i][1])));
         }
     }
 
