@@ -24,32 +24,14 @@ public class Word {
     }
 
     public short combToShort(byte msb, byte lsb){
-        /*msb = (byte)(msb & 0xff);
-        lsb = (byte)(lsb & 0xff);
-        short res = (short)(msb << 8);
-        res = (short)(res | lsb);
-        */
-        Integer v = ((((msb & 0xff)<<8) | (lsb & 0xff)) & 0xff);
-        return v.shortValue();
-        //return res;
+        return (short)combToLong(msb, lsb);
     }
 
     public int combToInt(byte msb, byte lsb){
-        msb = (byte)(msb & 0xff); 
-        lsb = (byte)(lsb & 0xff);
-        int res = (int)(msb << 8);
-        res = (int)(res | lsb);
-        return ((((msb & 0xFF) << 8) | (lsb & 0xFF)) & 0xFF);
+        return (int)combToLong(msb, lsb);
     }
 
     public long combToLong(byte msb, byte lsb){
-        /*
-        msb = (byte)(msb & 0x00ff); 
-        lsb = (byte)(lsb & 0x00ff);
-        long res = (long)(msb << 8);
-        res = (long)(res | lsb);
-        return res; 
-        */
         return (((msb & 0xff)<<8) | (lsb & 0xff)) & 0xffff;
     }
 

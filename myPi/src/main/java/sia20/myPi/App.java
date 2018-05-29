@@ -54,13 +54,14 @@ public class App {
 
     private void printCalVals(byte[][] vals, Word w) {
         for (int i = 0; i < 11; i++) {
-            long res = w.combToLong(vals[i][0], vals[i][1]);
             if (i == 3 || i == 4 || i == 5){
-                System.out.println(padByte((int)res));
-                System.out.println((int)res);
+                int res = w.combToInt(vals[i][0], vals[i][1]);
+                System.out.println(padByte(res));
+                System.out.println(res);
             }else{
-                System.out.println(padByte((short)res));
-                System.out.println((short)res);
+                short res = w.combToShort(vals[i][0], vals[i][1]);
+                System.out.println(padByte(res));
+                System.out.println(res);
             }
         }
         System.out.println();
