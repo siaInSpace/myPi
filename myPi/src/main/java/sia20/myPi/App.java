@@ -2,6 +2,7 @@ package sia20.myPi;
 
 import java.io.IOException;
 import java.util.Scanner;
+
 public class App {
     private void getCalValsBMP180() {
 
@@ -18,7 +19,7 @@ public class App {
 
     }
 
-    private String padByte(byte byt){
+    private String padByte(byte byt) {
 
         String res = Integer.toBinaryString(byt & 0xFF);
         for (int i = res.length(); i < 8; i++) {
@@ -27,15 +28,7 @@ public class App {
         return res;
     }
 
-    private String padByte(int byt){
-        String res = Integer.toBinaryString(byt & 0xFFFF);
-        for (int i = res.length(); i < 16; i++) {
-            res = "0" + res;
-        }
-        return res;
-    } 
-
-    private String padByte(short byt){
+    private String padByte(int byt) {
         String res = Integer.toBinaryString(byt & 0xFFFF);
         for (int i = res.length(); i < 16; i++) {
             res = "0" + res;
@@ -43,7 +36,15 @@ public class App {
         return res;
     }
 
-    private String padByte(long byt){
+    private String padByte(short byt) {
+        String res = Integer.toBinaryString(byt & 0xFFFF);
+        for (int i = res.length(); i < 16; i++) {
+            res = "0" + res;
+        }
+        return res;
+    }
+
+    private String padByte(long byt) {
         String res = Long.toBinaryString(byt & 0xFFFF);
         for (int i = res.length(); i < 16; i++) {
             res = "0" + res;
@@ -54,17 +55,17 @@ public class App {
     private void printCalVals(byte[][] vals, Word word) {
         for (int i = 0; i < 11; i++) {
             System.out.println(padByte(word.combToLong(vals[i][0], vals[i][1])));
-            System.out.println();
         }
+        System.out.println();
     }
 
-    private void prntCalVal(byte[][] v, Word w){
+    private void prntCalVal(byte[][] v, Word w) {
         for (int i = 0; i < 11; i++) {
-            if (i!= 3 || i != 4 || i!= 5){
-                //signed short
+            if (i != 3 || i != 4 || i != 5) {
+                // signed short
                 System.out.println(w.combToShort(v[i][0], v[i][1]));
-            }else{
-                //unsigned short -> int
+            } else {
+                // unsigned short -> int
                 System.out.println(w.combToInt(v[i][0], v[i][1]));
             }
         }
