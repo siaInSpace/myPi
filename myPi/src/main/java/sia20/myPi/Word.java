@@ -40,11 +40,14 @@ public class Word {
     }
 
     public long combToLong(byte msb, byte lsb){
-        msb = (byte)(msb & 0xff); 
-        lsb = (byte)(lsb & 0xff);
+        /*
+        msb = (byte)(msb & 0x00ff); 
+        lsb = (byte)(lsb & 0x00ff);
         long res = (long)(msb << 8);
         res = (long)(res | lsb);
         return res; 
+        */
+        return (((msb & 0xff)<<8) | (lsb & 0xff)) & 0xffff;
     }
 
     public long combToLong(byte msb, byte lsb, byte xlsb, int oss){
