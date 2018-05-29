@@ -1,6 +1,5 @@
 package sia20.myPi;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 import sia20.myPi.BMP180my.Oss;
@@ -20,6 +19,12 @@ public class App {
         System.out.println("q: quit");
     }
 
+    private void bmpCalVals(){
+        byte[][] data = bmp.readCalibarationValuesRaw();
+        bmp.combineCalibrationValues(data);
+        bmp.printCalVals();
+    }
+
     private void whoAmIMPU9250() {
         MPU9250my mpu = new MPU9250my();
         mpu.whoAmI();
@@ -33,7 +38,7 @@ public class App {
             choice = in.nextLine().toUpperCase();
             switch (choice) {
             case "1":
-                bmp.printCalVals();
+                bmpCalVals();
                 break;
             case "2":
                 whoAmIMPU9250();
