@@ -3,68 +3,15 @@ package sia20.myPi;
 import java.io.IOException;
 import java.util.Scanner;
 
+import sia20.myPi.BMP180my.Oss;
+
 public class App {
-    private void getCalValsBMP180() {
-
-        BMP180my bmp = null;
-        try {
-            bmp = new BMP180my(BMP180my.Oss.STANDARD);
-        } catch (IOException e) {
-            System.out.println("Cannot create new object of class BMP180my");
-            System.out.println(e.getLocalizedMessage());
-        }
-        byte[][] v = bmp.readCalibarationValuesRaw();
-        printCalVals(v, new Word(bmp.getDevice()));
-        //prntCalVal(v, new Word(bmp.getDevice()));
-
-    }
-
-    private String padByte(byte byt) {
-
-        String res = Integer.toBinaryString(byt & 0xFF);
-        for (int i = res.length(); i < 8; i++) {
-            res = "0" + res;
-        }
-        return res;
-    }
-
-    private String padByte(int byt) {
-        String res = Integer.toBinaryString(byt & 0xFFFF);
-        for (int i = res.length(); i < 16; i++) {
-            res = "0" + res;
-        }
-        return res;
-    }
-
-    private String padByte(short byt) {
-        String res = Integer.toBinaryString(byt & 0xFFFF);
-        for (int i = res.length(); i < 16; i++) {
-            res = "0" + res;
-        }
-        return res;
-    }
-
-    private String padByte(long byt) {
-        String res = Long.toBinaryString(byt & 0xFFFF);
-        for (int i = res.length(); i < 16; i++) {
-            res = "0" + res;
-        }
-        return res;
-    }
-
-    private void printCalVals(byte[][] vals, Word w) {
-        for (int i = 0; i < 11; i++) {
-            if (i == 3 || i == 4 || i == 5){
-                int res = w.combToInt(vals[i][0], vals[i][1]);
-                System.out.println(padByte(res));
-                System.out.println(res);
-            }else{
-                short res = w.combToShort(vals[i][0], vals[i][1]);
-                System.out.println(padByte(res));
-                System.out.println(res);
-            }
-        }
-        System.out.println();
+    private BMP180my bmp;
+    private MPU9250my mpu;
+    
+    public App(){
+        bmp = new BMP180my(Oss.STANDARD);
+        mpu = new MPU9250my();
     }
     private void menu() {
         System.out.println("What would you like to do?");
@@ -86,7 +33,7 @@ public class App {
             choice = in.nextLine().toUpperCase();
             switch (choice) {
             case "1":
-                getCalValsBMP180();
+                bmp.printCalVals();
                 break;
             case "2":
                 whoAmIMPU9250();

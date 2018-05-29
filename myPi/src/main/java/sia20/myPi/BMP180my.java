@@ -33,15 +33,16 @@ public class BMP180my {
     private Oss oss;
     private Word word;
 
-    public BMP180my(Oss oss) throws IOException {
+    public BMP180my(Oss oss) {
         I2CBus bus = null;
         try {
             bus = I2CFactory.getInstance(I2CBus.BUS_1);
+            device = bus.getDevice(I2Caddr);
         } catch (UnsupportedBusNumberException e) {
             System.out.println(e.getLocalizedMessage());
+        } catch (IOException e) {
+            System.out.println(e.getLocalizedMessage());
         }
-
-        device = bus.getDevice(I2Caddr);
         word = new Word(device);
         this.oss = oss;
     }
@@ -76,8 +77,6 @@ public class BMP180my {
         short MD = word.combToShort(vals[10][0], vals[10][1]);
     }
 
-    
-    
     public byte[] readTempRaw() throws IOException {
         byte signal = 0x2E;
         device.write(I2cSignalAddr, signal);
@@ -138,8 +137,7 @@ public class BMP180my {
         }
     }
 
-
-    public void printCalVals(){
+    public void printCalVals() {
         System.out.print("AC1:\t");
         System.out.println(AC1);
         System.out.print("AC2:\t");
@@ -164,60 +162,78 @@ public class BMP180my {
         System.out.println(MD);
     }
 
-
-    //calibration values getters
+    // calibration values getters
     /**
      * @return the aC1
      */
     public short getAC1() {
         return AC1;
     }
+
     /**
      * @return the aC2
      */
     public short getAC2() {
         return AC2;
-    }/**
+    }
+
+    /**
      * @return the aC3
      */
     public short getAC3() {
         return AC3;
-    }/**
+    }
+
+    /**
      * @return the aC4
      */
     public int getAC4() {
         return AC4;
-    }/**
+    }
+
+    /**
      * @return the aC5
      */
     public int getAC5() {
         return AC5;
-    }/**
+    }
+
+    /**
      * @return the aC6
      */
     public int getAC6() {
         return AC6;
-    }/**
+    }
+
+    /**
      * @return the b1
      */
     public short getB1() {
         return B1;
-    }/**
+    }
+
+    /**
      * @return the b2
      */
     public short getB2() {
         return B2;
-    }/**
+    }
+
+    /**
      * @return the mB
      */
     public short getMB() {
         return MB;
-    }/**
+    }
+
+    /**
      * @return the mC
      */
     public short getMC() {
         return MC;
-    }/**
+    }
+
+    /**
      * @return the mD
      */
     public short getMD() {
