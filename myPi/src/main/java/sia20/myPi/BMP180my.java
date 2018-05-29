@@ -18,7 +18,7 @@ public class BMP180my {
 
     private I2CDevice readDevice;
     private I2CDevice writeDevice;
-    int writeAddress = 0xF4;
+    int writeAddress = 77;
     Oss oss;
 
     public BMP180my(Oss oss) throws IOException {

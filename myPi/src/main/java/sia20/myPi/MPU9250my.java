@@ -63,34 +63,12 @@ public class MPU9250my {
     }
 
     public void whoAmI() {
-
-
         int res = 0;
-        int counter = 0;
-        boolean done = false;
-        while (!done) {
-            try {
-                Thread.sleep(30000);
-            } catch (InterruptedException e) {
-                System.out.println("Sleep intrerupted!");
-                System.out.println(e.getLocalizedMessage());
-            }
-            try {
-                res = device.read(whoAmIAddr);
-                done = true;
-            } catch (IOException e) {
-                System.out.println("Cannot read whoAmI MPU9250");
-                System.out.println(e.getLocalizedMessage());
-                done = false;
-            }
-            System.out.print("Attemt: ");
-            System.out.print(counter);
-            if (done) {
-                System.out.println(" successful!");
-            } else {
-                System.out.println(" not successful!");
-            }
-            counter++;
+        try {
+            res = device.read(whoAmIAddr);
+        catch (IOException e) {
+            System.out.println("Cannot read whoAmI MPU9250");
+            System.out.println(e.getLocalizedMessage());
         }
         if (res == whoAmIValueDefualt) {
             System.out.println("I'm mpu9250");
