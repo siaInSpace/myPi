@@ -1,7 +1,6 @@
 package sia20.myPi;
 
 import java.io.IOException;
-import java.math.BigInteger;
 import java.util.Scanner;
 public class App {
     private void getCalValsBMP180() {
@@ -68,11 +67,11 @@ public class App {
             if (i!= 3 || i != 4 || i!= 5){
                 //signed short
                 short val = w.combToShort(v[i][0], v[i][1]);
-                System.out.println(padByte(val));
+                System.out.println(val);
             }else{
                 //unsigned short -> int
                 int val = w.combToInt(v[i][0], v[i][1]);
-                System.out.println(padByte(val));
+                System.out.println(val);
             }
         }
     }
