@@ -23,10 +23,13 @@ public class App {
 
     private String padZeros(byte byt){
         byte hadler = byt;
+        if (byt == 0){
+            byt++;
+        }
         int padCounter = 0;
-        while(hadler%2 != 0){
+        while(hadler<0xFF){
             padCounter++;
-            hadler/=2;
+            hadler*=2;
         }
         String res = "";
         for (int i = 0; i < padCounter; i++) {
@@ -38,10 +41,13 @@ public class App {
 
     private String padZeros(Long byt){
         Long hadler = byt;
+        if (byt == 0){
+            byt++;
+        }
         int padCounter = 0;
-        while(hadler%2 != 0){
+        while(hadler < 0xFFFF){
             padCounter++;
-            hadler/=2;
+            hadler*=2;
         }
         String res = "";
         for (int i = 0; i < padCounter; i++) {
