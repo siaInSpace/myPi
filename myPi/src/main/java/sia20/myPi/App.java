@@ -21,50 +21,13 @@ public class App {
         printCalVals(v, new Word(bmp.getDevice()));
     }
 
-    private String padZeros(byte byt){
-        byte hadler = byt;
-        if (byt == 0){
-            byt++;
-        }
-        int padCounter = 0;
-        while(hadler<0xFF){
-            padCounter++;
-            hadler*=2;
-        }
-        String res = "";
-        for (int i = 0; i < padCounter; i++) {
-            res += "0";
-        }
-        res += Integer.toBinaryString(byt & 0xFF);
-        return res;
-    }
-
-    private String padZeros(Long byt){
-        Long hadler = byt;
-        if (byt == 0){
-            byt++;
-        }
-        int padCounter = 0;
-        while(hadler < 0xFFFF){
-            padCounter++;
-            hadler*=2;
-        }
-        String res = "";
-        for (int i = 0; i < padCounter; i++) {
-            res += "0";
-        }
-        res += Long.toBinaryString(byt & 0xFFFF);
-        return res;
-    }
-    
-
     private void printCalVals(byte[][] vals, Word word) {
 
         for (int i = 0; i < 11; i++) {
-            System.out.print(padZeros(vals[i][0]));
+            System.out.print(String.format("%08s", vals[i][0]));
             System.out.print("");
-            System.out.println(padZeros(vals[i][1]));
-            System.out.println(padZeros(word.combToLong(vals[i][0], vals[i][1])));
+            System.out.println(String.format("%08s",vals[i][1]));
+            System.out.println(String.format("%016s",word.combToLong(vals[i][0], vals[i][1])));
             System.out.println();
         }
     }
