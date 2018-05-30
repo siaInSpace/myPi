@@ -17,7 +17,7 @@ public class FileSaver implements Runnable {
     private byte[] reverseArray(byte[] arr) {
         byte[] reversed = new byte[arr.length];
         for (int i = 1; i < arr.length; i++) {
-            reversed[i] = arr[arr.length - i];
+            reversed[i - 1] = arr[arr.length - i];
         }
         return reversed;
     }
