@@ -4,6 +4,8 @@ import sia20.myPi.BMP180my;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.BitSet;
+
 import sia20.myPi.Word;
 
 /**
@@ -13,6 +15,23 @@ public class FileSaver implements Runnable {
     private String path;
     private FileWriter fw;
     private BMP180my bmp;
+
+    private String BitSetToBinaryString(byte[] bytes){
+        BitSet b = BitSet.valueOf(bytes);
+        String res = "";
+        for (int i = b.length(); i < 16; i++) {
+            res += "0";
+        }
+        for (int i = b.length() - 1; i >= 0; i--) {
+            if (b.get(i)) {
+                res += "1";
+            } else {
+                res += "0";
+            }
+        }
+        return res;
+    }
+
 
     public FileSaver(String pathName, String command, BMP180my bmp) {
         path = pathName;
@@ -28,8 +47,8 @@ public class FileSaver implements Runnable {
             fw = new FileWriter(new File(path));
             byte[][] dat = bmp.readCalibarationValuesRaw();
             for (byte[] calVal : dat) {
-                fw.write(Word.byteToBinaryPadded(calVal[0]));
-                fw.write(Word.byteToBinaryPadded(calVal[1]));
+                fw.write(BitSetToBinaryString(calVal));
+                fw.write("\n");
             }
             fw.close();
         } catch (IOException e) {
