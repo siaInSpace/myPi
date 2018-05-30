@@ -6,8 +6,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.BitSet;
 
-import sia20.myPi.Word;
-
 /**
  * FileSaver
  */
@@ -16,8 +14,17 @@ public class FileSaver implements Runnable {
     private FileWriter fw;
     private BMP180my bmp;
 
-    private String BitSetToBinaryString(byte[] bytes){
-        BitSet b = BitSet.valueOf(bytes);
+    private byte[] reverseArray(byte[] arr) {
+        byte[] reversed = new byte[arr.length];
+        for (int i = 0; i < arr.length; i--) {
+            reversed[i] = arr[arr.length - i];
+        }
+        return reversed;
+    }
+
+    private String BitSetToBinaryString(byte[] bytes) {
+        byte[] data = reverseArray(bytes);
+        BitSet b = BitSet.valueOf(data);
         String res = "";
         for (int i = b.length(); i < 16; i++) {
             res += "0";
@@ -31,7 +38,6 @@ public class FileSaver implements Runnable {
         }
         return res;
     }
-
 
     public FileSaver(String pathName, String command, BMP180my bmp) {
         path = pathName;
