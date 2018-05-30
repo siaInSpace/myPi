@@ -6,56 +6,57 @@ import java.io.IOException;
 
 public class Word {
     I2CDevice device;
-    public Word(I2CDevice dev){
+
+    public Word(I2CDevice dev) {
         device = dev;
     }
 
     public static String byteToBinaryPadded(byte val) {
         String padded = Integer.toBinaryString(val & 0xff);
         String fitSize = "";
-        try{
+        try {
             fitSize = padded.substring(0, 8);
-        }catch(IndexOutOfBoundsException e){
+        } catch (IndexOutOfBoundsException e) {
         }
         for (int i = fitSize.length(); i < 8; i++) {
             padded = "0" + padded;
         }
-        return padded + "\n";
+        return padded.substring(0, 8) + "\n";
     }
 
-    public byte[] readBytes(int regAddr, int nrAddr){
+    public byte[] readBytes(int regAddr, int nrAddr) {
         byte[] bytes = new byte[nrAddr];
         try {
             for (int i = 0; i < nrAddr; i++) {
-                bytes[i] = (byte)(device.read(regAddr+i) & 0xff);
+                bytes[i] = (byte) (device.read(regAddr + i) & 0xff);
             }
-        }catch (IOException e){
+        } catch (IOException e) {
             System.out.println("Cannot read bytes in regestry!");
             System.out.println(e.getLocalizedMessage());
         }
         return bytes;
     }
 
-    public short combToShort(byte msb, byte lsb){
-        return (short)combToLong(msb, lsb);
+    public short combToShort(byte msb, byte lsb) {
+        return (short) combToLong(msb, lsb);
     }
 
-    public int combToInt(byte msb, byte lsb){
-        return (int)combToLong(msb, lsb);
+    public int combToInt(byte msb, byte lsb) {
+        return (int) combToLong(msb, lsb);
     }
 
-    public long combToLong(byte msb, byte lsb){
-        return (((msb & 0xff)<<8) | (lsb & 0xff)) & 0xffff;
+    public long combToLong(byte msb, byte lsb) {
+        return (((msb & 0xff) << 8) | (lsb & 0xff)) & 0xffff;
     }
 
-    public long combToLong(byte msb, byte lsb, byte xlsb, int oss){
-        msb = (byte)(msb & 0xff); 
-        lsb = (byte)(lsb & 0xff);
-        xlsb = (byte)(xlsb & 0xff);
+    public long combToLong(byte msb, byte lsb, byte xlsb, int oss) {
+        msb = (byte) (msb & 0xff);
+        lsb = (byte) (lsb & 0xff);
+        xlsb = (byte) (xlsb & 0xff);
         long res = (msb << 16);
         res = (res | (lsb << 8));
         res = (res | xlsb);
-        res = (res >> (8-oss));
+        res = (res >> (8 - oss));
         return res;
     }
 }
