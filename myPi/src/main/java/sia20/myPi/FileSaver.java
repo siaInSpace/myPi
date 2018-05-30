@@ -4,6 +4,7 @@ import sia20.myPi.BMP180my;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import sia20.myPi.Word;
 
 /**
  * FileSaver
@@ -21,22 +22,14 @@ public class FileSaver implements Runnable {
         }
     }
 
-    private String pad(byte val) {
-        String padded = Integer.toBinaryString(val & 0xff);
-        for (int i = padded.length(); i < 8; i++) {
-            padded = "0" + padded;
-        }
-        return padded + "\n";
-    }
-
     @Override
     public void run() {
         try {
             fw = new FileWriter(new File(path));
             byte[][] dat = bmp.readCalibarationValuesRaw();
             for (byte[] calVal : dat) {
-                fw.write(pad(calVal[0]));
-                fw.write(pad(calVal[1]));
+                fw.write(Word.byteToBinaryPadded(calVal[0]));
+                fw.write(Word.byteToBinaryPadded(calVal[1]));
             }
             fw.close();
         } catch (IOException e) {

@@ -168,28 +168,11 @@ public class BMP180my {
         System.out.println(MD);
     }
     public void printCalValsBinary() {
-        System.out.print("AC1:\t");
-        System.out.println(Integer.toBinaryString(AC1 & 0xFF));
-        System.out.print("AC2:\t");
-        System.out.println(Integer.toBinaryString(AC2 & 0xFF));
-        System.out.print("AC3:\t");
-        System.out.println(Integer.toBinaryString(AC3 & 0xFF));
-        System.out.print("AC4:\t");
-        System.out.println(Integer.toBinaryString(AC4 & 0xFF));
-        System.out.print("AC5:\t");
-        System.out.println(Integer.toBinaryString(AC5 & 0xFF));
-        System.out.print("AC6:\t");
-        System.out.println(Integer.toBinaryString(AC6 & 0xFF));
-        System.out.print("B1:\t");
-        System.out.println(Integer.toBinaryString(B1 & 0xFF));
-        System.out.print("B2:\t");
-        System.out.println(Integer.toBinaryString(B2 & 0xFF));
-        System.out.print("MB:\t");
-        System.out.println(Integer.toBinaryString(MB & 0xFF));
-        System.out.print("MC:\t");
-        System.out.println(Integer.toBinaryString(MC & 0xFF));
-        System.out.print("MD:\t");
-        System.out.println(Integer.toBinaryString(MD & 0xFF));
+        byte[][] dat = readCalibarationValuesRaw();
+        for (byte[] calVal : dat) {
+            System.out.print(Word.byteToBinaryPadded(calVal[0]));
+            System.out.print(Word.byteToBinaryPadded(calVal[1]));
+        }
     }
 
     // calibration values getters

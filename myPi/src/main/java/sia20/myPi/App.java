@@ -17,6 +17,7 @@ public class App {
         System.out.println("What would you like to do?");
         System.out.println("1: get caliration values for BMP180");
         System.out.println("2: get who am I value from MPU9250");
+        System.out.println("3: print calibration values in binary from BMP180");
         System.out.println("q: quit");
     }
 
@@ -27,8 +28,6 @@ public class App {
     }
 
     private void bmpCalValsBin() {
-        byte[][] data = bmp.readCalibarationValuesRaw();
-        bmp.combineCalibrationValues(data);
         bmp.printCalValsBinary();
     }
 

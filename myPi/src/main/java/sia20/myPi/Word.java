@@ -10,6 +10,19 @@ public class Word {
         device = dev;
     }
 
+    public static String byteToBinaryPadded(byte val) {
+        String padded = Integer.toBinaryString(val & 0xff);
+        String fitSize = "";
+        try{
+            fitSize = padded.substring(0, 8);
+        }catch(IndexOutOfBoundsException e){
+        }
+        for (int i = fitSize.length(); i < 8; i++) {
+            padded = "0" + padded;
+        }
+        return padded + "\n";
+    }
+
     public byte[] readBytes(int regAddr, int nrAddr){
         byte[] bytes = new byte[nrAddr];
         try {
