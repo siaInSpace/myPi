@@ -1,5 +1,8 @@
 package sia20.myPi;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.File;
 import java.util.Scanner;
 
 import sia20.myPi.BMP180my.Oss;
@@ -39,7 +42,19 @@ public class App {
     private void saveTempRawAsByteUsingFiles() {
         byte[][] data = bmp.readCalibarationValuesRaw();
         FileSaver.saveBytes(data[0]);
+    }
 
+    private void readSavedRawData() {
+        try {
+            FileInputStream fs = new FileInputStream(new File("./byteTest.txt"));
+            for (int i = 0; i < fs.available(); i++) {
+                byte data = (byte) fs.read();
+                System.out.println(data);
+            }
+            fs.close();
+        } catch (IOException e) {
+            System.out.println(e.getLocalizedMessage());
+        }
     }
 
     private void run() {
@@ -60,6 +75,9 @@ public class App {
                 break;
             case "4":
                 saveTempRawAsByteUsingFiles();
+                break;
+            case "5":
+                readSavedRawData();
                 break;
             case "Q":
                 in.close();
