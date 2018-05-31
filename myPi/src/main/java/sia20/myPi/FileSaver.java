@@ -2,6 +2,7 @@ package sia20.myPi;
 
 import sia20.myPi.BMP180my;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -27,13 +28,16 @@ public class FileSaver implements Runnable {
         this.start();
     }
 
-    public static void saveBytes(byte[] bytes){
+    public static void saveBytes(byte[] bytes) {
         try {
-            Files.write(Paths.get("./byteTest.txt"), bytes);
+            FileOutputStream fo = new FileOutputStream(new File("./byteTest.txt"));
+            fo.write(bytes);
+            fo.flush();
+            fo.close();
         } catch (IOException e) {
             System.out.println(e.getLocalizedMessage());
         }
-        
+
     }
 
     private void saveCalVals() {
@@ -82,11 +86,11 @@ public class FileSaver implements Runnable {
 
     @Override
     public void run() {
-        if(this.command.equals("bmp180saveTemp")){
+        if (this.command.equals("bmp180saveTemp")) {
 
-        }else if(this.command.equals("bmp180savePress")){
+        } else if (this.command.equals("bmp180savePress")) {
 
-        }else if(this.command.equals("bmp180saveCalVals")){
+        } else if (this.command.equals("bmp180saveCalVals")) {
             this.saveCalVals();
         }
     }
