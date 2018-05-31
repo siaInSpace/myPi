@@ -71,17 +71,17 @@ public class BMP180my {
     }
 
     public void combineCalibrationValues(byte[][] vals) {
-        AC1 = word.combToShort(vals[0][0], vals[0][1]);
-        AC2 = word.combToShort(vals[1][0], vals[1][1]);
-        AC3 = word.combToShort(vals[2][0], vals[2][1]);
-        AC4 = word.combToInt(vals[3][0], vals[3][1]);
-        AC5 = word.combToInt(vals[4][0], vals[4][1]);
-        AC6 = word.combToInt(vals[5][0], vals[5][1]);
-        B1 = word.combToShort(vals[6][0], vals[6][1]);
-        B2 = word.combToShort(vals[7][0], vals[7][1]);
-        MB = word.combToShort(vals[8][0], vals[8][1]);
-        MC = word.combToShort(vals[9][0], vals[9][1]);
-        MD = word.combToShort(vals[10][0], vals[10][1]);
+        AC1 = word.toShort(vals[0]);
+        AC2 = word.toShort(vals[1]);
+        AC3 = word.toShort(vals[2]);
+        AC4 = word.toInt(vals[3]);
+        AC5 = word.toInt(vals[4]);
+        AC6 = word.toInt(vals[5]);
+        B1 = word.toShort(vals[6]);
+        B2 = word.toShort(vals[7]);
+        MB = word.toShort(vals[8]);
+        MC = word.toShort(vals[9]);
+        MD = word.toShort(vals[10]);
     }
 
     public byte[] readTempRaw() throws IOException {
