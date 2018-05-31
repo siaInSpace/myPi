@@ -65,7 +65,7 @@ public class FileSaver implements Runnable {
         return reversed;
     }
 
-    private String bytesToBinaryString(byte[] bytes) {
+    public String bytesToBinaryString(byte[] bytes) {
         byte[] data = reverseArray(bytes);
         BitSet b = BitSet.valueOf(data);
         String res = "";

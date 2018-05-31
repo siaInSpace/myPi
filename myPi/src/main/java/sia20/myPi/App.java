@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.File;
 import java.util.Scanner;
 
+import javax.xml.crypto.Data;
+
 import sia20.myPi.BMP180my.Oss;
 
 public class App {
@@ -45,16 +47,18 @@ public class App {
     }
 
     private void readSavedRawData() {
+        byte[] data = new byte[2];
         try {
             FileInputStream fs = new FileInputStream(new File("./byteTest.txt"));
             for (int i = 0; i < fs.available(); i++) {
-                byte data = (byte) fs.read();
-                System.out.println(data);
+                data[i] = (byte) fs.read();
             }
             fs.close();
         } catch (IOException e) {
             System.out.println(e.getLocalizedMessage());
         }
+        FileSaver fSaver = new FileSaver("somePath", "aCommand", bmp);
+        System.out.println(fSaver.bytesToBinaryString(data));
     }
 
     private void run() {
