@@ -36,6 +36,12 @@ public class App {
         mpu.whoAmI();
     }
 
+    private void saveTempRawAsByteUsingFiles() {
+        byte[] data = bmp.readTempRaw();
+        FileSaver.saveBytes(data);
+
+    }
+
     private void run() {
         Scanner in = new Scanner(System.in);
         String choice;
@@ -51,6 +57,9 @@ public class App {
                 break;
             case "3":
                 bmpCalValsBin();
+                break;
+            case "4":
+                saveTempRawAsByteUsingFiles();
                 break;
             case "Q":
                 in.close();

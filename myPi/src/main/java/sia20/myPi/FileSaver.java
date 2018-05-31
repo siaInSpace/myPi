@@ -4,15 +4,56 @@ import sia20.myPi.BMP180my;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.BitSet;
 
 /**
- * FileSaver
+ * FileSaver: Saves data to a file
+ * 
+ * @author Sindre Aalhus
+ * @version 0.4
  */
 public class FileSaver implements Runnable {
     private String path;
     private FileWriter fw;
     private BMP180my bmp;
+    private String command;
+
+    public FileSaver(String pathName, String command, BMP180my bmp) {
+        this.path = pathName;
+        this.bmp = bmp;
+        this.command = command;
+        this.start();
+    }
+
+    public static void saveBytes(byte[] bytes){
+        try {
+            Files.write(Paths.get("./byteTest.txt"), bytes);
+        } catch (IOException e) {
+            System.out.println(e.getLocalizedMessage());
+        }
+        
+    }
+
+    private void saveCalVals() {
+        try {
+            fw = new FileWriter(new File(path));
+            byte[][] dat = bmp.readCalibarationValuesRaw();
+            for (byte[] calVal : dat) {
+                fw.write(bytesToBinaryString(calVal));
+                fw.write("\n");
+            }
+            fw.close();
+        } catch (IOException e) {
+            System.out.println(e.getLocalizedMessage());
+        }
+        try {
+            Thread.currentThread().join(5000);
+        } catch (InterruptedException e) {
+            System.out.println(e.getLocalizedMessage());
+        }
+    }
 
     private byte[] reverseArray(byte[] arr) {
         byte[] reversed = new byte[arr.length];
@@ -21,8 +62,6 @@ public class FileSaver implements Runnable {
         }
         return reversed;
     }
-
-    
 
     private String bytesToBinaryString(byte[] bytes) {
         byte[] data = reverseArray(bytes);
@@ -41,31 +80,14 @@ public class FileSaver implements Runnable {
         return res;
     }
 
-    public FileSaver(String pathName, String command, BMP180my bmp) {
-        path = pathName;
-        this.bmp = bmp;
-        if (command.equals("bmp180saveCalVals")) {
-            this.start();
-        }
-    }
-
     @Override
     public void run() {
-        try {
-            fw = new FileWriter(new File(path));
-            byte[][] dat = bmp.readCalibarationValuesRaw();
-            for (byte[] calVal : dat) {
-                fw.write(bytesToBinaryString(calVal));
-                fw.write("\n");
-            }
-            fw.close();
-        } catch (IOException e) {
-            System.out.println(e.getLocalizedMessage());
-        }
-        try {
-            Thread.currentThread().join(5000);
-        } catch (InterruptedException e) {
-            System.out.println(e.getLocalizedMessage());
+        if(this.command.equals("bmp180saveTemp")){
+
+        }else if(this.command.equals("bmp180savePress")){
+
+        }else if(this.command.equals("bmp180saveCalVals")){
+            this.saveCalVals();
         }
     }
 

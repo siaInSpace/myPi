@@ -84,9 +84,13 @@ public class BMP180my {
         MD = word.toShort(vals[10]);
     }
 
-    public byte[] readTempRaw() throws IOException {
+    public byte[] readTempRaw() {
         byte signal = 0x2E;
-        device.write(I2cSignalAddr, signal);
+        try {
+            device.write(I2cSignalAddr, signal);
+        } catch (IOException e) {
+            System.out.println(e.getLocalizedMessage());
+        }
         try {
             TimeUnit.MILLISECONDS.wait(5);
         } catch (InterruptedException e) {
