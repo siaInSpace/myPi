@@ -49,10 +49,11 @@ public class BMP180my {
         this.oss = oss;
     }
 
-    public BMP180my(Oss oss, String calValsPath){
+    public BMP180my(Oss oss, String calValsPath) {
         this(oss);
         new FileSaver(calValsPath, "bmp180saveCalVals", this);
     }
+
     /**
      * @return the device
      */
@@ -70,8 +71,8 @@ public class BMP180my {
     }
 
     public void combineCalibrationValues(byte[][] vals) {
-        AC2 = word.combToShort(vals[0][0], vals[0][1]);
-        AC1 = word.combToShort(vals[1][0], vals[1][1]);
+        AC1 = word.combToShort(vals[0][0], vals[0][1]);
+        AC2 = word.combToShort(vals[1][0], vals[1][1]);
         AC3 = word.combToShort(vals[2][0], vals[2][1]);
         AC4 = word.combToInt(vals[3][0], vals[3][1]);
         AC5 = word.combToInt(vals[4][0], vals[4][1]);
@@ -167,6 +168,7 @@ public class BMP180my {
         System.out.print("MD:\t");
         System.out.println(MD);
     }
+
     public void printCalValsBinary() {
         byte[][] dat = readCalibarationValuesRaw();
         for (byte[] calVal : dat) {

@@ -22,7 +22,9 @@ public class FileSaver implements Runnable {
         return reversed;
     }
 
-    private String BitSetToBinaryString(byte[] bytes) {
+    
+
+    private String bytesToBinaryString(byte[] bytes) {
         byte[] data = reverseArray(bytes);
         BitSet b = BitSet.valueOf(data);
         String res = "";
@@ -53,7 +55,7 @@ public class FileSaver implements Runnable {
             fw = new FileWriter(new File(path));
             byte[][] dat = bmp.readCalibarationValuesRaw();
             for (byte[] calVal : dat) {
-                fw.write(BitSetToBinaryString(calVal));
+                fw.write(bytesToBinaryString(calVal));
                 fw.write("\n");
             }
             fw.close();
