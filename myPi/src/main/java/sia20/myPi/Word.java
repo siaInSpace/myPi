@@ -1,9 +1,7 @@
 package sia20.myPi;
 
 import com.pi4j.io.i2c.I2CDevice;
-
-import sia20.myPi.BMP180my.Oss;
-
+G
 import java.io.IOException;
 import java.util.BitSet;
 

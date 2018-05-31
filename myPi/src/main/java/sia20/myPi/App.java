@@ -37,8 +37,8 @@ public class App {
     }
 
     private void saveTempRawAsByteUsingFiles() {
-        byte[] data = bmp.readTempRaw();
-        FileSaver.saveBytes(data);
+        byte[][] data = bmp.readCalibarationValuesRaw();
+        FileSaver.saveBytes(data[0]);
 
     }
 
