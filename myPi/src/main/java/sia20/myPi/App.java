@@ -1,8 +1,5 @@
 package sia20.myPi;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.File;
 import java.util.Scanner;
 
 import sia20.myPi.BMP180my.Oss;
@@ -11,7 +8,7 @@ public class App {
     private BMP180my bmp;
     private MPU9250my mpu;
 
-    public App() {
+    private App() {
         bmp = new BMP180my(Oss.STANDARD);
         mpu = new MPU9250my();
     }
@@ -58,7 +55,6 @@ public class App {
         }
     }
 
-
     private void run() {
         Scanner in = new Scanner(System.in);
         String choice;
@@ -77,6 +73,8 @@ public class App {
                 break;
             case "4":
                 saveTempRawAsByteUsingFiles();
+                break;
+            case "5":
                 readSavedRawData();
                 break;
             case "Q":
@@ -84,6 +82,7 @@ public class App {
                 System.out.println("Quitting!");
                 break;
             default:
+                System.out.println("Please select a valid input!");
                 break;
             }
         } while (!choice.equals("Q"));
