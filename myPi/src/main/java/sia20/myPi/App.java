@@ -12,7 +12,7 @@ public class App {
     private MPU9250my mpu;
 
     public App() {
-        bmp = new BMP180my(Oss.STANDARD, "./test.txt");
+        bmp = new BMP180my(Oss.STANDARD);
         mpu = new MPU9250my();
     }
 

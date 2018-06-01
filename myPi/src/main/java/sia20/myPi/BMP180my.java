@@ -50,11 +50,6 @@ public class BMP180my {
         this.oss = oss;
     }
 
-    public BMP180my(Oss oss, String calValsPath) {
-        this(oss);
-        new FileSaver();
-    }
-
     /**
      * @return the device
      */

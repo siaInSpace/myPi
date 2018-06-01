@@ -13,10 +13,10 @@ public class FileSaver implements Runnable {
     private String path;
     private byte[][] saveData;
 
-    public FileSaver() {
+    FileSaver() {
     }
 
-    public void saveBytes(byte[][] bytes, String pathName) {
+    private void saveBytes(byte[][] bytes, String pathName) {
         try {
             BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(new File(pathName)));
             for (byte[] data: bytes) {
@@ -29,8 +29,8 @@ public class FileSaver implements Runnable {
         }
     }
 
-    public byte[] readBytes(String pathName){
-        byte[] data;
+    byte[] readBytes(String pathName){
+        byte[] data = null;
         try {
             BufferedInputStream bis = new BufferedInputStream(new FileInputStream(new File(pathName)));
             data = new byte[bis.available()];
@@ -57,7 +57,7 @@ public class FileSaver implements Runnable {
         saveBytes(saveData, path);
     }
 
-    public void start(String pathName, byte[][] dataToSave) {
+    void start(String pathName, byte[][] dataToSave) {
         path = pathName;
         saveData = dataToSave;
         Runnable task = () -> run();
