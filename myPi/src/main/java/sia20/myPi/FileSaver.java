@@ -1,60 +1,47 @@
 package sia20.myPi;
 
-import sia20.myPi.BMP180my;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.BitSet;
 
 /**
  * FileSaver: Saves data to a file
  * 
  * @author Sindre Aalhus
- * @version 0.4
+ * @version 0.5
  */
 public class FileSaver implements Runnable {
     private String path;
-    private FileWriter fw;
-    private BMP180my bmp;
-    private String command;
+    private byte[][] saveData;
 
-    public FileSaver(String pathName, String command, BMP180my bmp) {
-        this.path = pathName;
-        this.bmp = bmp;
-        this.command = command;
-        this.start();
+    public FileSaver() {
     }
 
-    public static void saveBytes(byte[] bytes) {
+    public void saveBytes(byte[][] bytes, String pathName) {
         try {
-            FileOutputStream fo = new FileOutputStream(new File("./byteTest.txt"));
-            fo.write(bytes);
-            fo.flush();
-            fo.close();
-        } catch (IOException e) {
-            System.out.println(e.getLocalizedMessage());
-        }
-
-    }
-
-    private void saveCalVals() {
-        try {
-            fw = new FileWriter(new File(path));
-            byte[][] dat = bmp.readCalibarationValuesRaw();
-            for (byte[] calVal : dat) {
-                fw.write(bytesToBinaryString(calVal));
-                fw.write("\n");
+            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(new File(pathName)));
+            for (byte[] data: bytes) {
+                bos.write(data);
             }
-            fw.close();
+            bos.flush();
+            bos.close();
         } catch (IOException e) {
             System.out.println(e.getLocalizedMessage());
         }
+    }
+
+    public byte[] readBytes(String pathName){
+        byte[] data;
         try {
-            Thread.currentThread().join(5000);
-        } catch (InterruptedException e) {
+            BufferedInputStream bis = new BufferedInputStream(new FileInputStream(new File(pathName)));
+            data = new byte[bis.available()];
+            for (int i = 0; bis.available() > 0; i++) {
+                data[i] = (byte)bis.read();
+            }
+            bis.close();
+        }catch (IOException e){
             System.out.println(e.getLocalizedMessage());
         }
+        return data;
     }
 
     private byte[] reverseArray(byte[] arr) {
@@ -63,6 +50,19 @@ public class FileSaver implements Runnable {
             reversed[i] = arr[arr.length - (i + 1)];
         }
         return reversed;
+    }
+
+    @Override
+    public void run() {
+        saveBytes(saveData, path);
+    }
+
+    public void start(String pathName, byte[][] dataToSave) {
+        path = pathName;
+        saveData = dataToSave;
+        Runnable task = () -> run();
+        Thread t = new Thread(task, "saveToFile");
+        t.start();
     }
 
     public String bytesToBinaryString(byte[] bytes) {
@@ -80,22 +80,5 @@ public class FileSaver implements Runnable {
             }
         }
         return res;
-    }
-
-    @Override
-    public void run() {
-        if (this.command.equals("bmp180saveTemp")) {
-
-        } else if (this.command.equals("bmp180savePress")) {
-
-        } else if (this.command.equals("bmp180saveCalVals")) {
-            this.saveCalVals();
-        }
-    }
-
-    public void start() {
-        Runnable task = () -> run();
-        Thread t = new Thread(task, "saveToFile");
-        t.start();
     }
 }

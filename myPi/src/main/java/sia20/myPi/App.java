@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.io.File;
 import java.util.Scanner;
 
-import javax.xml.crypto.Data;
-
 import sia20.myPi.BMP180my.Oss;
 
 public class App {
@@ -42,24 +40,24 @@ public class App {
     }
 
     private void saveTempRawAsByteUsingFiles() {
+        FileSaver fs = new FileSaver();
         byte[][] data = bmp.readCalibarationValuesRaw();
-        FileSaver.saveBytes(data[0]);
+        for (byte[] word : data) {
+            System.out.println(word[0]);
+            System.out.println(word[1]);
+        }
+        fs.start("./byteSaveTest.txt", data);
     }
 
+
     private void readSavedRawData() {
-        byte[] data = new byte[2];
-        try {
-            FileInputStream fs = new FileInputStream(new File("./byteTest.txt"));
-            for (int i = 0; i < fs.available(); i++) {
-                data[i] = (byte) fs.read();
-            }
-            fs.close();
-        } catch (IOException e) {
-            System.out.println(e.getLocalizedMessage());
+        FileSaver fs = new FileSaver();
+        byte[] data = fs.readBytes("./byteSaveTest.txt");
+        for (byte word : data) {
+            System.out.println(word);
         }
-        FileSaver fSaver = new FileSaver("somePath", "aCommand", bmp);
-        System.out.println(fSaver.bytesToBinaryString(data));
     }
+
 
     private void run() {
         Scanner in = new Scanner(System.in);
@@ -79,8 +77,6 @@ public class App {
                 break;
             case "4":
                 saveTempRawAsByteUsingFiles();
-                break;
-            case "5":
                 readSavedRawData();
                 break;
             case "Q":

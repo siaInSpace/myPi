@@ -5,21 +5,14 @@ import java.io.IOException;
 import java.util.BitSet;
 
 public class Word {
-    I2CDevice device;
+    private I2CDevice device;
 
     public Word(I2CDevice dev) {
         device = dev;
     }
 
     public static String byteToBinaryPadded(byte val) {
-
-        // 1010110011100 11110110
-        // 0000000000000 11111111: 21, (21-8 = 13)->
-        // 101011: 6, (6-8 = -2) ->
-        // 0: 1, (1-8 = -7) ->
-        // 10110011: 8 (8-8 = 0) ->
         int vals = val & 0xFF;
-
         String padded = Integer.toBinaryString(vals);
         String fitSize = padded.substring(padded.length() - 8);
         for (int i = fitSize.length(); i < 8; i++) {
@@ -39,29 +32,6 @@ public class Word {
             System.out.println(e.getLocalizedMessage());
         }
         return bytes;
-    }
-
-    public short combToShort(byte msb, byte lsb) {
-        return (short) combToLong(msb, lsb);
-    }
-
-    public int combToInt(byte msb, byte lsb) {
-        return (int) combToLong(msb, lsb);
-    }
-
-    public long combToLong(byte msb, byte lsb) {
-        return (((msb & 0xff) << 8) | (lsb & 0xff)) & 0xffff;
-    }
-
-    public long combToLong(byte msb, byte lsb, byte xlsb, int oss) {
-        msb = (byte) (msb & 0xff);
-        lsb = (byte) (lsb & 0xff);
-        xlsb = (byte) (xlsb & 0xff);
-        long res = (msb << 16);
-        res = (res | (lsb << 8));
-        res = (res | xlsb);
-        res = (res >> (8 - oss));
-        return res;
     }
 
     private byte[] reverseArray(byte[] arr) {

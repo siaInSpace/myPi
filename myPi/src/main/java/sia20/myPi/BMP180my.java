@@ -26,6 +26,7 @@ public class BMP180my {
     private short MC;
     private short MD;
 
+
     // usefull adresses
     private final int I2Caddr = 0x77;
     private final int I2cSignalAddr = 0xF4;
@@ -51,7 +52,7 @@ public class BMP180my {
 
     public BMP180my(Oss oss, String calValsPath) {
         this(oss);
-        new FileSaver(calValsPath, "bmp180saveCalVals", this);
+        new FileSaver();
     }
 
     /**
@@ -149,28 +150,17 @@ public class BMP180my {
     }
 
     public void printCalVals() {
-        System.out.print("AC1:\t");
-        System.out.println(AC1);
-        System.out.print("AC2:\t");
-        System.out.println(AC2);
-        System.out.print("AC3:\t");
-        System.out.println(AC3);
-        System.out.print("AC4:\t");
-        System.out.println(AC4);
-        System.out.print("AC5:\t");
-        System.out.println(AC5);
-        System.out.print("AC6:\t");
-        System.out.println(AC6);
-        System.out.print("B1:\t");
-        System.out.println(B1);
-        System.out.print("B2:\t");
-        System.out.println(B2);
-        System.out.print("MB:\t");
-        System.out.println(MB);
-        System.out.print("MC:\t");
-        System.out.println(MC);
-        System.out.print("MD:\t");
-        System.out.println(MD);
+        System.out.println("AC1:\t" + AC1);
+        System.out.println("AC2:\t" + AC2);
+        System.out.println("AC3:\t" + AC3);
+        System.out.println("AC4:\t" + AC4);
+        System.out.println("AC5:\t" + AC5);
+        System.out.println("AC6:\t" +AC6);
+        System.out.println("B1:\t" + B1);
+        System.out.println("B2:\t" + B2);
+        System.out.println("MB:\t" + MB);
+        System.out.println("MC:\t" + MC);
+        System.out.println("MD:\t" + MD);
     }
 
     public void printCalValsBinary() {
