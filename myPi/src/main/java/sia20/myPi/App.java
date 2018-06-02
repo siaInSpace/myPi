@@ -17,6 +17,7 @@ public class App {
         System.out.println("What would you like to do?");
         System.out.println("1: Read raw calibration values from bmp180 file");
         System.out.println("2: Read raw temp value from bmp180");
+        System.out.println("3: Read raw pressure value from bmp180");
         System.out.println("q: quit");
     }
 

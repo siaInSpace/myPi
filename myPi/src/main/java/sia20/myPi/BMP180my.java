@@ -102,7 +102,7 @@ public class BMP180my {
     }
 
     byte[] readPressureRaw(){
-        byte signal = (byte) (0x34 + oss.getVal() << 6);
+        byte signal = (byte) (0x34 + (oss.getVal() << 6));
         try{
             device.write(I2cSignalAddr, signal);
         } catch (IOException e) {
