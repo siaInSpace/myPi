@@ -9,47 +9,19 @@ public class App {
     private MPU9250my mpu;
 
     private App() {
-        bmp = new BMP180my(Oss.STANDARD);
+        bmp = new BMP180my(Oss.STANDARD, "./data/bmp180calValuesRaw.txt");
         mpu = new MPU9250my();
     }
 
     private void menu() {
         System.out.println("What would you like to do?");
-        System.out.println("1: get caliration values for BMP180");
-        System.out.println("2: get who am I value from MPU9250");
-        System.out.println("3: print calibration values in binary from BMP180");
+        System.out.println("1: Read raw calibration values from bmp180 file");
         System.out.println("q: quit");
     }
 
-    private void bmpCalVals() {
-        byte[][] data = bmp.readCalibarationValuesRaw();
-        bmp.combineCalibrationValues(data);
-        bmp.printCalVals();
-    }
-
-    private void bmpCalValsBin() {
-        bmp.printCalValsBinary();
-    }
-
-    private void whoAmIMPU9250() {
-        MPU9250my mpu = new MPU9250my();
-        mpu.whoAmI();
-    }
-
-    private void saveTempRawAsByteUsingFiles() {
-        FileSaver fs = new FileSaver();
-        byte[][] data = bmp.readCalibarationValuesRaw();
-        for (byte[] word : data) {
-            System.out.println(word[0]);
-            System.out.println(word[1]);
-        }
-        fs.start("./byteSaveTest.txt", data);
-    }
-
-
     private void readSavedRawData() {
         FileSaver fs = new FileSaver();
-        byte[] data = fs.readBytes("./byteSaveTest.txt");
+        byte[] data = fs.readBytes("./data/bmp180calValuesRaw.txt");
         for (byte word : data) {
             System.out.println(word);
         }
@@ -63,18 +35,6 @@ public class App {
             choice = in.nextLine().toUpperCase();
             switch (choice) {
             case "1":
-                bmpCalVals();
-                break;
-            case "2":
-                whoAmIMPU9250();
-                break;
-            case "3":
-                bmpCalValsBin();
-                break;
-            case "4":
-                saveTempRawAsByteUsingFiles();
-                break;
-            case "5":
                 readSavedRawData();
                 break;
             case "Q":
@@ -89,7 +49,6 @@ public class App {
     }
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
         App app = new App();
         app.run();
 
