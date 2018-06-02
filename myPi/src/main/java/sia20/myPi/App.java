@@ -9,7 +9,7 @@ public class App {
     private MPU9250my mpu;
 
     private App() {
-        bmp = new BMP180my(Oss.STANDARD, "./data/bmp180calValuesRaw.txt");
+        bmp = new BMP180my(Oss.STANDARD, "./data/CalibrationValues/bmp180calValuesRaw.txt");
         mpu = new MPU9250my();
     }
 
