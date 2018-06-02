@@ -85,7 +85,7 @@ public class BMP180my {
         MD = word.toShort(vals[10]);
     }
 
-    public byte[] readTempRaw() {
+    byte[] readTempRaw() {
         byte signal = 0x2E;
         try {
             device.write(I2cSignalAddr, signal);
@@ -101,11 +101,15 @@ public class BMP180my {
         return word.readBytes(0xF6, 2);
     }
 
-    public byte[] readPressureRaw() throws IOException {
+    byte[] readPressureRaw(){
         byte signal = (byte) (0x34 + oss.getVal() << 6);
-        device.write(I2cSignalAddr, signal);
+        try{
+            device.write(I2cSignalAddr, signal);
+        } catch (IOException e) {
+            System.out.println(e.getLocalizedMessage());
+        }
         try {
-            TimeUnit.MILLISECONDS.wait(oss.getTime());
+            Thread.sleep(oss.getTime());
         } catch (InterruptedException e) {
             System.out.println("Could not wait Xms, idk why");
             e.printStackTrace();

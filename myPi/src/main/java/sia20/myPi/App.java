@@ -28,13 +28,20 @@ public class App {
         }
     }
 
-
     private void readTempRaw(){
         byte[] data = bmp.readTempRaw();
         for (byte b : data) {
             System.out.println(b);
         }
     }
+
+    private void readPresRaw(){
+        byte[] data = bmp.readPressureRaw();
+        for (byte b : data) {
+            System.out.println(b);
+        }
+    }
+
     private void run() {
         Scanner in = new Scanner(System.in);
         String choice;
@@ -47,6 +54,9 @@ public class App {
                 break;
             case "2":
                 readTempRaw();
+                break;
+            case "3":
+                readPresRaw();
                 break;
             case "Q":
                 in.close();
