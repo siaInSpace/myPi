@@ -16,6 +16,7 @@ public class App {
     private void menu() {
         System.out.println("What would you like to do?");
         System.out.println("1: Read raw calibration values from bmp180 file");
+        System.out.println("2: Read raw temp value from bmp180");
         System.out.println("q: quit");
     }
 
