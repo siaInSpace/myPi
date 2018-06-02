@@ -55,7 +55,7 @@ public class App {
         File[] files = (new File("data/measurements").listFiles());
         byte[][] data = new byte[files.length][];
         for (int i = 0; i < files.length; i++) {
-            data[i] = fr.readBytes(files[i].getAbsolutePath());
+            data[i] = fr.readBytes(files[i]);
         }
         for (byte[] bytes : data) {
             for (byte byt : bytes) {
