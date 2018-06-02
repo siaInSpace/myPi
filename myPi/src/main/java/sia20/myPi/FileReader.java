@@ -7,14 +7,14 @@ import java.io.*;
 public class FileReader {
 
     byte[] readBytes(File f){
-        //File f = new File(pathName);
+        File file = new File(f.getPath() + ".txt");
         BufferedInputStream bis = null;
         byte[] data = null;
         try {
-            bis = new BufferedInputStream(new FileInputStream(f));
+            bis = new BufferedInputStream(new FileInputStream(file));
         }catch (FileNotFoundException e){
-            System.out.println("File not found at: " + f.getAbsolutePath());
-            System.out.println(e.getLocalizedMessage());
+            System.out.println("File not found at: " + file.getAbsolutePath());
+            System.out.println(e.getStackTrace());
         }
         try {
             data = new byte[bis.available()];

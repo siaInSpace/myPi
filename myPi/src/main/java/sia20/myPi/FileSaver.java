@@ -17,7 +17,7 @@ public class FileSaver implements Runnable {
     }
 
     private void saveBytes(byte[][] bytes, String pathName) {
-        File file = new File(pathName);
+        File file = new File(pathName + ".txt");
         if (!file.exists()){
             try {
                 file.mkdirs();
