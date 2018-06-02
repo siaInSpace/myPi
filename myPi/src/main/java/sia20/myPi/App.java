@@ -1,5 +1,6 @@
 package sia20.myPi;
 
+import java.io.File;
 import java.util.Scanner;
 
 import sia20.myPi.BMP180my.Oss;
@@ -46,8 +47,22 @@ public class App {
 
     private void saveBmpValuesRaw(){
         FileSaver fs = new FileSaver();
-        fs.start("./data/measurements" + System.nanoTime(), bmp.readRawValues());
+        fs.start("./data/measurements/" + System.nanoTime(), bmp.readRawValues());
+    }
 
+    private void readSavedBmpValuesRaw(){
+        FileReader fr = new FileReader();
+        File[] files = (new File("./data/measurements").listFiles());
+        byte[][] data = new byte[files.length][];
+        for (int i = 0; i < files.length; i++) {
+            data[i] = fr.readBytes(files[i].getAbsolutePath());
+        }
+        for (byte[] bytes : data) {
+            for (byte byt : bytes) {
+                System.out.print(byt + " ");
+            }
+            System.out.println();
+        }
     }
 
     private void run() {
@@ -68,6 +83,9 @@ public class App {
                 break;
             case "4":
                 saveBmpValuesRaw();
+                break;
+            case "5":
+                readSavedBmpValuesRaw();
                 break;
             case "Q":
                 in.close();
