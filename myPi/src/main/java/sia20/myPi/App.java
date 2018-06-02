@@ -79,6 +79,7 @@ public class App {
                 break;
             case"3":
                 mpu.setByPassMode(true);
+                break;
             case "Q":
                 in.close();
                 System.out.println("Quitting!");
