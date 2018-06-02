@@ -25,7 +25,7 @@ public class App {
 
     private void readSavedRawData() {
         FileSaver fs = new FileSaver();
-        byte[] data = fs.readBytes("data/bmpCalValues/bmp180calValuesRaw.txt");
+        byte[] data = fs.readBytes("data/bmpCalValues/bmp180calValuesRaw");
         for (byte word : data) {
             System.out.println(word);
         }
