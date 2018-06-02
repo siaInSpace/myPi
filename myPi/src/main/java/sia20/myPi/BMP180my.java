@@ -93,7 +93,7 @@ public class BMP180my {
             System.out.println(e.getLocalizedMessage());
         }
         try {
-            TimeUnit.MILLISECONDS.wait(5);
+            Thread.sleep(5);
         } catch (InterruptedException e) {
             System.out.println("Could not wait 5ms, idk why");
             e.printStackTrace();
