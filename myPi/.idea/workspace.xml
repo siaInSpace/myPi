@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="153d906e-c9ab-4568-b45c-f626084fb06a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sia20/myPi/FileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sia20/myPi/FileReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sia20/myPi/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sia20/myPi/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/sia20/myPi/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sia20/myPi/App.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/sia20/myPi/BMP180my$Oss.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sia20/myPi/BMP180my$Oss.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/sia20/myPi/BMP180my.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sia20/myPi/BMP180my.class" afterDir="false" />
@@ -23,11 +23,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="App.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="App.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="60" column="36" lean-forward="true" selection-start-line="60" selection-start-column="36" selection-end-line="60" selection-end-column="36" />
+            <state relative-caret-position="108">
+              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -38,7 +38,7 @@
       <file leaf-file-name="BMP180my.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/BMP180my.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
+            <state relative-caret-position="828">
               <caret line="120" column="56" selection-start-line="120" selection-start-column="56" selection-end-line="120" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -47,11 +47,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FileReader.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FileReader.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/FileReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
+            <state relative-caret-position="250">
+              <caret line="19" column="45" lean-forward="true" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -60,7 +60,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/FileSaver.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="216">
-              <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+              <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -92,9 +92,9 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/Word.java" />
         <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/BMP180my.java" />
-        <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/App.java" />
-        <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/FileSaver.java" />
         <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/FileReader.java" />
+        <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/FileSaver.java" />
+        <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/App.java" />
       </list>
     </option>
   </component>
@@ -237,7 +237,7 @@
       <workItem from="1527884517313" duration="1120000" />
       <workItem from="1527885694314" duration="1391000" />
       <workItem from="1527951388345" duration="5861000" />
-      <workItem from="1527960478038" duration="2229000" />
+      <workItem from="1527960478038" duration="2849000" />
     </task>
     <task id="LOCAL-00001" summary="trying to use bufferedOutputStream to save bytes and then read them.">
       <created>1527867590238</created>
@@ -386,11 +386,25 @@
       <option name="project" value="LOCAL" />
       <updated>1527962486894</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Fixed path typo">
+      <created>1527962743357</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1527962743357</updated>
+    </task>
+    <task id="LOCAL-00023" summary="FileSaver no longer creates the file as a directory">
+      <created>1527963141997</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1527963141997</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17967000" />
+    <option name="totallyTimeSpent" value="18587000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -481,7 +495,9 @@
     <MESSAGE value="Fixed path of files" />
     <MESSAGE value="Now passes file to function instead of the filepath" />
     <MESSAGE value="Trying to fix fileReader cannot find file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Trying to fix fileReader cannot find file" />
+    <MESSAGE value="Fixed path typo" />
+    <MESSAGE value="FileSaver no longer creates the file as a directory" />
+    <option name="LAST_COMMIT_MESSAGE" value="FileSaver no longer creates the file as a directory" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/App.java">
@@ -678,26 +694,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/FileSaver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="60" column="36" lean-forward="true" selection-start-line="60" selection-start-column="36" selection-end-line="60" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/BMP180my.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
+        <state relative-caret-position="828">
           <caret line="120" column="56" selection-start-line="120" selection-start-column="56" selection-end-line="120" selection-end-column="56" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -707,8 +706,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/FileReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
+        <state relative-caret-position="250">
+          <caret line="19" column="45" lean-forward="true" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/FileSaver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

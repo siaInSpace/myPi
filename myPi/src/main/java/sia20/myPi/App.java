@@ -10,7 +10,7 @@ public class App {
     private MPU9250my mpu;
 
     private App() {
-        bmp = new BMP180my(Oss.STANDARD, "data/CalibrationValues/bmp180calValuesRaw.txt");
+        bmp = new BMP180my(Oss.STANDARD, "data/CalibrationValues/bmp180calValuesRaw");
         mpu = new MPU9250my();
     }
 
@@ -25,7 +25,7 @@ public class App {
 
     private void readSavedRawData() {
         FileSaver fs = new FileSaver();
-        byte[] data = fs.readBytes("data/bmpCalValues/bmp180calValuesRaw");
+        byte[] data = fs.readBytes("data/CalibrationValues/bmp180calValuesRaw");
         for (byte word : data) {
             System.out.println(word);
         }
