@@ -17,6 +17,14 @@ public class FileSaver implements Runnable {
     }
 
     private void saveBytes(byte[][] bytes, String pathName) {
+        File file = new File(pathName);
+        if (!file.exists()){
+            try {
+                file.createNewFile();
+            }catch (IOException e){
+                System.out.println("Cannot create file at:" + file.getAbsolutePath());
+            }
+        }
         try {
             BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(new File(pathName)));
             for (byte[] data: bytes) {
