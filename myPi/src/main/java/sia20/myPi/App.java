@@ -23,7 +23,7 @@ public class App {
 
     private void readSavedRawData() {
         FileSaver fs = new FileSaver();
-        byte[] data = fs.readBytes("./data/bmp180calValuesRaw.txt");
+        byte[] data = fs.readBytes("./data/bmpCalValues/bmp180calValuesRaw.txt");
         for (byte word : data) {
             System.out.println(word);
         }
@@ -41,6 +41,12 @@ public class App {
         for (byte b : data) {
             System.out.println(b);
         }
+    }
+
+    private void saveBmpValuesRaw(){
+        FileSaver fs = new FileSaver();
+        fs.start("./data/measurements" + System.nanoTime(), bmp.readRawValues());
+
     }
 
     private void run() {

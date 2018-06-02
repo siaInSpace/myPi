@@ -117,6 +117,11 @@ public class BMP180my {
         return word.readBytes(0xF6, 3);
     }
 
+    byte[][] readRawValues(){
+        byte[][] b = {readTempRaw(), readPressureRaw()};
+        return b;
+    }
+
     public enum Oss {
         LOW_POWER(0, 5), STANDARD(1, 8), HIGHRES(2, 14), ULTRAHIGHRES(3, 26);
 

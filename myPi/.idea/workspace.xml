@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="153d906e-c9ab-4568-b45c-f626084fb06a" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/sia20/myPi/FileReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sia20/myPi/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sia20/myPi/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sia20/myPi/BMP180my.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sia20/myPi/BMP180my.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sia20/myPi/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sia20/myPi/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sia20/myPi/BMP180my$Oss.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sia20/myPi/BMP180my$Oss.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sia20/myPi/BMP180my.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sia20/myPi/BMP180my.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sia20/myPi/FileSaver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sia20/myPi/FileSaver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sia20/myPi/App.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sia20/myPi/BMP180my$Oss.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sia20/myPi/BMP180my.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="target/" />
@@ -27,7 +29,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/App.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="84">
-              <caret line="19" column="66" selection-start-line="19" selection-start-column="66" selection-end-line="19" selection-end-column="66" />
+              <caret line="25" column="54" selection-start-line="25" selection-start-column="54" selection-end-line="25" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -35,11 +37,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BMP180my.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BMP180my.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/BMP180my.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="100" column="39" lean-forward="true" selection-start-line="100" selection-start-column="39" selection-end-line="100" selection-end-column="39" />
+            <state relative-caret-position="234">
+              <caret line="120" column="56" lean-forward="true" selection-start-line="120" selection-start-column="56" selection-end-line="120" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -47,11 +49,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FileSaver.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FileReader.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/FileReader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="54">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FileSaver.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/FileSaver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="31" column="38" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="38" />
+            <state relative-caret-position="180">
+              <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+              <folding>
+                <element signature="e#1568#1569#0" expanded="true" />
+                <element signature="e#1609#1610#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -67,6 +82,13 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -75,9 +97,10 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/Word.java" />
-        <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/FileSaver.java" />
-        <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/App.java" />
+        <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/FileReader.java" />
         <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/BMP180my.java" />
+        <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/App.java" />
+        <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/FileSaver.java" />
       </list>
     </option>
   </component>
@@ -111,7 +134,28 @@
             <path>
               <item name="myPi" type="b2602c69:ProjectViewProjectNode" />
               <item name="myPi" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myPi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myPi" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myPi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myPi" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myPi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myPi" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="myPi" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -198,7 +242,7 @@
       <workItem from="1527864976592" duration="4326000" />
       <workItem from="1527884517313" duration="1120000" />
       <workItem from="1527885694314" duration="1391000" />
-      <workItem from="1527951388345" duration="2889000" />
+      <workItem from="1527951388345" duration="4386000" />
     </task>
     <task id="LOCAL-00001" summary="trying to use bufferedOutputStream to save bytes and then read them.">
       <created>1527867590238</created>
@@ -277,11 +321,18 @@
       <option name="project" value="LOCAL" />
       <updated>1527953865004</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="fixed signal for pressure value and added printout to select read raw pressure form bmp180">
+      <created>1527954352210</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1527954352210</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12766000" />
+    <option name="totallyTimeSpent" value="14263000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -295,12 +346,12 @@
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50066936" side_tool="true" weight="0.48471615" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="7" sideWeight="0.49933067" visible="true" weight="0.013100437" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49933067" visible="true" weight="0.013100437" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32896653" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16733602" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16733602" />
       <window_info anchor="bottom" id="Problems" order="7" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -362,7 +413,8 @@
     <MESSAGE value="added printout to select to read temp value" />
     <MESSAGE value="trying different wait function" />
     <MESSAGE value="added function to print bmp180 raw pressure value" />
-    <option name="LAST_COMMIT_MESSAGE" value="added function to print bmp180 raw pressure value" />
+    <MESSAGE value="fixed signal for pressure value and added printout to select read raw pressure form bmp180" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed signal for pressure value and added printout to select read raw pressure form bmp180" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/App.java">
@@ -379,6 +431,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="558">
           <caret line="31" column="38" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="38" />
+          <folding>
+            <element signature="e#1568#1569#0" expanded="true" />
+            <element signature="e#1609#1610#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -511,29 +567,47 @@
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/FileSaver.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/FileReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="31" column="38" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="38" />
+        <state relative-caret-position="54">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/App.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/BMP180my.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="19" column="66" selection-start-line="19" selection-start-column="66" selection-end-line="19" selection-end-column="66" />
+        <state relative-caret-position="234">
+          <caret line="120" column="56" lean-forward="true" selection-start-line="120" selection-start-column="56" selection-end-line="120" selection-end-column="56" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/BMP180my.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="100" column="39" lean-forward="true" selection-start-line="100" selection-start-column="39" selection-end-line="100" selection-end-column="39" />
+        <state relative-caret-position="84">
+          <caret line="25" column="54" selection-start-line="25" selection-start-column="54" selection-end-line="25" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_171/src.zip!/java/io/File.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="184" column="18" selection-start-line="184" selection-start-column="18" selection-end-line="184" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/FileSaver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+          <folding>
+            <element signature="e#1568#1569#0" expanded="true" />
+            <element signature="e#1609#1610#0" expanded="true" />
           </folding>
         </state>
       </provider>
