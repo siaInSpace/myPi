@@ -7,7 +7,7 @@ import java.io.*;
 public class FileReader {
 
     byte[] readBytes(File f){
-        File file = new File(f.getPath() + ".txt");
+        File file = new File(f.getPath());
         BufferedInputStream bis = null;
         byte[] data = null;
         try {
