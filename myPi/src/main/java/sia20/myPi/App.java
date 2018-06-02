@@ -27,6 +27,13 @@ public class App {
         }
     }
 
+
+    private void readTempRaw(){
+        byte[] data = bmp.readTempRaw();
+        for (byte b : data) {
+            System.out.println(b);
+        }
+    }
     private void run() {
         Scanner in = new Scanner(System.in);
         String choice;
@@ -36,6 +43,9 @@ public class App {
             switch (choice) {
             case "1":
                 readSavedRawData();
+                break;
+            case "2":
+                readTempRaw();
                 break;
             case "Q":
                 in.close();
