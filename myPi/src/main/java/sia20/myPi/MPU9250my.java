@@ -28,6 +28,20 @@ class MPU9250my {
         }
     }
 
+    public void setByPassMode(boolean mode){
+        int regAddr = 55;
+        byte signal;
+        if (mode){
+            signal = 0b10;
+        }else{
+            signal = 0b00;
+        }
+        try {
+            device.write(regAddr, signal);
+        } catch (IOException e) {
+            System.out.println(e.getLocalizedMessage());
+        }
+    }
 
 
 
