@@ -29,15 +29,20 @@ class MPU9250my {
     }
 
     public void setByPassMode(boolean mode){
-        int regAddr = 55;
-        byte signal;
+        int bypassAddress = 0x37;
+        int masterEnableAddress = 0x6A;
+        byte masteEnabelSignal;
+        byte bypassSignal;
         if (mode){
-            signal = 0b10;
+            bypassSignal = 0x02;
+            masteEnabelSignal = 0b01000000;
         }else{
-            signal = 0b00;
+            bypassSignal = 0x00;
+            masteEnabelSignal = 0b01100000;
         }
         try {
-            device.write(regAddr, signal);
+            device.write(bypassAddress, bypassSignal);
+            device.write(masterEnableAddress, masteEnabelSignal);
         } catch (IOException e) {
             System.out.println(e.getLocalizedMessage());
         }
