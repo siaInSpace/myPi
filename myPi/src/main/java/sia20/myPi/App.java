@@ -10,7 +10,7 @@ public class App {
     private MPU9250my mpu;
 
     private App() {
-        bmp = new BMP180my(Oss.STANDARD, "./data/CalibrationValues/bmp180calValuesRaw.txt");
+        bmp = new BMP180my(Oss.STANDARD, "data/CalibrationValues/bmp180calValuesRaw.txt");
         mpu = new MPU9250my();
     }
 
@@ -25,7 +25,7 @@ public class App {
 
     private void readSavedRawData() {
         FileSaver fs = new FileSaver();
-        byte[] data = fs.readBytes("./data/bmpCalValues/bmp180calValuesRaw.txt");
+        byte[] data = fs.readBytes("data/bmpCalValues/bmp180calValuesRaw.txt");
         for (byte word : data) {
             System.out.println(word);
         }
@@ -47,12 +47,12 @@ public class App {
 
     private void saveBmpValuesRaw(){
         FileSaver fs = new FileSaver();
-        fs.start("./data/measurements/" + System.nanoTime(), bmp.readRawValues());
+        fs.start("data/measurements/" + System.nanoTime(), bmp.readRawValues());
     }
 
     private void readSavedBmpValuesRaw(){
         FileReader fr = new FileReader();
-        File[] files = (new File("./data/measurements").listFiles());
+        File[] files = (new File("data/measurements").listFiles());
         byte[][] data = new byte[files.length][];
         for (int i = 0; i < files.length; i++) {
             data[i] = fr.readBytes(files[i].getAbsolutePath());

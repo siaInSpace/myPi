@@ -27,7 +27,7 @@ public class FileSaver implements Runnable {
             }
         }
         try {
-            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(new File(pathName)));
+            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
             for (byte[] data: bytes) {
                 bos.write(data);
             }
