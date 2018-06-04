@@ -49,7 +49,7 @@ public class MPU9250mag {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        byte d = master.read(73);
+        d = master.read(73);
         System.out.println(d);
     }
 
