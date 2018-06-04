@@ -20,6 +20,7 @@ public class App {
         System.out.println("2: Read raw data files");
         System.out.println("3: mpu enable bypass mode");
         System.out.println("4: mpu whoAmI");
+        System.out.println("5: read magnetometer");
         System.out.println("q: quit");
     }
 
