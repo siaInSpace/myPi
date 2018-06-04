@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="153d906e-c9ab-4568-b45c-f626084fb06a" name="Default" comment="Added parents Sensor class and seprate classes for pressure and temp for bmp180 sensor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250mag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250mag.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/sia20/myPi/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sia20/myPi/App.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/sia20/myPi/BMP180my$Oss.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/sia20/myPi/BMP180my.class" beforeDir="false" />
@@ -70,8 +71,8 @@
       <file leaf-file-name="MPU9250mag.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250mag.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+            <state relative-caret-position="307">
+              <caret line="27" column="37" lean-forward="true" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -287,7 +288,7 @@
       <workItem from="1527885694314" duration="1391000" />
       <workItem from="1527951388345" duration="5861000" />
       <workItem from="1527960478038" duration="7009000" />
-      <workItem from="1528113525969" duration="9068000" />
+      <workItem from="1528113525969" duration="10038000" />
     </task>
     <task id="LOCAL-00001" summary="trying to use bufferedOutputStream to save bytes and then read them.">
       <created>1527867590238</created>
@@ -534,11 +535,25 @@
       <option name="project" value="LOCAL" />
       <updated>1528126709721</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="print entire byte read from Word">
+      <created>1528128072741</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1528128072741</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Testing register 1 in magnetometer">
+      <created>1528128337800</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1528128337800</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31815000" />
+    <option name="totallyTimeSpent" value="32785000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -608,8 +623,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added function to print bmp180 raw pressure value" />
-    <MESSAGE value="fixed signal for pressure value and added printout to select read raw pressure form bmp180" />
     <MESSAGE value="added function to combine pressure and temp raw values from bmp180" />
     <MESSAGE value="Now creates new file if it doesn't exist from before" />
     <MESSAGE value="Added choice to save temp and pressure raw values to file" />
@@ -633,7 +646,9 @@
     <MESSAGE value="Edited pass trough bytes" />
     <MESSAGE value="Edited int cfg byte" />
     <MESSAGE value="mpu9250 now uses mpu9250 slave0 to read data" />
-    <option name="LAST_COMMIT_MESSAGE" value="mpu9250 now uses mpu9250 slave0 to read data" />
+    <MESSAGE value="print entire byte read from Word" />
+    <MESSAGE value="Testing register 1 in magnetometer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Testing register 1 in magnetometer" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/App.java">
@@ -907,8 +922,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250mag.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+        <state relative-caret-position="307">
+          <caret line="27" column="37" lean-forward="true" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
         </state>
       </provider>
     </entry>

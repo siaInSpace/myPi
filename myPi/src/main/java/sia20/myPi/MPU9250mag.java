@@ -28,7 +28,7 @@ public class MPU9250mag {
         master.write(38, (byte)0x01);
         master.write(39, (byte)0b10000001);
         try {
-            Thread.sleep(5);
+            Thread.sleep(20);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
