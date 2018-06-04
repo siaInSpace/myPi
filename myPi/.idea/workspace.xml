@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="153d906e-c9ab-4568-b45c-f626084fb06a" name="Default" comment="Added parents Sensor class and seprate classes for pressure and temp for bmp180 sensor">
+    <list default="true" id="153d906e-c9ab-4568-b45c-f626084fb06a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250mag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250mag.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sia20/myPi/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sia20/myPi/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sia20/myPi/BMP180my$Oss.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sia20/myPi/BMP180my.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sia20/myPi/FileSaver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sia20/myPi/FileSaver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sia20/myPi/MPU9250my.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sia20/myPi/Word.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sia20/myPi/Word.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sia20/myPi/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sia20/myPi/App.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="target/" />
@@ -28,33 +22,32 @@
       <file leaf-file-name="App.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
-              <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="155">
+              <caret line="59" column="39" selection-start-line="59" selection-start-column="39" selection-end-line="59" selection-end-column="39" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MPU9250.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MPU9250.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+            <state relative-caret-position="415">
+              <caret line="38" column="19" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
               <folding>
                 <element signature="e#935#936#0" expanded="true" />
                 <element signature="e#963#964#0" expanded="true" />
+                <element signature="e#981#982#0" expanded="true" />
+                <element signature="e#1007#1008#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MPU9250mag.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MPU9250mag.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250mag.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="470">
-              <caret line="37" column="34" selection-start-line="37" selection-start-column="34" selection-end-line="37" selection-end-column="34" />
+            <state relative-caret-position="272">
+              <caret line="51" column="8" selection-start-line="51" selection-start-column="8" selection-end-line="51" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -116,8 +109,9 @@
         <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/BMP180.java" />
         <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/FileSaver.java" />
         <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250.java" />
-        <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/App.java" />
+        <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/App.kt" />
         <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250mag.java" />
+        <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/App.java" />
       </list>
     </option>
   </component>
@@ -261,7 +255,7 @@
       <workItem from="1527885694314" duration="1391000" />
       <workItem from="1527951388345" duration="5861000" />
       <workItem from="1527960478038" duration="7009000" />
-      <workItem from="1528113525969" duration="10829000" />
+      <workItem from="1528113525969" duration="12168000" />
     </task>
     <task id="LOCAL-00001" summary="trying to use bufferedOutputStream to save bytes and then read them.">
       <created>1527867590238</created>
@@ -536,11 +530,25 @@
       <option name="project" value="LOCAL" />
       <updated>1528129654895</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Added function to test the mode setting of mpu9250 magnetometer">
+      <created>1528130235296</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1528130235296</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Fixed re initalization">
+      <created>1528130391725</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1528130391725</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33576000" />
+    <option name="totallyTimeSpent" value="34915000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -610,8 +618,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added choice to save temp and pressure raw values to file" />
-    <MESSAGE value="Now also create directories to file if it doesn't exist" />
     <MESSAGE value="fixed pathName for bmp calibration values" />
     <MESSAGE value="Added functions to read raw data from a file" />
     <MESSAGE value="Fixed path of files" />
@@ -635,7 +641,9 @@
     <MESSAGE value="Testing register 1 in magnetometer" />
     <MESSAGE value="Added longer delay" />
     <MESSAGE value="Added function to print raw magnetometer value" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added function to print raw magnetometer value" />
+    <MESSAGE value="Added function to test the mode setting of mpu9250 magnetometer" />
+    <MESSAGE value="Fixed re initalization" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed re initalization" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/App.java">
@@ -859,16 +867,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/Word.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-90">
@@ -896,21 +894,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250mag.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
-          <folding>
-            <element signature="e#935#936#0" expanded="true" />
-            <element signature="e#963#964#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="272">
+          <caret line="51" column="8" selection-start-line="51" selection-start-column="8" selection-end-line="51" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250mag.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="37" column="34" selection-start-line="37" selection-start-column="34" selection-end-line="37" selection-end-column="34" />
+        <state relative-caret-position="155">
+          <caret line="59" column="39" selection-start-line="59" selection-start-column="39" selection-end-line="59" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="415">
+          <caret line="38" column="19" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
+          <folding>
+            <element signature="e#935#936#0" expanded="true" />
+            <element signature="e#963#964#0" expanded="true" />
+            <element signature="e#981#982#0" expanded="true" />
+            <element signature="e#1007#1008#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

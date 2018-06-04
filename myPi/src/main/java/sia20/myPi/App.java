@@ -57,7 +57,7 @@ public class App {
                 readSavedBmpValuesRaw();
                 break;
             case"3":
-                mpu.setByPassMode(true);
+                mpu.setByPassMode(false);
                 break;
             case "4":
                 mpu.whoAmI();
