@@ -25,7 +25,7 @@ public class MPU9250mag {
 
     public void whoAmI(){
         master.write(37, (byte)0b10001100);
-        master.write(38, (byte)0x00);
+        master.write(38, (byte)0x01);
         master.write(39, (byte)0b10000001);
         try {
             Thread.sleep(5);
