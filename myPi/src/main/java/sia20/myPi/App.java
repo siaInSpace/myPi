@@ -19,6 +19,7 @@ public class App {
         System.out.println("1: Save raw temp and raw pressure from bmp180");
         System.out.println("2: Read raw data files");
         System.out.println("3: mpu enable bypass mode");
+        System.out.println("4: mpu whoAmI");
         System.out.println("q: quit");
     }
 
@@ -58,6 +59,9 @@ public class App {
             case"3":
                 mpu.setByPassMode(true);
                 break;
+            case "4":
+                mpu.whoAmI();
+                mpu.magWhoAmI();
             case "Q":
                 in.close();
                 System.out.println("Quitting!");
