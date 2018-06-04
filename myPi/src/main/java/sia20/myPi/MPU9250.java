@@ -21,7 +21,7 @@ class MPU9250 extends Sensor{
         byte masteEnabelSignal;
         byte bypassSignal;
         if (mode){
-            bypassSignal = 0b10;
+            bypassSignal = 0x02;
             masteEnabelSignal = 0b00000000;
         }else{
             bypassSignal = 0x00;
