@@ -63,6 +63,9 @@ public class App {
                 mpu.whoAmI();
                 mpu.whoAmImag();
                 break;
+            case "5":
+                mpu.readMag();
+                break;
             case "Q":
                 in.close();
                 System.out.println("Quitting!");

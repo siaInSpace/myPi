@@ -35,6 +35,13 @@ class MPU9250 extends Sensor{
         mag.whoAmI();
     }
 
+    void readMag(){
+        byte[] data = mag.read(03);
+        for (byte b : data) {
+            System.out.println(b);
+        }
+    }
+
     void whoAmI() {
         int res = 0;
         res = read(whoAmIAddr);
