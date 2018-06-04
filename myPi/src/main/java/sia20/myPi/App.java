@@ -66,6 +66,9 @@ public class App {
             case "5":
                 mpu.readMag();
                 break;
+            case "6":
+                mpu.mode();
+                break;
             case "Q":
                 in.close();
                 System.out.println("Quitting!");

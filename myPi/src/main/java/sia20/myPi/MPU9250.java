@@ -35,6 +35,9 @@ class MPU9250 extends Sensor{
         mag.whoAmI();
     }
 
+    void mode(){
+        mag.mode();
+    }
     void readMag(){
         byte[] data = mag.read(03);
         for (byte b : data) {
