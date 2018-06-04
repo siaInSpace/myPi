@@ -6,13 +6,13 @@ import com.pi4j.io.i2c.I2CFactory;
 
 import java.io.IOException;
 
-class MPU9250my {
+class MPU9250 {
     private I2CDevice device;
     private int sensAddr = 0x68;
     private final int whoAmIAddr = 0x75;
     private final int whoAmIValueDefualt = 0x73;// usually 0x71, i don't know why this is 0x73 instead
 
-    MPU9250my() {
+    MPU9250() {
         I2CBus bus = null;
         try {
             bus = I2CFactory.getInstance(I2CBus.BUS_1);

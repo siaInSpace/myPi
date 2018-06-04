@@ -3,15 +3,15 @@ package sia20.myPi;
 import java.io.File;
 import java.util.Scanner;
 
-import sia20.myPi.BMP180my.Oss;
+import sia20.myPi.BMP180pressure.Oss;
 
 public class App {
-    private BMP180my bmp;
-    private MPU9250my mpu;
+    private BMP180 bmp;
+    private MPU9250 mpu;
 
     private App() {
-        bmp = new BMP180my(Oss.STANDARD, "data/CalibrationValues/bmp180calValuesRaw");
-        mpu = new MPU9250my();
+        bmp = new BMP180(Oss.STANDARD, "data/CalibrationValues/bmp180calValuesRaw");
+        mpu = new MPU9250();
     }
 
     private void menu() {
@@ -20,28 +20,6 @@ public class App {
         System.out.println("2: Read raw data files");
         System.out.println("3: mpu enable bypass mode");
         System.out.println("q: quit");
-    }
-
-    private void readSavedRawData() {
-        FileSaver fs = new FileSaver();
-        byte[] data = fs.readBytes("data/CalibrationValues/bmp180calValuesRaw");
-        for (byte word : data) {
-            System.out.println(word);
-        }
-    }
-
-    private void readTempRaw(){
-        byte[] data = bmp.readTempRaw();
-        for (byte b : data) {
-            System.out.println(b);
-        }
-    }
-
-    private void readPresRaw(){
-        byte[] data = bmp.readPressureRaw();
-        for (byte b : data) {
-            System.out.println(b);
-        }
     }
 
     private void saveBmpValuesRaw(){

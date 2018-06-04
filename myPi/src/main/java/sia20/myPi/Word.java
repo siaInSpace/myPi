@@ -5,9 +5,9 @@ import java.io.IOException;
 import java.util.BitSet;
 
 public class Word {
-    private I2CDevice device;
+    private Sensor device;
 
-    public Word(I2CDevice dev) {
+    public Word(Sensor dev) {
         device = dev;
     }
 
@@ -23,13 +23,8 @@ public class Word {
 
     public byte[] readBytes(int regAddr, int nrAddr) {
         byte[] bytes = new byte[nrAddr];
-        try {
-            for (int i = 0; i < nrAddr; i++) {
-                bytes[i] = (byte) (device.read(regAddr + i) & 0xff);
-            }
-        } catch (IOException e) {
-            System.out.println("Cannot read bytes in regestry!");
-            System.out.println(e.getLocalizedMessage());
+        for (int i = 0; i < nrAddr; i++) {
+            bytes[i] = (byte) (device.read(regAddr + i) & 0xff);
         }
         return bytes;
     }
