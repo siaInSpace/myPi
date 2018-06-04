@@ -32,7 +32,9 @@ public class MPU9250mag {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        byte data = word.readBytes(73, 1)[0];
-        System.out.println("I should be 72, I am: " + data);
+        byte[] data = word.readBytes(73, 1);
+        for (byte d : data) {
+            System.out.println("I should be 72, I am: " + d);
+        }
     }
 }
