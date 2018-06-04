@@ -61,7 +61,7 @@ public class App {
                 break;
             case "4":
                 mpu.whoAmI();
-                mpu.magWhoAmI();
+                mpu.whoAmImag();
                 break;
             case "Q":
                 in.close();

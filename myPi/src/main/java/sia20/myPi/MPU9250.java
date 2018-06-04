@@ -13,7 +13,7 @@ class MPU9250 extends Sensor{
 
     MPU9250() {
         super(0x68);
-        mag = new MPU9250mag();
+        mag = new MPU9250mag(this);
     }
     public void setByPassMode(boolean mode){
         int bypassAddress = 0x37;
@@ -31,12 +31,9 @@ class MPU9250 extends Sensor{
         write(masterEnableAddress, masteEnabelSignal);
     }
 
-    public void magWhoAmI(){
-        setByPassMode(true);
+    void whoAmImag(){
         mag.whoAmI();
-        setByPassMode(false);
     }
-
 
     void whoAmI() {
         int res = 0;
