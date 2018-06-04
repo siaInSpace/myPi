@@ -14,7 +14,7 @@ public class MPU9250mag {
         master.write(38, (byte)regAddr);
         master.write(39, (byte)0b10010110);
         try {
-            Thread.sleep(15);
+            Thread.sleep(1500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -27,7 +27,7 @@ public class MPU9250mag {
         master.write(38, (byte)0x0A);
         master.write(39, (byte)0b10000001);
         try {
-            Thread.sleep(15);
+            Thread.sleep(1500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -37,7 +37,7 @@ public class MPU9250mag {
         master.write(38, (byte)0b00011111);
         master.write(39, (byte)0b00000000);
         try {
-            Thread.sleep(15);
+            Thread.sleep(1500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -45,7 +45,7 @@ public class MPU9250mag {
         master.write(38, (byte)0x0A);
         master.write(39, (byte)0b10000001);
         try {
-            Thread.sleep(15);
+            Thread.sleep(1500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -58,7 +58,7 @@ public class MPU9250mag {
         master.write(38, (byte)0x01);
         master.write(39, (byte)0b10000001);
         try {
-            Thread.sleep(20);
+            Thread.sleep(1500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
