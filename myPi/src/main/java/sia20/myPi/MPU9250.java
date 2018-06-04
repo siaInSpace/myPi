@@ -21,11 +21,11 @@ class MPU9250 extends Sensor{
         byte masteEnabelSignal;
         byte bypassSignal;
         if (mode){
-            bypassSignal = 0x02;
-            masteEnabelSignal = 0b01000000;
+            bypassSignal = 0b10;
+            masteEnabelSignal = 0b00000000;
         }else{
             bypassSignal = 0x00;
-            masteEnabelSignal = 0b01100000;
+            masteEnabelSignal = 0b00100000;
         }
         write(bypassAddress, bypassSignal);
         write(masterEnableAddress, masteEnabelSignal);
