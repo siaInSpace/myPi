@@ -20,6 +20,7 @@ public class App {
         System.out.println("2: Read raw data files");
         System.out.println("3: mpuMag whoAmI");
         System.out.println("4: disable master test");
+        System.out.println("5: read Acc");
         System.out.println("q: quit");
     }
 
@@ -61,6 +62,10 @@ public class App {
                 break;
             case "4":
                 mpu.magDisableMaster();
+                break;
+            case "5":
+                mpu.readAcc();
+                break;
             case "Q":
                 in.close();
                 System.out.println("Quitting!");

@@ -35,6 +35,13 @@ class MPU9250 extends Sensor{
         mag.disableMasterTest();
     }
 
+    void readAcc(){
+        byte[] data = word.readBytes(0x3b, 6);
+        for (byte d: data) {
+            System.out.println(d);
+        }
+    }
+
 
     void whoAmI() {
         int res = 0;
