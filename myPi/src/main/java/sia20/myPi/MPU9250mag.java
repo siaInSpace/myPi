@@ -25,6 +25,15 @@ public class MPU9250mag {
         }
     }
 
+    void halvorCommandStuff(){
+        master.write(0x6A, (byte)0x01);
+        master.write(0x37,(byte)0x32);
+        master.write(0x38, (byte)0x01);
+
+        Sensor s = new Sensor(0x0C);
+        System.out.println(s.read(0x00));
+    }
+
     void disableMasterTest(){
         int int_config = 0x37;
         int i2c_mst_ctrl = 0x24;

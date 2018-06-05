@@ -70,6 +70,10 @@ public class App {
                 break;
             case "6":
                 mag.newDeviceTest();
+                break;
+            case "7":
+                mag.halvorCommandStuff();
+                break;
             case "Q":
                 in.close();
                 System.out.println("Quitting!");
