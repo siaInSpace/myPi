@@ -18,9 +18,7 @@ public class App {
         System.out.println("What would you like to do?");
         System.out.println("1: Save raw temp and raw pressure from bmp180");
         System.out.println("2: Read raw data files");
-        System.out.println("3: mpu enable bypass mode");
-        System.out.println("4: mpu whoAmI");
-        System.out.println("5: read magnetometer");
+        System.out.println("3: mpuMag whoAmI");
         System.out.println("q: quit");
     }
 
@@ -57,18 +55,8 @@ public class App {
             case "2":
                 readSavedBmpValuesRaw();
                 break;
-            case"3":
-                mpu.setByPassMode(false);
-                break;
-            case "4":
-                mpu.whoAmI();
-                mpu.whoAmImag();
-                break;
-            case "5":
-                mpu.readMag();
-                break;
-            case "6":
-                mpu.mode();
+            case "3":
+                mpu.magWhoAmI();
                 break;
             case "Q":
                 in.close();

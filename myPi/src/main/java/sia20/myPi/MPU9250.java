@@ -15,35 +15,23 @@ class MPU9250 extends Sensor{
         super(0x68);
         mag = new MPU9250mag(this);
     }
-    public void setByPassMode(boolean mode){
-        int bypassAddress = 0x37;
-        int masterEnableAddress = 0x6A;
-        byte masteEnabelSignal;
-        byte bypassSignal;
-        if (mode){
-            bypassSignal = 0x02;
-            masteEnabelSignal = 0b00000000;
-        }else{
-            bypassSignal = 0x00;
-            masteEnabelSignal = 0b00100000;
+
+    void magWhoAmI(){
+        System.out.println("I should be: 72, I am: ");
+        mag.enableMaster();
+        mag.configureSlave(true, 0x00, 1);
+        try {
+            Thread.sleep(150);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-        write(bypassAddress, bypassSignal);
-        write(masterEnableAddress, masteEnabelSignal);
-    }
-
-    void whoAmImag(){
-        mag.whoAmI();
-    }
-
-    void mode(){
-        mag.mode();
-    }
-    void readMag(){
-        byte[] data = mag.read(03);
-        for (byte b : data) {
-            System.out.println(b);
+        byte[] answer = mag.readMaster(1);
+        for (byte data : answer) {
+            System.out.println(data);
         }
     }
+
+
 
     void whoAmI() {
         int res = 0;
