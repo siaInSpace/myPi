@@ -11,8 +11,8 @@ public class MPU9250mag {
 
     void enableMaster(){
         int int_config = 55;
-        int i2c_mst_ctrl = 36;
-        int user_ctrl = 106;
+        int i2c_mst_ctrl = 0x24;
+        int user_ctrl = 0x6A;
 
         master.write(int_config, (byte)0x00); //Disables bypass mode
         master.write(i2c_mst_ctrl, (byte)0x5D); //configures the i2c (clock speed etc.)
@@ -27,14 +27,14 @@ public class MPU9250mag {
 
     void disableMasterTest(){
         int int_config = 0x37;
-        int i2c_mst_ctrl = 36;
-        int user_ctrl = 106;
+        int i2c_mst_ctrl = 0x24;
+        int user_ctrl = 0x6A;
 
         master.write(int_config, (byte)0x02); //Enable bypass mode
         //master.write(i2c_mst_ctrl, (byte)0x5D); //configures the i2c (clock speed etc.)
         master.write(user_ctrl, (byte)0x00); //Enables i2c master
         master.write(0x38, (byte)0x00); //disable int?
-        byte data[] = {master.read(0x24), master.read(0x36), master.read(0x37), master.read(0x38)};
+        byte data[] = {master.read(i2c_mst_ctrl), master.read(0x36), master.read(int_config), master.read(0x38)};
         for (int i = 0; i < data.length; i++) {
             System.out.println(data[i]);
         }
@@ -87,6 +87,11 @@ public class MPU9250mag {
         return data;
     }
 
+    void newDeviceTest(){
+        disableMasterTest();
+        Sensor s = new Sensor(0x0C);
+        System.out.println(s.read(0x00));
+    }
 
     void whoAmI(){
         master.write(37, (byte)0b10001100);
@@ -109,5 +114,11 @@ public class MPU9250mag {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+
+    void selfTest(){
+
+        master.write(0x0C, (byte)0b01000000);
     }
 }

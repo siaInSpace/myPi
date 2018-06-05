@@ -8,6 +8,7 @@ import sia20.myPi.BMP180pressure.Oss;
 public class App {
     private BMP180 bmp;
     private MPU9250 mpu;
+    private MPU9250mag mag
 
     private App() {
         bmp = new BMP180(Oss.STANDARD, "data/CalibrationValues/bmp180calValuesRaw");
@@ -44,6 +45,10 @@ public class App {
         }
     }
 
+    private void newMag(){
+        mag = new MPU9250mag(mpu);
+    }
+
     private void run() {
         Scanner in = new Scanner(System.in);
         String choice;
@@ -66,6 +71,8 @@ public class App {
             case "5":
                 mpu.readAcc();
                 break;
+            case "6":
+                mag.newDeviceTest();
             case "Q":
                 in.close();
                 System.out.println("Quitting!");
