@@ -31,6 +31,9 @@ class MPU9250 extends Sensor{
         }
     }
 
+    void magDisableMaster(){
+        mag.disableMasterTest();
+    }
 
 
     void whoAmI() {

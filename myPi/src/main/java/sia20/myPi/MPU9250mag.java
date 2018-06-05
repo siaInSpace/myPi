@@ -19,6 +19,18 @@ public class MPU9250mag {
         master.write(user_ctrl, (byte)0x20); //Enables i2c master
     }
 
+    void disableMasterTest(){
+        int int_config = 0x37;
+        int i2c_mst_ctrl = 36;
+        int user_ctrl = 106;
+
+        master.write(int_config, (byte)0x02); //Disables bypass mode
+        //master.write(i2c_mst_ctrl, (byte)0x5D); //configures the i2c (clock speed etc.)
+        //master.write(user_ctrl, (byte)0x20); //Enables i2c master
+        byte data = master.read(0x36);
+        System.out.println(data);
+    }
+
     void configureSlave(boolean read, int regAddress, int length){
         int slv0_addr = 37;
         int slv0_reg = 38;
