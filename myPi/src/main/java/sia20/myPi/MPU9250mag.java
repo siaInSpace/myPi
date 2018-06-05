@@ -24,11 +24,11 @@ public class MPU9250mag {
         int i2c_mst_ctrl = 36;
         int user_ctrl = 106;
 
-        master.write(int_config, (byte)0x02); //Disables bypass mode
+        master.write(int_config, (byte)0x02); //Enable bypass mode
         //master.write(i2c_mst_ctrl, (byte)0x5D); //configures the i2c (clock speed etc.)
         //master.write(user_ctrl, (byte)0x20); //Enables i2c master
         master.write(0x38, (byte)0x00);
-        byte data[] = {master.read(0x36), master.read(0x37), master.read(0x38)};
+        byte data[] = {master.read(0x24), master.read(0x36), master.read(0x37), master.read(0x38)};
         for (int i = 0; i < data.length; i++) {
             System.out.println(data[i]);
         }
