@@ -19,13 +19,13 @@ class MPU9250 extends Sensor{
     void magWhoAmI(){
         System.out.println("I should be: 72, I am: ");
         mag.enableMaster();
-        mag.configureSlave(true, 0x00, 1);
+        mag.configureSlave(true, 0x00, 18);
         try {
             Thread.sleep(150);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        byte[] answer = mag.readMaster(1);
+        byte[] answer = mag.readMaster(18);
         for (byte data : answer) {
             System.out.println(data);
         }
