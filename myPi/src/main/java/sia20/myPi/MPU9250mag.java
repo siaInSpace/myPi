@@ -35,9 +35,13 @@ public class MPU9250mag {
         config = (config<<4) & (length & 0xF); //configures to read the specified number of bytes
 
         master.write(slv0_ctrl, (byte)0x00); //disables slave while configuring it
+        delay(5);
         master.write(slv0_addr, (byte)addr); //sets the address for the slave device
+        delay(5);
         master.write(slv0_reg, (byte)regAddress); //sets which register to read from
+        delay(5);
         master.write(slv0_ctrl, (byte)config); //Sets configuration of slave
+        delay(20);
     }
 
     byte[] read(int regAddress){
@@ -65,16 +69,24 @@ public class MPU9250mag {
 
     void whoAmI(){
         master.write(37, (byte)0b10001100);
+        delay(1);
         master.write(38, (byte)0x01);
+        delay(1);
         master.write(39, (byte)0b10000001);
-        try {
-            Thread.sleep(1500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        delay(30);
         byte[] data = word.readBytes(73, 1);
+        delay(30);
         for (byte d : data) {
             System.out.println("I should be 72, I am: " + d);
+        }
+    }
+
+
+    private void delay(int ms){
+        try {
+            Thread.sleep(ms);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 }
