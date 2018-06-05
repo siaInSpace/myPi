@@ -13,6 +13,7 @@ public class App {
     private App() {
         bmp = new BMP180(Oss.STANDARD, "data/CalibrationValues/bmp180calValuesRaw");
         mpu = new MPU9250();
+        mag = new MPU9250mag(mpu);
     }
 
     private void menu() {
@@ -43,10 +44,6 @@ public class App {
             }
             System.out.println();
         }
-    }
-
-    private void newMag(){
-        mag = new MPU9250mag(mpu);
     }
 
     private void run() {

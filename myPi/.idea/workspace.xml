@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="153d906e-c9ab-4568-b45c-f626084fb06a" name="Default" comment="Added function to read">
+    <list default="true" id="153d906e-c9ab-4568-b45c-f626084fb06a" name="Default" comment="Trying to create new device on 0x0c after enabling passtrough">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250mag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250mag.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="target/" />
@@ -17,11 +15,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="App.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="App.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="60" column="29" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="29" />
+            <state relative-caret-position="126">
+              <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+              <folding>
+                <element signature="e#1435#1436#0" expanded="true" />
+                <element signature="e#1478#1479#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -29,8 +31,8 @@
       <file leaf-file-name="MPU9250.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="27" column="40" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="40" />
+            <state relative-caret-position="342">
+              <caret line="29" column="37" lean-forward="true" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
               <folding>
                 <element signature="e#875#876#0" expanded="true" />
                 <element signature="e#914#915#0" expanded="true" />
@@ -39,11 +41,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MPU9250mag.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MPU9250mag.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250mag.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="19" column="54" selection-start-line="19" selection-start-column="54" selection-end-line="19" selection-end-column="54" />
+            <state relative-caret-position="425">
+              <caret line="92" column="40" selection-start-line="92" selection-start-column="40" selection-end-line="92" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -100,9 +102,9 @@
         <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/BMP180.java" />
         <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/FileSaver.java" />
         <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/App.kt" />
-        <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/App.java" />
         <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250.java" />
         <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250mag.java" />
+        <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/App.java" />
       </list>
     </option>
   </component>
@@ -257,21 +259,7 @@
       <workItem from="1527960478038" duration="7009000" />
       <workItem from="1528113525969" duration="13140000" />
       <workItem from="1528204066340" duration="4386000" />
-      <workItem from="1528217529556" duration="2662000" />
-    </task>
-    <task id="LOCAL-00002" summary="removed modifiers and trying to fix readBytes">
-      <created>1527868375955</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1527868375955</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Moved read to own choice in menu">
-      <created>1527868669315</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1527868669315</updated>
+      <workItem from="1528217529556" duration="4150000" />
     </task>
     <task id="LOCAL-00004" summary="Project rebuild">
       <created>1527868840061</created>
@@ -602,11 +590,25 @@
       <option name="project" value="LOCAL" />
       <updated>1528219273320</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="new test">
+      <created>1528220277050</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1528220277050</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Trying to create new device on 0x0c after enabling passtrough">
+      <created>1528221982144</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1528221982144</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42935000" />
+    <option name="totallyTimeSpent" value="44423000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -620,12 +622,12 @@
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50066936" side_tool="true" weight="0.48471615" />
       <window_info anchor="right" id="Maven Projects" order="7" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49933067" visible="true" weight="0.07569141" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49933067" weight="0.07569141" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32896653" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.10240964" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.10240964" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -642,6 +644,37 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.08151383" />
     </layout>
+    <layout-to-restore>
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49933067" visible="true" weight="0.07569141" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Problems" order="8" weight="0.16739447" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.08151383" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.10240964" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32896653" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50066936" side_tool="true" weight="0.48471615" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="Capture Tool" order="6" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.51819503" />
+      <window_info anchor="right" id="Maven Projects" order="7" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -676,8 +709,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed pathing error" />
-    <MESSAGE value="Removed not useful code" />
     <MESSAGE value="Cleaned up class to prepare for proper implementations" />
     <MESSAGE value="Added function to enable bypass mode on mpu" />
     <MESSAGE value="Added break;" />
@@ -701,13 +732,19 @@
     <MESSAGE value="Added delays" />
     <MESSAGE value="Added function to read acc and test enabling passtrough" />
     <MESSAGE value="Added function to read" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added function to read" />
+    <MESSAGE value="new test" />
+    <MESSAGE value="Trying to create new device on 0x0c after enabling passtrough" />
+    <option name="LAST_COMMIT_MESSAGE" value="Trying to create new device on 0x0c after enabling passtrough" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/App.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="20" column="29" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
+          <folding>
+            <element signature="e#1435#1436#0" expanded="true" />
+            <element signature="e#1478#1479#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1017,24 +1054,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="60" column="29" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="27" column="40" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="40" />
-          <folding>
-            <element signature="e#875#876#0" expanded="true" />
-            <element signature="e#914#915#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/Sensor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -1049,8 +1068,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250mag.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="19" column="54" selection-start-line="19" selection-start-column="54" selection-end-line="19" selection-end-column="54" />
+        <state relative-caret-position="425">
+          <caret line="92" column="40" selection-start-line="92" selection-start-column="40" selection-end-line="92" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="29" column="37" lean-forward="true" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
+          <folding>
+            <element signature="e#875#876#0" expanded="true" />
+            <element signature="e#914#915#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+          <folding>
+            <element signature="e#1435#1436#0" expanded="true" />
+            <element signature="e#1478#1479#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
