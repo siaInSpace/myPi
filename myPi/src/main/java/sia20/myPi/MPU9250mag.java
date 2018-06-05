@@ -17,6 +17,12 @@ public class MPU9250mag {
         master.write(int_config, (byte)0x00); //Disables bypass mode
         master.write(i2c_mst_ctrl, (byte)0x5D); //configures the i2c (clock speed etc.)
         master.write(user_ctrl, (byte)0x20); //Enables i2c master
+        master.write(0x38, (byte)0x00); //disable int?
+
+        byte[] data = {master.read(int_config), master.read(i2c_mst_ctrl), master.read(user_ctrl)};
+        for (byte d: data){
+            System.out.println(d);
+        }
     }
 
     void disableMasterTest(){
@@ -26,8 +32,8 @@ public class MPU9250mag {
 
         master.write(int_config, (byte)0x02); //Enable bypass mode
         //master.write(i2c_mst_ctrl, (byte)0x5D); //configures the i2c (clock speed etc.)
-        //master.write(user_ctrl, (byte)0x20); //Enables i2c master
-        master.write(0x38, (byte)0x00);
+        master.write(user_ctrl, (byte)0x00); //Enables i2c master
+        master.write(0x38, (byte)0x00); //disable int?
         byte data[] = {master.read(0x24), master.read(0x36), master.read(0x37), master.read(0x38)};
         for (int i = 0; i < data.length; i++) {
             System.out.println(data[i]);
@@ -46,8 +52,8 @@ public class MPU9250mag {
             addr = 0b00001100; //MSb is 0 thus transfer is a write
         }
 
-        int config = 0b1001; //config = enabled, no byte swap, only read and write, odd grouping.
-        config = (config<<4) & (length & 0xF); //configures to read the specified number of bytes
+        int config = 0b10010001; //config = enabled, no byte swap, only read and write, odd grouping.
+        //config = (config<<4) & (length & 0xF); //configures to read the specified number of bytes
 
         master.write(slv0_ctrl, (byte)0x00); //disables slave while configuring it
         delay(5);
