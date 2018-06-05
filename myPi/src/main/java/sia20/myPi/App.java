@@ -8,7 +8,7 @@ import sia20.myPi.BMP180pressure.Oss;
 public class App {
     private BMP180 bmp;
     private MPU9250 mpu;
-    private MPU9250mag mag
+    private MPU9250mag mag;
 
     private App() {
         bmp = new BMP180(Oss.STANDARD, "data/CalibrationValues/bmp180calValuesRaw");
