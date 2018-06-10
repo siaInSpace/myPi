@@ -7,9 +7,10 @@ public class MPU9250mag {
     MPU9250mag(MPU9250 mpu9250){
         master = mpu9250;
         word = new Word(master);
+        enableMaster();
     }
 
-    void enableMaster(){
+    private void enableMaster(){
         int int_config = 0X37;
         int i2c_mst_ctrl = 0x24;
         int user_ctrl = 0x6A;
@@ -34,21 +35,6 @@ public class MPU9250mag {
         System.out.println(s.read(0x00));
     }
 
-    void disableMasterTest(){
-        int int_config = 0x37;
-        int i2c_mst_ctrl = 0x24;
-        int user_ctrl = 0x6A;
-
-        master.write(int_config, (byte)0x02); //Enable bypass mode
-        //master.write(i2c_mst_ctrl, (byte)0x5D); //configures the i2c (clock speed etc.)
-        master.write(user_ctrl, (byte)0x00); //Enables i2c master
-        master.write(0x38, (byte)0x00); //disable int?
-        byte data[] = {master.read(i2c_mst_ctrl), master.read(0x36), master.read(int_config), master.read(0x38)};
-        for (int i = 0; i < data.length; i++) {
-            System.out.println(data[i]);
-        }
-    }
-
     void configureSlave(boolean read, int regAddress, int length){
         int slv0_addr = 37;
         int slv0_reg = 38;
@@ -65,13 +51,13 @@ public class MPU9250mag {
         //config = (config<<4) & (length & 0xF); //configures to read the specified number of bytes
 
         master.write(slv0_ctrl, (byte)0x00); //disables slave while configuring it
-        delay(5);
+        //delay(5);
         master.write(slv0_addr, (byte)addr); //sets the address for the slave device
-        delay(5);
+        //delay(5);
         master.write(slv0_reg, (byte)regAddress); //sets which register to read from
-        delay(5);
+        //delay(5);
         master.write(slv0_ctrl, (byte)config); //Sets configuration of slave
-        delay(20);
+        //delay(20);
     }
 
     byte[] read(int regAddress){
@@ -89,18 +75,7 @@ public class MPU9250mag {
 
     byte[] readMaster(int length){
         int extSensData00Address = 0x49;
-        /*byte[] data = new byte[length];
-        for (int i = 0; i < length; i++) {
-            data[i] = master.read(ext_sens_data_00_address+i);
-        }*/
         return word.readBytes(extSensData00Address, length);
-        //return data;
-    }
-
-    void newDeviceTest(){
-        disableMasterTest();
-        Sensor s = new Sensor(0x0C);
-        System.out.println(s.read(0x00));
     }
 
     void whoAmI(){
@@ -125,11 +100,5 @@ public class MPU9250mag {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    }
-
-
-    void selfTest(){
-
-        master.write(0x0C, (byte)0b01000000);
     }
 }
