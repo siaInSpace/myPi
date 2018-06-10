@@ -7,46 +7,38 @@ import com.pi4j.io.i2c.I2CFactory;
 import java.io.IOException;
 
 class MPU9250 extends Sensor{
-    private final int whoAmIAddr = 0x75;
-    private final int whoAmIValueDefualt = 0x73;// usually 0x71, i don't know why this is 0x73 instead
-    private MPU9250mag mag;
 
     MPU9250() {
         super(0x68);
-        mag = new MPU9250mag(this);
     }
 
-    void magWhoAmI(){
-        System.out.println("I should be: 72, I am: ");
-        mag.enableMaster();
-        mag.configureSlave(true, 0x00, 1);
-        try {
-            Thread.sleep(150);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        byte[] answer = mag.readMaster(1);
-        for (byte data : answer) {
-            System.out.println(data);
-        }
+    byte[][] readRawValues(){
+        byte[][] data = new byte[3][];
+        data[0] = readAccRaw();
+        data[1] = readTempRaw();
+        data[2] = readGyrRaw();
+        return data;
     }
 
-    void magDisableMaster(){
-        mag.disableMasterTest();
+    byte[] readAccRaw(){
+        return word.readBytes(0x3b, 6);
     }
 
-    void readAcc(){
-        byte[] data = word.readBytes(0x3b, 6);
-        for (byte d: data) {
-            System.out.println(d);
-        }
+    byte[] readTempRaw(){
+        return word.readBytes(0x41, 2);
     }
 
+    byte[] readGyrRaw(){
+        return word.readBytes(0x43, 6);
+
+    }
 
     void whoAmI() {
-        int res = 0;
-        res = read(whoAmIAddr);
-        if (res == whoAmIValueDefualt) {
+        int res;
+        int whoAmIValueDefault = 0x73;// usually 0x71, i don't know why this is 0x73 instead
+        int whoAmIAddress = 0x75;
+        res = read(whoAmIAddress);
+        if (res == whoAmIValueDefault) {
             System.out.println("I'm mpu9250");
         } else {
             System.out.println("Who am I? i don't know");

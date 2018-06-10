@@ -103,14 +103,9 @@ public class MPU9250mag {
     }
 
     void whoAmI(){
-        master.write(37, (byte)0b10001100);
-        delay(1);
-        master.write(38, (byte)0x01);
-        delay(1);
-        master.write(39, (byte)0b10000001);
-        delay(30);
+        enableMaster();
+        configureSlave(true, 0x00, 1);
         byte[] data = word.readBytes(73, 1);
-        delay(30);
         for (byte d : data) {
             System.out.println("I should be 72, I am: " + d);
         }
