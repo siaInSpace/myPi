@@ -1,34 +1,31 @@
 package sia20.myPi;
 
-import com.pi4j.io.i2c.I2CBus;
-import com.pi4j.io.i2c.I2CDevice;
-import com.pi4j.io.i2c.I2CFactory;
-
-import java.io.IOException;
-
 class MPU9250 extends Sensor{
 
+    private MPU9250mag mag;
     MPU9250() {
         super(0x68);
+        mag = new MPU9250mag(this);
     }
 
     byte[][] readRawValues(){
-        byte[][] data = new byte[3][];
+        byte[][] data = new byte[4][];
         data[0] = readAccRaw();
         data[1] = readTempRaw();
         data[2] = readGyrRaw();
+        data[3] = mag.readDataRaw();
         return data;
     }
 
-    byte[] readAccRaw(){
+    private byte[] readAccRaw(){
         return word.readBytes(0x3b, 6);
     }
 
-    byte[] readTempRaw(){
+    private byte[] readTempRaw(){
         return word.readBytes(0x41, 2);
     }
 
-    byte[] readGyrRaw(){
+    private byte[] readGyrRaw(){
         return word.readBytes(0x43, 6);
 
     }

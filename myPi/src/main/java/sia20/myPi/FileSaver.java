@@ -9,7 +9,7 @@ import java.util.BitSet;
  * @author Sindre Aalhus
  * @version 0.5
  */
-public class FileSaver implements Runnable {
+class FileSaver implements Runnable {
     private String path;
     private byte[][] saveData;
 
@@ -73,20 +73,4 @@ public class FileSaver implements Runnable {
         t.start();
     }
 
-    public String bytesToBinaryString(byte[] bytes) {
-        byte[] data = reverseArray(bytes);
-        BitSet b = BitSet.valueOf(data);
-        String res = "";
-        for (int i = b.length(); i < 16; i++) {
-            res += "0";
-        }
-        for (int i = b.length() - 1; i >= 0; i--) {
-            if (b.get(i)) {
-                res += "1";
-            } else {
-                res += "0";
-            }
-        }
-        return res;
-    }
 }

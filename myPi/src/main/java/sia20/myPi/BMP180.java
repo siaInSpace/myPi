@@ -41,7 +41,6 @@ class BMP180 extends Sensor {
     }
 
     byte[][] readRawValues() {
-        byte[][] b = {temp.getRaw(), pressure.getRaw()};
-        return b;
+        return new byte[][]{temp.getRaw(), pressure.getRaw()};
     }
 }

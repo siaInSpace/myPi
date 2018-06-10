@@ -1,6 +1,6 @@
 package sia20.myPi;
 
-public class BMP180temp extends Sensor {
+class BMP180temp extends Sensor {
 
     BMP180temp(){
         super(0x77);

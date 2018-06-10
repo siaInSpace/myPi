@@ -1,6 +1,6 @@
 package sia20.myPi;
 
-public class MPU9250mag {
+class MPU9250mag {
 
     private MPU9250 master;
     Word word;
@@ -26,7 +26,7 @@ public class MPU9250mag {
         }
     }
 
-    void halvorCommandStuff(){ //Almost the same as DisableMaster, might be to enabel byPassMode
+    void halvorCommandStuff(){ //Almost the same as DisableMaster, might be to enable byPassMode
         master.write(0x6A, (byte)0x01);
         master.write(0x37,(byte)0x32);
         master.write(0x38, (byte)0x01);
@@ -36,31 +36,24 @@ public class MPU9250mag {
     }
 
     void configureSlave(boolean read, int regAddress, int length){
-        int slv0_addr = 37;
+        int slv0_address = 37;
         int slv0_reg = 38;
         int slv0_ctrl = 39;
-        int addr;
-
+        int address;
         if (read){
-            addr = 0b10001100; //MSb is 1 thus transfer is a read
+            address = 0b10001100; //MSb is 1 thus transfer is a read
         }else {
-            addr = 0b00001100; //MSb is 0 thus transfer is a write
+            address = 0b00001100; //MSb is 0 thus transfer is a write
         }
-
         int config = 0b1001; //0001; //config = enabled, no byte swap, only read and write, odd grouping.
         config = (config<<4) & (length & 0x0F); //configures to read the specified number of bytes
-
         master.write(slv0_ctrl, (byte)0x00); //disables slave while configuring it
-        //delay(5);
-        master.write(slv0_addr, (byte)addr); //sets the address for the slave device
-        //delay(5);
+        master.write(slv0_address, (byte)address); //sets the address for the slave device
         master.write(slv0_reg, (byte)regAddress); //sets which register to read from
-        //delay(5);
         master.write(slv0_ctrl, (byte)config); //Sets configuration of slave
-        //delay(20);
     }
 
-    byte[] read(int regAddress){
+    byte[] readRaw(int regAddress){
         master.write(37, (byte)0b10001100);
         master.write(38, (byte)regAddress);
         master.write(39, (byte)0b10010110);
@@ -69,8 +62,7 @@ public class MPU9250mag {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        byte[] data = word.readBytes(73, 6);
-        return data;
+        return word.readBytes(73, 6);
     }
 
     byte[] readMaster(int length){

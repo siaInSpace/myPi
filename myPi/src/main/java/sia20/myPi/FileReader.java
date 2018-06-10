@@ -4,7 +4,7 @@ package sia20.myPi;
 
 import java.io.*;
 
-public class FileReader {
+class FileReader {
 
     byte[] readBytes(File f){
         File file = new File(f.getPath());
@@ -14,7 +14,7 @@ public class FileReader {
             bis = new BufferedInputStream(new FileInputStream(file));
         }catch (FileNotFoundException e){
             System.out.println("File not found at: " + file.getAbsolutePath());
-            System.out.println(e.getStackTrace());
+            System.out.println(e.getLocalizedMessage());
         }
         try {
             data = new byte[bis.available()];

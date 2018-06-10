@@ -3,8 +3,6 @@ package sia20.myPi;
 import java.io.File;
 import java.util.Scanner;
 
-import sia20.myPi.BMP180pressure.Oss;
-
 public class App {
     private BMP180 bmp;
     private MPU9250 mpu;

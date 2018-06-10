@@ -34,11 +34,11 @@ public class BMP180pressure extends Sensor{
             this.waitTime = time;
         }
 
-        public int getVal() {
+        int getVal() {
             return id;
         }
 
-        public int getTime() {
+        int getTime() {
             return waitTime;
         }
     }
