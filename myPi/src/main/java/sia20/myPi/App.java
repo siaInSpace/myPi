@@ -22,7 +22,7 @@ public class App {
         System.out.println("2: save mpu data");
         System.out.println("3: read saved mpu data");
         System.out.println("4: mpuMag whoAmI");
-        System.out.println("5: Halvor's Commands");
+        System.out.println("5: read extData from mpu");
         System.out.println("q: quit");
     }
 
@@ -83,7 +83,7 @@ public class App {
                 mag.whoAmI();
                 break;
             case "5":
-                mag.halvorCommandStuff();
+                mpu.readExtData(8);
                 break;
             case "Q":
                 in.close();

@@ -8,6 +8,13 @@ class MPU9250 extends Sensor{
         mag = new MPU9250mag(this);
     }
 
+    void readExtData(int length){
+        byte[] data = word.readBytes(0x49, length);
+        for (byte d : data) {
+            System.out.println(data);
+        }
+    }
+
     byte[][] readRawValues(){
         byte[][] data = new byte[4][];
         data[0] = readAccRaw();

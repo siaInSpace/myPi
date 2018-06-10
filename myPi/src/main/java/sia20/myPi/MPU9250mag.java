@@ -47,6 +47,7 @@ class MPU9250mag {
         }
         int config = 0b1001; //0001; //config = enabled, no byte swap, only read and write, odd grouping.
         config = (config<<4) & (length & 0x0F); //configures to read the specified number of bytes
+
         master.write(slv0_ctrl, (byte)0x00); //disables slave while configuring it
         master.write(slv0_address, (byte)address); //sets the address for the slave device
         master.write(slv0_reg, (byte)regAddress); //sets which register to read from
@@ -65,7 +66,7 @@ class MPU9250mag {
         return word.readBytes(73, 6);
     }
 
-    byte[] readMaster(int length){
+    private byte[] readMaster(int length){
         int extSensData00Address = 0x49;
         return word.readBytes(extSensData00Address, length);
     }
