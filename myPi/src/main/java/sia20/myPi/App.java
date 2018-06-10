@@ -47,6 +47,8 @@ public class App {
             }
             System.out.println();
         }
+        //Data is structured as {AccXH, AccXL, AccYH, AccYL, AccZH, AccZL, TempH, TempL, GyrXH, GyrXL,
+        //                              GyrYH, GyrZH, GyrZL, MagXL, MagXH, MagYL, MagYH, MagZL, MagZH}
     }
 
 

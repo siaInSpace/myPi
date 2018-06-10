@@ -15,6 +15,10 @@ class MPU9250 extends Sensor{
         data[2] = readGyrRaw();
         data[3] = mag.readDataRaw();
         return data;
+        //{{AccXH, AccXL, AccYH, AccYL, AccZH, AccZL},
+        // {TempH, TempL},
+        // {GyrXH, GyrXL, GyrYH, GyrZH, GyrZL},
+        // {MagXL, MagXH, MagYL, MagYH, MagZL, MagZH}}
     }
 
     private byte[] readAccRaw(){
