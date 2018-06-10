@@ -35,8 +35,8 @@ public class App {
     }
     */
 
-    /*
-    private void readSavedBmpValuesRaw(){
+
+    private void readSavedDataRaw(){
         FileReader fr = new FileReader();
         File[] files = (new File("data/measurements").listFiles());
         byte[][] data = new byte[files.length][];
@@ -50,13 +50,12 @@ public class App {
             System.out.println();
         }
     }
-    */
+
 
     private void saveMpuData(){
         FileSaver fs = new FileSaver();
         fs.start("data/measurements/" + System.nanoTime(), mpu.readRawValues());
     }
-
     private void run() {
         Scanner in = new Scanner(System.in);
         String choice;
@@ -78,7 +77,7 @@ public class App {
                 saveMpuData();
                 break;
             case "3":
-
+                readSavedDataRaw();
                 break;
             case "4":
                 mag.whoAmI();
