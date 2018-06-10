@@ -94,8 +94,8 @@
       <file leaf-file-name="MPU9250mag.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250mag.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="110" column="36" selection-start-line="110" selection-start-column="36" selection-end-line="110" selection-end-column="36" />
+            <state relative-caret-position="346">
+              <caret line="50" column="44" selection-start-line="50" selection-start-column="44" selection-end-line="50" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -137,6 +137,17 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="myPi" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
   </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
@@ -284,21 +295,7 @@
       <workItem from="1528113525969" duration="13140000" />
       <workItem from="1528204066340" duration="4386000" />
       <workItem from="1528217529556" duration="6417000" />
-      <workItem from="1528627556365" duration="2957000" />
-    </task>
-    <task id="LOCAL-00009" summary="added printout to select to read temp value">
-      <created>1527952824552</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1527952824552</updated>
-    </task>
-    <task id="LOCAL-00010" summary="trying different wait function">
-      <created>1527953248910</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1527953248910</updated>
+      <workItem from="1528627556365" duration="4119000" />
     </task>
     <task id="LOCAL-00011" summary="added function to print bmp180 raw pressure value">
       <created>1527953865004</created>
@@ -629,11 +626,25 @@
       <option name="project" value="LOCAL" />
       <updated>1528629455434</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="Added function to read raw data from magnetometer and fixed whoAmI function to use readMaster function">
+      <created>1528630595139</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1528630595139</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Removed delays when configuring slave">
+      <created>1528630974363</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1528630974363</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49647000" />
+    <option name="totallyTimeSpent" value="50809000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -641,11 +652,11 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50066936" side_tool="true" weight="0.48471615" />
-      <window_info anchor="right" id="Maven Projects" order="7" />
+      <window_info anchor="right" id="Maven Projects" order="8" weight="0.32931727" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49933067" visible="true" weight="0.07569141" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -703,8 +714,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Implemented Sesnor class in mpu9250 and added seprate class for mpu9250 magnetometer sensor" />
-    <MESSAGE value="added who am i promt" />
     <MESSAGE value="Edited pass trough bytes" />
     <MESSAGE value="Edited int cfg byte" />
     <MESSAGE value="mpu9250 now uses mpu9250 slave0 to read data" />
@@ -728,7 +737,9 @@
     <MESSAGE value="added halvors commands" />
     <MESSAGE value="Disconnected bmp180 and configured new function to test mpu9250, added functions to read and save Gyro, Temp and Acceleration" />
     <MESSAGE value="Added function to read saved raw data" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added function to read saved raw data" />
+    <MESSAGE value="Added function to read raw data from magnetometer and fixed whoAmI function to use readMaster function" />
+    <MESSAGE value="Removed delays when configuring slave" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed delays when configuring slave" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250.java">
@@ -1128,8 +1139,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250mag.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="110" column="36" selection-start-line="110" selection-start-column="36" selection-end-line="110" selection-end-column="36" />
+        <state relative-caret-position="346">
+          <caret line="50" column="44" selection-start-line="50" selection-start-column="44" selection-end-line="50" selection-end-column="44" />
         </state>
       </provider>
     </entry>

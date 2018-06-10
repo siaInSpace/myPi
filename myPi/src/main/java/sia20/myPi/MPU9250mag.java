@@ -47,8 +47,8 @@ public class MPU9250mag {
             addr = 0b00001100; //MSb is 0 thus transfer is a write
         }
 
-        int config = 0b10010001; //config = enabled, no byte swap, only read and write, odd grouping.
-        //config = (config<<4) & (length & 0xF); //configures to read the specified number of bytes
+        int config = 0b1001; //0001; //config = enabled, no byte swap, only read and write, odd grouping.
+        config = (config<<4) & (length & 0x0F); //configures to read the specified number of bytes
 
         master.write(slv0_ctrl, (byte)0x00); //disables slave while configuring it
         //delay(5);
