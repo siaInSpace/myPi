@@ -10,7 +10,7 @@ public class MPU9250mag {
     }
 
     void enableMaster(){
-        int int_config = 55;
+        int int_config = 0X37;
         int i2c_mst_ctrl = 0x24;
         int user_ctrl = 0x6A;
 
@@ -25,7 +25,7 @@ public class MPU9250mag {
         }
     }
 
-    void halvorCommandStuff(){
+    void halvorCommandStuff(){ //Almost the same as DisableMaster, might be to enabel byPassMode
         master.write(0x6A, (byte)0x01);
         master.write(0x37,(byte)0x32);
         master.write(0x38, (byte)0x01);
@@ -88,12 +88,13 @@ public class MPU9250mag {
     }
 
     byte[] readMaster(int length){
-        int ext_sens_data_00_address = 73;
-        byte[] data = new byte[length];
+        int extSensData00Address = 0x49;
+        /*byte[] data = new byte[length];
         for (int i = 0; i < length; i++) {
             data[i] = master.read(ext_sens_data_00_address+i);
-        }
-        return data;
+        }*/
+        return word.readBytes(extSensData00Address, length);
+        //return data;
     }
 
     void newDeviceTest(){
@@ -105,10 +106,16 @@ public class MPU9250mag {
     void whoAmI(){
         enableMaster();
         configureSlave(true, 0x00, 1);
-        byte[] data = word.readBytes(73, 1);
+        byte[] data = readMaster(1);
         for (byte d : data) {
             System.out.println("I should be 72, I am: " + d);
         }
+    }
+
+    byte[] readDataRaw(){
+        enableMaster();
+        configureSlave(true, 0x03, 6);
+        return readMaster(6);
     }
 
 

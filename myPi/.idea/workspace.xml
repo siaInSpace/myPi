@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="153d906e-c9ab-4568-b45c-f626084fb06a" name="Default" comment="added halvors commands">
+    <list default="true" id="153d906e-c9ab-4568-b45c-f626084fb06a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sia20/myPi/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sia20/myPi/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250mag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250mag.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -32,11 +30,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="App.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="App.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="26" column="51" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="51" />
+            <state relative-caret-position="432">
+              <caret line="79" column="35" selection-start-line="79" selection-start-column="35" selection-end-line="79" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -53,7 +51,7 @@
       <file leaf-file-name="MPU9250.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
+            <state relative-caret-position="-79">
               <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
               <folding>
                 <element signature="e#196#197#0" expanded="true" />
@@ -63,15 +61,6 @@
                 <element signature="e#379#380#0" expanded="true" />
                 <element signature="e#425#426#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MPU9250mag.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250mag.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="40">
-              <caret line="92" column="42" lean-forward="true" selection-start-line="92" selection-start-column="42" selection-end-line="92" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -102,6 +91,15 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="MPU9250mag.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250mag.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="110" column="36" selection-start-line="110" selection-start-column="36" selection-end-line="110" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -128,9 +126,9 @@
         <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/BMP180.java" />
         <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/FileSaver.java" />
         <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/App.kt" />
-        <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250mag.java" />
         <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250.java" />
         <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/App.java" />
+        <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250mag.java" />
       </list>
     </option>
   </component>
@@ -286,21 +284,7 @@
       <workItem from="1528113525969" duration="13140000" />
       <workItem from="1528204066340" duration="4386000" />
       <workItem from="1528217529556" duration="6417000" />
-      <workItem from="1528627556365" duration="1138000" />
-    </task>
-    <task id="LOCAL-00007" summary="removed some functions and added line to save calibration values when a bmp180 object is created">
-      <created>1527952466597</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1527952466597</updated>
-    </task>
-    <task id="LOCAL-00008" summary="added function to read temp raw value from bmp180">
-      <created>1527952760898</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1527952760898</updated>
+      <workItem from="1528627556365" duration="2957000" />
     </task>
     <task id="LOCAL-00009" summary="added printout to select to read temp value">
       <created>1527952824552</created>
@@ -631,11 +615,25 @@
       <option name="project" value="LOCAL" />
       <updated>1528222504755</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="Disconnected bmp180 and configured new function to test mpu9250, added functions to read and save Gyro, Temp and Acceleration">
+      <created>1528628890224</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1528628890224</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Added function to read saved raw data">
+      <created>1528629455434</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1528629455434</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47828000" />
+    <option name="totallyTimeSpent" value="49647000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -705,8 +703,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added master enable signal" />
-    <MESSAGE value="Added parents Sensor class and seprate classes for pressure and temp for bmp180 sensor" />
     <MESSAGE value="Implemented Sesnor class in mpu9250 and added seprate class for mpu9250 magnetometer sensor" />
     <MESSAGE value="added who am i promt" />
     <MESSAGE value="Edited pass trough bytes" />
@@ -730,7 +726,9 @@
     <MESSAGE value="fixed typo" />
     <MESSAGE value="now creates new mpu9250mag object when an app object is created" />
     <MESSAGE value="added halvors commands" />
-    <option name="LAST_COMMIT_MESSAGE" value="added halvors commands" />
+    <MESSAGE value="Disconnected bmp180 and configured new function to test mpu9250, added functions to read and save Gyro, Temp and Acceleration" />
+    <MESSAGE value="Added function to read saved raw data" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added function to read saved raw data" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250.java">
@@ -1099,9 +1097,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/BMP180.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="30" column="25" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
+        <state relative-caret-position="-79">
           <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
           <folding>
             <element signature="e#196#197#0" expanded="true" />
@@ -1114,24 +1119,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250mag.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="92" column="42" lean-forward="true" selection-start-line="92" selection-start-column="42" selection-end-line="92" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/BMP180.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="30" column="25" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="26" column="51" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="51" />
+        <state relative-caret-position="432">
+          <caret line="79" column="35" selection-start-line="79" selection-start-column="35" selection-end-line="79" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250mag.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="110" column="36" selection-start-line="110" selection-start-column="36" selection-end-line="110" selection-end-column="36" />
         </state>
       </provider>
     </entry>
