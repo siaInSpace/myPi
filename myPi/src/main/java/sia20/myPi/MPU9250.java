@@ -11,7 +11,7 @@ class MPU9250 extends Sensor{
     void readExtData(int length){
         byte[] data = word.readBytes(0x49, length);
         for (byte d : data) {
-            System.out.println(data);
+            System.out.println(d);
         }
     }
 
