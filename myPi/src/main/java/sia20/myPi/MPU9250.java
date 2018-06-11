@@ -2,10 +2,10 @@ package sia20.myPi;
 
 class MPU9250 extends Sensor{
 
-    private MPU9250mag mag;
+    private MPU9250magMaster mag;
     MPU9250() {
         super(0x68);
-        mag = new MPU9250mag(this);
+        mag = new MPU9250magMaster(this);
     }
 
     void readExtData(int length){
@@ -54,4 +54,27 @@ class MPU9250 extends Sensor{
             System.out.println(String.format("0x%02X", res));
         }
     }
+
+    void disableBypass(){
+        int int_config = 0X37;
+        int i2c_mst_ctrl = 0x24;
+        int user_ctrl = 0x6A;
+
+        write(int_config, (byte)0x00); //Disables bypass mode
+        write(i2c_mst_ctrl, (byte)0x5D); //configures the i2c (clock speed etc.)
+        write(user_ctrl, (byte)0x20); //Enables i2c master
+    }
+
+    void enableBypass(){
+        write(0x37, (byte)0b00000010);
+        write(0x24, (byte)0x5D);
+        write(0x6A, (byte)0x00);
+    }
+
+
+
+
+
+
+
 }

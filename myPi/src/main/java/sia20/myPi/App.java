@@ -6,12 +6,12 @@ import java.util.Scanner;
 public class App {
     private BMP180 bmp;
     private MPU9250 mpu;
-    private MPU9250mag mag;
+    private MPU9250magMaster mag;
 
     private App() {
         //bmp = new BMP180(Oss.STANDARD, "data/CalibrationValues/bmp180calValuesRaw"); bmp180 is disconnected
         mpu = new MPU9250();
-        mag = new MPU9250mag(mpu);
+        mag = new MPU9250magMaster(mpu);
     }
 
     private void menu() {
@@ -85,6 +85,8 @@ public class App {
             case "5":
                 mpu.readExtData(8);
                 break;
+            case "6":
+                mpu.enableBypass();
             case "Q":
                 in.close();
                 System.out.println("Quitting!");

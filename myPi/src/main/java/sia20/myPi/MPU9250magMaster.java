@@ -1,10 +1,11 @@
 package sia20.myPi;
 
-class MPU9250mag {
+class MPU9250magMaster {
 
     private MPU9250 master;
     Word word;
-    MPU9250mag(MPU9250 mpu9250){
+
+    MPU9250magMaster(MPU9250 mpu9250){
         master = mpu9250;
         word = new Word(master);
         enableMaster();
