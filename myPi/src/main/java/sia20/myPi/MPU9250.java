@@ -85,7 +85,7 @@ class MPU9250 extends Sensor {
         }else {
             ctrl = 0b1011;
         }
-        ctrl = (byte)(ctrl<<4 | (0xF & length));
+        ctrl = (byte)(ctrl<<4 | length);
 
         write(startAddress, address);
         write(startAddress+1, (byte)register);
