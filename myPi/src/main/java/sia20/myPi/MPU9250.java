@@ -1,21 +1,26 @@
 package sia20.myPi;
 
-class MPU9250 extends Sensor{
+class MPU9250 extends Sensor {
 
     private MPU9250magMaster mag;
+
     MPU9250() {
         super(0x68);
         mag = new MPU9250magMaster(this);
     }
 
-    void readExtData(int length){
+    byte[] returnExtData(int length){
+        return word.readBytes(0x49, length);
+    }
+
+    void readExtData(int length) {
         byte[] data = word.readBytes(0x49, length);
         for (byte d : data) {
             System.out.println(d);
         }
     }
 
-    byte[][] readRawValues(){
+    byte[][] readRawValues() {
         byte[][] data = new byte[4][];
         data[0] = readAccRaw();
         data[1] = readTempRaw();
@@ -28,53 +33,67 @@ class MPU9250 extends Sensor{
         // {MagXL, MagXH, MagYL, MagYH, MagZL, MagZH}}
     }
 
-    private byte[] readAccRaw(){
+    private byte[] readAccRaw() {
         return word.readBytes(0x3b, 6);
     }
 
-    private byte[] readTempRaw(){
+    private byte[] readTempRaw() {
         return word.readBytes(0x41, 2);
     }
 
-    private byte[] readGyrRaw(){
+    private byte[] readGyrRaw() {
         return word.readBytes(0x43, 6);
-
     }
+
 
     void whoAmI() {
         int res;
         int whoAmIValueDefault = 0x73;// usually 0x71, i don't know why this is 0x73 instead
         int whoAmIAddress = 0x75;
         res = read(whoAmIAddress);
-        if (res == whoAmIValueDefault) {
-            System.out.println("I'm mpu9250");
-        } else {
-            System.out.println("Who am I? i don't know");
-            System.out.print("I got this number, but that's not really me: ");
-            System.out.println(String.format("0x%02X", res));
-        }
+        System.out.println("I should be 0x73, I am: " + String.format("0x%02X", res));
     }
 
-    void disableBypass(){
-        int int_config = 0X37;
+    void disableBypass() {
         int i2c_mst_ctrl = 0x24;
+        int int_config = 0x37;
         int user_ctrl = 0x6A;
-
-        write(int_config, (byte)0x00); //Disables bypass mode
-        write(i2c_mst_ctrl, (byte)0x5D); //configures the i2c (clock speed etc.)
-        write(user_ctrl, (byte)0x20); //Enables i2c master
+        write(i2c_mst_ctrl, (byte) 0b01011101); //configures the i2c (clock speed etc.)
+        write(int_config, (byte) 0b00000000); //Disables bypass mode
+        write(user_ctrl, (byte) 0b00100000); //Enables i2c master
     }
 
-    void enableBypass(){
-        write(0x37, (byte)0b00000010);
-        write(0x24, (byte)0x5D);
-        write(0x6A, (byte)0x00);
+    void enableBypass() {
+        write(0x37, (byte) 0b00000010);
+        write(0x24, (byte) 0x5D);
+        write(0x6A, (byte) 0x00);
     }
 
+    void configureSlave(int slave, boolean read, int addr, int register, int length, boolean oddGroup){
+        byte address;
+        byte ctrl;
+        int slave0StartAddr = 0x25;
+        int startAddress = slave0StartAddr + 3*slave;
 
+        if (read){
+            address = (byte)(0xFF & addr);
+        }else {
+            address = (byte)(0x7F & addr);
+        }
+        if (oddGroup){
+            ctrl = 0b1010;
+        }else {
+            ctrl = 0b1011;
+        }
+        ctrl = (byte)(ctrl<<4 | (0xF & length));
 
+        write(startAddress, address);
+        write(startAddress+1, (byte)register);
+        write(startAddress+2, ctrl);
+    }
 
-
-
-
+    void slaveDataOut(int slave, byte data){
+        write(0x63+slave, data);
+    }
 }
+

@@ -7,18 +7,20 @@ public class App {
     private BMP180 bmp;
     private MPU9250 mpu;
     private MPU9250magMaster mag;
+    private BMP180Slave bmp180Slave;
 
     private App() {
         //bmp = new BMP180(Oss.STANDARD, "data/CalibrationValues/bmp180calValuesRaw"); bmp180 is disconnected
         mpu = new MPU9250();
         mag = new MPU9250magMaster(mpu);
+        bmp180Slave = new BMP180Slave(mpu);
     }
 
     private void menu() {
         System.out.println("What would you like to do?");
         //System.out.println("1: Save raw temp and raw pressure from bmp180");
         //System.out.println("2: Read raw data files");
-        System.out.println("1: mpu whoAmI");
+        System.out.println("1: whoAmI");
         System.out.println("2: save mpu data");
         System.out.println("3: read saved mpu data");
         System.out.println("4: mpuMag whoAmI");
@@ -51,6 +53,12 @@ public class App {
         //                              GyrYH, GyrZH, GyrZL, MagXL, MagXH, MagYL, MagYH, MagZL, MagZH}
     }
 
+    void whoAmI(){
+        System.out.println("MPU9250");
+        mpu.whoAmI();
+        System.out.println("BMP180");
+        bmp180Slave.whoAmI();
+    }
 
     private void saveMpuData(){
         FileSaver fs = new FileSaver();
@@ -71,7 +79,7 @@ public class App {
                 break;
             */
             case "1":
-                mpu.whoAmI();
+                whoAmI();
                 break;
             case "2":
                 saveMpuData();

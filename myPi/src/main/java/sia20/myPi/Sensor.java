@@ -11,10 +11,6 @@ class Sensor {
 
     private I2CDevice device;
     Word word;
-
-    Sensor(){
-
-    }
     Sensor(int address){
         I2CBus bus;
         try {
