@@ -39,7 +39,7 @@ public class BMP180Slave {
 
     void whoAmI(){
         master.configureSlave(0, true, 0x77, 0xD0, 1, false);
-        byte res = master.returnExtData(1)[0];
+        byte res = master.read(0x49);
         System.out.println("I should be 0x55, I am: " + String.format("0x%02X", res));
 
     }
