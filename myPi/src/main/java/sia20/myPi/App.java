@@ -56,11 +56,6 @@ public class App {
         mpu.whoAmI();
         System.out.println("MPU9250Mag");
         mag.whoAmI();
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         System.out.println("BMP180");
         bmp.whoAmI();
     }
