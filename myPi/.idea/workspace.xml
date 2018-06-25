@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="153d906e-c9ab-4568-b45c-f626084fb06a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sia20/myPi/BMP180Slave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sia20/myPi/BMP180Slave.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="target/" />
@@ -29,11 +30,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MPU9250.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MPU9250.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="774">
-              <caret line="55" selection-start-line="55" selection-end-line="55" />
+            <state relative-caret-position="153">
+              <caret line="74" column="35" lean-forward="true" selection-start-line="74" selection-start-column="8" selection-end-line="74" selection-end-column="35" />
               <folding>
                 <element signature="method#MPU9250#0;class#MPU9250#0" />
                 <element signature="e#210#211#0" expanded="true" />
@@ -46,17 +47,17 @@
       <file leaf-file-name="App.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="78" column="22" lean-forward="true" selection-start-line="77" selection-start-column="40" selection-end-line="78" selection-end-column="22" />
+            <state relative-caret-position="432">
+              <caret line="65" column="5" lean-forward="true" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BMP180Slave.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="BMP180Slave.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/BMP180Slave.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="41" column="39" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="39" />
+            <state relative-caret-position="450">
+              <caret line="42" column="38" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
               <folding>
                 <element signature="e#167#168#0" expanded="true" />
                 <element signature="e#205#206#0" expanded="true" />
@@ -95,9 +96,9 @@
         <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250magBypass.java" />
         <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/Sensor.java" />
         <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/BMP180pressure.java" />
+        <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/App.java" />
         <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250.java" />
         <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/BMP180Slave.java" />
-        <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/App.java" />
       </list>
     </option>
   </component>
@@ -132,7 +133,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -179,8 +179,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -270,21 +271,8 @@
       <workItem from="1528826630097" duration="619000" />
       <workItem from="1528977426166" duration="828000" />
       <workItem from="1529247812617" duration="5413000" />
-      <workItem from="1529266191418" duration="215000" />
-    </task>
-    <task id="LOCAL-00016" summary="Now also create directories to file if it doesn't exist">
-      <created>1527956503652</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1527956503652</updated>
-    </task>
-    <task id="LOCAL-00017" summary="fixed pathName for bmp calibration values">
-      <created>1527957134709</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1527957134709</updated>
+      <workItem from="1529266191418" duration="636000" />
+      <workItem from="1529940238080" duration="366000" />
     </task>
     <task id="LOCAL-00018" summary="Added functions to read raw data from a file">
       <created>1527961545663</created>
@@ -615,14 +603,28 @@
       <option name="project" value="LOCAL" />
       <updated>1529266268638</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="different function to read whoAmI">
+      <created>1529266545886</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1529266545886</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Fixed bitwise or">
+      <created>1529266789038</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1529266789038</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62770000" />
+    <option name="totallyTimeSpent" value="63475000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -638,7 +640,7 @@
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32896653" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20147255" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20414993" />
       <window_info anchor="right" id="Database" order="6" weight="0.3299866" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -690,8 +692,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added function to print raw magnetometer value" />
-    <MESSAGE value="Added function to test the mode setting of mpu9250 magnetometer" />
     <MESSAGE value="Fixed re initalization" />
     <MESSAGE value="Now disables passtrgough" />
     <MESSAGE value="Added printout" />
@@ -715,7 +715,9 @@
     <MESSAGE value="Added comments to show data structure" />
     <MESSAGE value="Added function to enable bypass mode for mpu9250" />
     <MESSAGE value="added bmp180 to work as a slave for mpu9250" />
-    <option name="LAST_COMMIT_MESSAGE" value="added bmp180 to work as a slave for mpu9250" />
+    <MESSAGE value="different function to read whoAmI" />
+    <MESSAGE value="Fixed bitwise or" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed bitwise or" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250magMaster.java">
@@ -1042,31 +1044,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="78" column="22" lean-forward="true" selection-start-line="77" selection-start-column="40" selection-end-line="78" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/BMP180Slave.java">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
-          <caret line="41" column="39" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="39" />
-          <folding>
-            <element signature="e#167#168#0" expanded="true" />
-            <element signature="e#205#206#0" expanded="true" />
-            <element signature="class#Oss#0;class#BMP180Slave#0" />
-          </folding>
+          <caret line="65" column="5" lean-forward="true" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="774">
-          <caret line="55" selection-start-line="55" selection-end-line="55" />
+        <state relative-caret-position="153">
+          <caret line="74" column="35" lean-forward="true" selection-start-line="74" selection-start-column="8" selection-end-line="74" selection-end-column="35" />
           <folding>
             <element signature="method#MPU9250#0;class#MPU9250#0" />
             <element signature="e#210#211#0" expanded="true" />
             <element signature="e#261#262#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/BMP180Slave.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="42" column="38" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
+          <folding>
+            <element signature="e#167#168#0" expanded="true" />
+            <element signature="e#205#206#0" expanded="true" />
+            <element signature="class#Oss#0;class#BMP180Slave#0" />
           </folding>
         </state>
       </provider>
