@@ -7,6 +7,7 @@ public class App {
     private BMP180 bmp;
     private MPU9250 mpu;
     private MPU9250magMaster mag;
+    private MPU9250MagSlave magSlave;
     private BMP180Slave bmp180Slave;
 
     private App() {
@@ -14,6 +15,7 @@ public class App {
         mpu = new MPU9250();
         mag = new MPU9250magMaster(mpu);
         bmp180Slave = new BMP180Slave(mpu);
+        magSlave = new MPU9250MagSlave(mpu);
     }
 
     private void menu() {
@@ -56,8 +58,11 @@ public class App {
     void whoAmI(){
         System.out.println("MPU9250");
         mpu.whoAmI();
+        System.out.println("MPU9250Mag");
+        magSlave.whoAmI();
         System.out.println("BMP180");
         bmp180Slave.whoAmI();
+
     }
 
     private void saveMpuData(){
