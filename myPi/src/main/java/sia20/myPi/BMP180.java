@@ -21,7 +21,7 @@ class BMP180 extends Slave{
     private BMP180pressure.Oss oss;
 
     BMP180(BMP180pressure.Oss osss, MPU9250 master) {
-        super(master, 0b01110111);
+        super(master, 0b1110111);
         oss = osss;
     }
 /*
@@ -45,8 +45,19 @@ class BMP180 extends Slave{
     }
 
 */
+/*
     void whoAmI(){
-        int res = read(0xD0);
+        int res = super.read(0xD0);
+        System.out.println("I should be 0x55, I am: " + String.format("0x%02X", res));
+    }
+*/
+
+    void whoAmI(){
+        int slave0StartAddr = 0x25;
+        master.write(slave0StartAddr, (byte)0b11110111);
+        master.write(slave0StartAddr+1, (byte)0xD0);
+        master.write(slave0StartAddr+2, (byte)0b10000001);
+        byte res = master.read(0x49);
         System.out.println("I should be 0x55, I am: " + String.format("0x%02X", res));
     }
 }
