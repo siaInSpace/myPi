@@ -43,10 +43,7 @@ class MPU9250 extends Sensor {
 
 
     void whoAmI() {
-        int res;
-        int whoAmIValueDefault = 0x73;// usually 0x71, i don't know why this is 0x73 instead
-        int whoAmIAddress = 0x75;
-        res = read(whoAmIAddress);
+        int res = read(0x75);
         System.out.println("I should be 0x73, I am: " + String.format("0x%02X", res));
     }
 

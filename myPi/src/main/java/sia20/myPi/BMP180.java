@@ -50,16 +50,4 @@ class BMP180 extends Slave{
         int res = super.read(0xD0);
         System.out.println("I should be 0x55, I am: " + String.format("0x%02X", res));
     }
-
-
-/*
-    void whoAmI(){
-        int slave0StartAddr = 0x25;
-        master.write(slave0StartAddr, (byte)0b11110111);
-        master.write(slave0StartAddr+1, (byte)0xD0);
-        master.write(slave0StartAddr+2, (byte)0b10000001);
-        byte res = master.read(0x49);
-        System.out.println("I should be 0x55, I am: " + String.format("0x%02X", res));
-    }
-*/
 }
