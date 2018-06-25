@@ -2,11 +2,8 @@ package sia20.myPi;
 
 class MPU9250 extends Sensor {
 
-    private MPU9250magMaster mag;
-
     MPU9250() {
         super(0x68);
-        mag = new MPU9250magMaster(this);
     }
 
     byte[] returnExtData(int length){
@@ -25,7 +22,6 @@ class MPU9250 extends Sensor {
         data[0] = readAccRaw();
         data[1] = readTempRaw();
         data[2] = readGyrRaw();
-        data[3] = mag.readDataRaw();
         return data;
         //{{AccXH, AccXL, AccYH, AccYL, AccZH, AccZL},
         // {TempH, TempL},

@@ -6,16 +6,13 @@ import java.util.Scanner;
 public class App {
     private BMP180 bmp;
     private MPU9250 mpu;
-    private MPU9250magMaster mag;
-    private MPU9250MagSlave magSlave;
-    private BMP180Slave bmp180Slave;
+    private MPU9250Mag mag;
 
     private App() {
         //bmp = new BMP180(Oss.STANDARD, "data/CalibrationValues/bmp180calValuesRaw"); bmp180 is disconnected
         mpu = new MPU9250();
-        mag = new MPU9250magMaster(mpu);
-        bmp180Slave = new BMP180Slave(mpu);
-        magSlave = new MPU9250MagSlave(mpu);
+        mag = new MPU9250Mag(mpu);
+        bmp = new BMP180(BMP180pressure.Oss.STANDARD, mpu);
     }
 
     private void menu() {
@@ -25,7 +22,6 @@ public class App {
         System.out.println("1: whoAmI");
         System.out.println("2: save mpu data");
         System.out.println("3: read saved mpu data");
-        System.out.println("4: mpuMag whoAmI");
         System.out.println("5: read extData from mpu");
         System.out.println("q: quit");
     }
@@ -59,10 +55,9 @@ public class App {
         System.out.println("MPU9250");
         mpu.whoAmI();
         System.out.println("MPU9250Mag");
-        magSlave.whoAmI();
+        mag.whoAmI();
         System.out.println("BMP180");
-        bmp180Slave.whoAmI();
-
+        bmp.whoAmI();
     }
 
     private void saveMpuData(){
@@ -91,9 +86,6 @@ public class App {
                 break;
             case "3":
                 readSavedDataRaw();
-                break;
-            case "4":
-                mag.whoAmI();
                 break;
             case "5":
                 mpu.readExtData(8);

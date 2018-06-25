@@ -1,6 +1,6 @@
 package sia20.myPi;
 
-class BMP180 extends Sensor {
+class BMP180 extends Slave{
     // calibration values
     /*private short AC1;
     private short AC2;
@@ -18,13 +18,13 @@ class BMP180 extends Sensor {
     // commonly used objects
     private BMP180temp temp;
     private BMP180pressure pressure;
+    private BMP180pressure.Oss oss;
 
-    BMP180(BMP180pressure.Oss oss) {
-        super(0x77);
-        temp = new BMP180temp();
-        pressure = new BMP180pressure(oss);
+    BMP180(BMP180pressure.Oss osss, MPU9250 master) {
+        super(master, 0b01110111);
+        oss = osss;
     }
-
+/*
     BMP180(BMP180pressure.Oss oss, String pathName) {
         this(oss);
         FileSaver fs = new FileSaver();
@@ -42,5 +42,11 @@ class BMP180 extends Sensor {
 
     byte[][] readRawValues() {
         return new byte[][]{temp.getRaw(), pressure.getRaw()};
+    }
+
+*/
+    void whoAmI(){
+        int res = read(0xD0);
+        System.out.println("I should be 0x55, I am: " + String.format("0x%02X", res));
     }
 }

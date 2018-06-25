@@ -1,10 +1,10 @@
 package sia20.myPi;
 
-public class MPU9250MagSlave {
+public class MPU9250Mag {
 
     MPU9250 master;
 
-    MPU9250MagSlave(MPU9250 mast){
+    MPU9250Mag(MPU9250 mast){
         master = mast;
     }
     void whoAmI(){
