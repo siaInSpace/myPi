@@ -14,37 +14,22 @@ class BMP180 extends Slave{
     private short MC;
     private short MD;
 */
-
-    // commonly used objects
     private BMP180temp temp;
     private BMP180pressure pressure;
     private BMP180pressure.Oss oss;
 
     BMP180(BMP180pressure.Oss osss, MPU9250 master) {
-        super(master, 0b1110111);
+        super(master, 0x77);
         oss = osss;
     }
-/*
-    BMP180(BMP180pressure.Oss oss, String pathName) {
-        this(oss);
-        FileSaver fs = new FileSaver();
-        fs.start(pathName, readCalibrationValuesRaw());
-    }
 
-    private byte[][] readCalibrationValuesRaw() {
-        int start = 0xAA;
+    byte[][] readCalibrationValuesRaw() {
         byte[][] calValues = new byte[11][2];
-        for (int i = 0; i < 22; i += 2) {
-            calValues[i / 2] = word.readBytes(start + i, 2);
+        for (int i = 0; i < 11; i++) {
+            calValues[i] = read(0xAA+(i*2), 2);
         }
         return calValues;
     }
-
-    byte[][] readRawValues() {
-        return new byte[][]{temp.getRaw(), pressure.getRaw()};
-    }
-
-*/
 
     void whoAmI(){
         int res = super.read(0xD0);

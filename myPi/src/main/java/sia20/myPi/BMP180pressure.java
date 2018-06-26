@@ -1,11 +1,11 @@
 package sia20.myPi;
 
-public class BMP180pressure extends Sensor{
+public class BMP180pressure extends Slave{
 
     private Oss oss;
 
-    BMP180pressure(Oss oss){
-        super(0x77);
+    BMP180pressure(Oss oss, MPU9250 master){
+        super(master, 0x77);
         this.oss = oss;
     }
 
@@ -18,7 +18,7 @@ public class BMP180pressure extends Sensor{
             System.out.println("Could not wait Xms, idk why");
             e.printStackTrace();
         }
-        return word.readBytes(0xF6, 3);
+        return read(0xF6, 3);
     }
 
 
