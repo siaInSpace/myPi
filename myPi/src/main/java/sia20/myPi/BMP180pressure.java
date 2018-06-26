@@ -21,8 +21,6 @@ public class BMP180pressure extends Slave{
         return read(0xF6, 3);
     }
 
-
-
     enum Oss {
         LOW_POWER(0, 5), STANDARD(1, 8), HIGHRES(2, 14), ULTRAHIGHRES(3, 26);
 

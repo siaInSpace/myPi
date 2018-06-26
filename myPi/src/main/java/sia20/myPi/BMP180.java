@@ -16,19 +16,29 @@ class BMP180 extends Slave{
 */
     private BMP180temp temp;
     private BMP180pressure pressure;
-    private BMP180pressure.Oss oss;
 
-    BMP180(BMP180pressure.Oss osss, MPU9250 master) {
+    BMP180(BMP180pressure.Oss oss, MPU9250 master) {
         super(master, 0x77);
-        oss = osss;
+        temp = new BMP180temp(master);
+        pressure = new BMP180pressure(oss, master);
     }
 
-    byte[][] readCalibrationValuesRaw() {
-        byte[][] calValues = new byte[11][2];
-        for (int i = 0; i < 11; i++) {
-            calValues[i] = read(0xAA+(i*2), 2);
-        }
+    byte[] readCalibrationValuesRaw() {
+        byte[] calValues = new byte[22];
+        byte[] ac = read(0xAA, 12);
+        byte[] re = read(0xAA+12, 10);
+        System.arraycopy(ac, 0, calValues, 0, ac.length);
+        System.arraycopy(re, 0, calValues, ac.length, re.length);
         return calValues;
+    }
+
+    byte[] readRawData() {
+        byte[] tempData = temp.getRaw();
+        byte[] pressureData = pressure.getRaw();
+        byte[] data = new byte[tempData.length+pressureData.length];
+        System.arraycopy(tempData, 0, data, 0, tempData.length);
+        System.arraycopy(pressureData, 0, data, tempData.length, pressureData.length);
+        return data;
     }
 
     void whoAmI(){

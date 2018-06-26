@@ -1,9 +1,9 @@
 package sia20.myPi;
 
-class BMP180temp extends Sensor {
+class BMP180temp extends Slave {
 
-    BMP180temp(){
-        super(0x77);
+    BMP180temp(MPU9250 master){
+        super(master, 0x77);
     }
 
     byte[] getRaw() {
@@ -14,6 +14,6 @@ class BMP180temp extends Sensor {
             System.out.println("Could not wait 5ms, idk why");
             e.printStackTrace();
         }
-        return word.readBytes(0xF6, 2);
+        return read(0xF6, 2);
     }
 }
