@@ -14,6 +14,7 @@ class Slave {
     }
 
     byte[] read(int register, int length){
+        master.disableBypass();
         int slave0Address = 0x25;
         int slave0Register = 0x26;
         int slave0Ctrl = 0x27;
@@ -28,6 +29,7 @@ class Slave {
     }
 
     void write(int register, byte data){
+        master.disableBypass();
         int slave0Address = 0x25;
         int slave0Register = 0x26;
         int slave0Ctrl = 0x27;
