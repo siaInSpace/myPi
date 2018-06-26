@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="153d906e-c9ab-4568-b45c-f626084fb06a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sia20/myPi/Slave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sia20/myPi/Slave.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="target/" />
@@ -69,11 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Slave.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Slave.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/Slave.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="565">
+              <caret line="41" column="5" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
               <folding>
                 <element signature="e#470#471#0" expanded="true" />
                 <element signature="e#513#514#0" expanded="true" />
@@ -82,11 +82,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BMP180.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BMP180.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/BMP180.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+            <state relative-caret-position="180">
+              <caret line="10" column="21" lean-forward="true" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -141,9 +141,9 @@
         <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/App.java" />
         <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250Mag.java" />
         <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250.java" />
-        <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/Slave.java" />
         <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/BMP180pressure.java" />
         <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/BMP180.java" />
+        <option value="$PROJECT_DIR$/src/main/java/sia20/myPi/Slave.java" />
       </list>
     </option>
   </component>
@@ -318,21 +318,7 @@
       <workItem from="1529247812617" duration="5413000" />
       <workItem from="1529266191418" duration="636000" />
       <workItem from="1529940238080" duration="5216000" />
-      <workItem from="1530005691901" duration="2247000" />
-    </task>
-    <task id="LOCAL-00027" summary="Added function to enable bypass mode on mpu">
-      <created>1527966871327</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1527966871327</updated>
-    </task>
-    <task id="LOCAL-00028" summary="Added break;">
-      <created>1527966986361</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1527966986361</updated>
+      <workItem from="1530005691901" duration="2542000" />
     </task>
     <task id="LOCAL-00029" summary="added master enable signal">
       <created>1527967448706</created>
@@ -663,11 +649,25 @@
       <option name="project" value="LOCAL" />
       <updated>1530012384328</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="fixed bitwise and operator">
+      <created>1530012616885</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1530012616885</updated>
+    </task>
+    <task id="LOCAL-00077" summary="added master.disableBypass() when a function from the Slave class is used">
+      <created>1530012722844</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1530012722844</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70572000" />
+    <option name="totallyTimeSpent" value="70867000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -686,7 +686,7 @@
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32896653" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20682731" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20682731" />
       <window_info anchor="right" id="Database" order="7" weight="0.32931727" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -738,8 +738,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="new test" />
-    <MESSAGE value="Trying to create new device on 0x0c after enabling passtrough" />
     <MESSAGE value="fixed typo" />
     <MESSAGE value="now creates new mpu9250mag object when an app object is created" />
     <MESSAGE value="added halvors commands" />
@@ -763,7 +761,9 @@
     <MESSAGE value="fixed slave bitwise function" />
     <MESSAGE value="fixed who am i function to use slave class and cleaned up mpu9250 who am i function" />
     <MESSAGE value="bmp180 now uses Slave class, updated Slave classes read function so it can now read multiple bytes at once" />
-    <option name="LAST_COMMIT_MESSAGE" value="bmp180 now uses Slave class, updated Slave classes read function so it can now read multiple bytes at once" />
+    <MESSAGE value="fixed bitwise and operator" />
+    <MESSAGE value="added master.disableBypass() when a function from the Slave class is used" />
+    <option name="LAST_COMMIT_MESSAGE" value="added master.disableBypass() when a function from the Slave class is used" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/MPU9250.java">
@@ -1068,17 +1068,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/Slave.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="e#470#471#0" expanded="true" />
-            <element signature="e#513#514#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/BMP180pressure.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
@@ -1088,8 +1077,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/BMP180.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        <state relative-caret-position="180">
+          <caret line="10" column="21" lean-forward="true" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sia20/myPi/Slave.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="565">
+          <caret line="41" column="5" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
+          <folding>
+            <element signature="e#470#471#0" expanded="true" />
+            <element signature="e#513#514#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
