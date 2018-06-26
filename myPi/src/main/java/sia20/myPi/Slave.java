@@ -19,7 +19,7 @@ class Slave {
         int slave0Ctrl = 0x27;
         master.write(slave0Address, (byte)(0x80 | address));
         master.write(slave0Register, (byte)register);
-        master.write(slave0Ctrl, (byte)(0b10000000 & length));
+        master.write(slave0Ctrl, (byte)(0b10001111 & length));
         byte[] data = new byte[length];
         for (int i = 0; i < length; i++) {
             data[i] = master.read(0x49+i);
