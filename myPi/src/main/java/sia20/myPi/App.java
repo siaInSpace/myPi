@@ -17,38 +17,10 @@ public class App {
 
     private void menu() {
         System.out.println("What would you like to do?");
-        //System.out.println("1: Save raw temp and raw pressure from bmp180");
-        //System.out.println("2: Read raw data files");
         System.out.println("1: whoAmI");
-        System.out.println("2: save mpu data");
-        System.out.println("3: read saved mpu data");
-        System.out.println("5: read extData from mpu");
+        System.out.println("2: save data");
+        System.out.println("3: read saved data");
         System.out.println("q: quit");
-    }
-
-    /*
-    private void saveBmpValuesRaw(){
-        FileSaver fs = new FileSaver();
-        fs.start("data/measurements/" + System.nanoTime(), bmp.readRawValues());
-    }
-    */
-
-
-    private void readSavedDataRaw(){
-        FileReader fr = new FileReader();
-        File[] files = (new File("data/measurements").listFiles());
-        byte[][] data = new byte[files.length][];
-        for (int i = 0; i < files.length; i++) {
-            data[i] = fr.readBytes(files[i]);
-        }
-        for (byte[] bytes : data) {
-            for (byte byt : bytes) {
-                System.out.print(byt + " ");
-            }
-            System.out.println();
-        }
-        //Data is structured as {AccXH, AccXL, AccYH, AccYL, AccZH, AccZL, TempH, TempL, GyrXH, GyrXL,
-        //                              GyrYH, GyrZH, GyrZL, MagXL, MagXH, MagYL, MagYH, MagZL, MagZH}
     }
 
     void whoAmI(){
@@ -60,10 +32,16 @@ public class App {
         bmp.whoAmI();
     }
 
-    private void saveMpuData(){
+    private void saveData(){
         FileSaver fs = new FileSaver();
-        fs.start("data/measurements/" + System.nanoTime(), mpu.readRawValues());
+        fs.start("data/measurements/" + System.nanoTime(), bmp.readRawData());
     }
+
+    private void readData(){
+        FileReader fr = new FileReader();
+        fr.printFolder("data/measurements");
+    }
+
     private void run() {
         Scanner in = new Scanner(System.in);
         String choice;
@@ -71,27 +49,15 @@ public class App {
             menu();
             choice = in.nextLine().toUpperCase();
             switch (choice) {
-            /*case "1":
-                saveBmpValuesRaw();
-                break;
-            case "2":
-                readSavedBmpValuesRaw();
-                break;
-            */
             case "1":
                 whoAmI();
                 break;
             case "2":
-                saveMpuData();
+                saveData();
                 break;
             case "3":
-                readSavedDataRaw();
+                readData();
                 break;
-            case "5":
-                mpu.readExtData(8);
-                break;
-            case "6":
-                mpu.enableBypass();
             case "Q":
                 in.close();
                 System.out.println("Quitting!");
