@@ -19,7 +19,8 @@ public class App {
         System.out.println("What would you like to do?");
         System.out.println("1: whoAmI");
         System.out.println("2: save data");
-        System.out.println("3: read saved data");
+        System.out.println("3: save bmp calibration values");
+        System.out.println("4: read saved data");
         System.out.println("q: quit");
     }
 
@@ -42,6 +43,10 @@ public class App {
         fr.printFolder("data/measurements");
     }
 
+    private void bmpReadCalibrationValues(){
+        FileSaver fs = new FileSaver();
+        fs.start("data/measurements/calibrationValues", bmp.readCalibrationValuesRaw());
+    }
     private void run() {
         Scanner in = new Scanner(System.in);
         String choice;
@@ -56,6 +61,9 @@ public class App {
                 saveData();
                 break;
             case "3":
+                bmpReadCalibrationValues();
+                break;
+            case "4":
                 readData();
                 break;
             case "Q":
