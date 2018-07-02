@@ -34,7 +34,6 @@ class BMP180 extends Slave {
 
     byte[] readRawData() {
         byte[] tempData = temp.getRaw();
-        sleep(5);
         byte[] pressureData = pressure.getRaw();
         byte[] data = new byte[tempData.length + pressureData.length];
         System.arraycopy(tempData, 0, data, 0, tempData.length);
@@ -45,14 +44,5 @@ class BMP180 extends Slave {
     void whoAmI() {
         int res = super.read(0xD0);
         System.out.println("I should be 0x55, I am: " + String.format("0x%02X", res));
-    }
-
-    private void sleep(int millis) {
-        try {
-            Thread.sleep(millis);
-        } catch (InterruptedException e) {
-            System.out.println("Cannot wait: " + millis);
-            e.printStackTrace();
-        }
     }
 }

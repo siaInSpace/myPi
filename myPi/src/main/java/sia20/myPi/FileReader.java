@@ -11,7 +11,7 @@ class FileReader {
         File[] files = folder.listFiles();
         for (File file : files) {
             byte[] data = readFile(file.getPath());
-            System.out.print(file.getPath() + "{");
+            System.out.print(file.getPath() + ": {");
             for (byte dat :
                     data) {
                 System.out.print(dat + ", ");

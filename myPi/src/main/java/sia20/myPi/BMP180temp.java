@@ -14,6 +14,7 @@ class BMP180temp extends Slave {
             System.out.println("Could not wait 5ms, idk why");
             e.printStackTrace();
         }
-        return read(0xF6, 2);
+        byte[] data = {read(0xF6), read(0xF7)};
+        return data;
     }
 }

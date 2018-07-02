@@ -18,7 +18,8 @@ public class BMP180pressure extends Slave{
             System.out.println("Could not wait Xms, idk why");
             e.printStackTrace();
         }
-        return read(0xF6, 3);
+        byte[] data = {read(0xF6), read(0xF7), read(0xF8)};
+        return data;
     }
 
     enum Oss {
