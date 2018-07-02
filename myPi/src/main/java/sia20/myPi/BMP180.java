@@ -1,6 +1,6 @@
 package sia20.myPi;
 
-class BMP180 extends Slave{
+class BMP180 extends Slave {
     // calibration values
     /*private short AC1;
     private short AC2;
@@ -26,7 +26,7 @@ class BMP180 extends Slave{
     byte[] readCalibrationValuesRaw() {
         byte[] calValues = new byte[22];
         byte[] ac = read(0xAA, 12);
-        byte[] re = read(0xAA+12, 10);
+        byte[] re = read(0xAA + 12, 10);
         System.arraycopy(ac, 0, calValues, 0, ac.length);
         System.arraycopy(re, 0, calValues, ac.length, re.length);
         return calValues;
@@ -34,15 +34,25 @@ class BMP180 extends Slave{
 
     byte[] readRawData() {
         byte[] tempData = temp.getRaw();
+        sleep(5);
         byte[] pressureData = pressure.getRaw();
-        byte[] data = new byte[tempData.length+pressureData.length];
+        byte[] data = new byte[tempData.length + pressureData.length];
         System.arraycopy(tempData, 0, data, 0, tempData.length);
         System.arraycopy(pressureData, 0, data, tempData.length, pressureData.length);
         return data;
     }
 
-    void whoAmI(){
+    void whoAmI() {
         int res = super.read(0xD0);
         System.out.println("I should be 0x55, I am: " + String.format("0x%02X", res));
+    }
+
+    private void sleep(int millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            System.out.println("Cannot wait: " + millis);
+            e.printStackTrace();
+        }
     }
 }

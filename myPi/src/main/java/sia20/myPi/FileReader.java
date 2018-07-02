@@ -16,7 +16,7 @@ class FileReader {
                     data) {
                 System.out.print(dat + ", ");
             }
-            System.out.print("}");
+            System.out.println("}");
         }
     }
 
